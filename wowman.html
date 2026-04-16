@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>SASA Shop PRO</title>
+
+<style>
+.cart-count.bump {
+  transform: scale(1.3);
+}
+  /* Profile button (special) */
+.profile-btn {
+  text-decoration: none;
+  background: rgb(#ee4d2d);
+  color: white;
+  padding: 5px 5px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+}
+.cart-icon {
+  position: fixed;
+  top: 100px; /* ពីមុន 15px → កែជា 30px */
+  right: 100px;
+  font-size: 22px;
+}
+  /* CART ICON */
+.cart-icon {
+  position: fixed;
+  top: 100px;
+  right: 0px;
+  font-size: 50px;
+  cursor: pointer;
+}
+  .next-btn {
+  text-decoration: none;
+  background: linear-gradient(45deg, #000000, #000000);
+  color: rgb(255, 255, 255);
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.back-btn:hover {
+  background: rgb(255, 255, 255);
+}
+.next-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+  /* CART ICON */
+.cart-icon {
+  position: fixed;
+  top: 15px;
+  right: 20px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.cart-count {
+  background: red;
+  color: white;
+  border-radius: 50%;
+  padding: 3px 7px;
+  font-size: 12px;
+  position: absolute;
+  top: -8px;
+  right: -10px;
+}
+
+/* CART PANEL */
+.cart-box {
+  position: fixed;
+  right: -350px;
+  top: 0;
+  width: 300px;
+  height: 100%;
+  background: white;
+  box-shadow: -5px 0 20px rgba(255, 255, 255, 0.948);
+  padding: 15px;
+  transition: 0.3s;
+}
+
+.cart-box.active {
+  right: 0;
+}
+
+.cart-box h3 {
+  margin-top: 0;
+}
+
+.cart-box ul {
+  padding: 0;
+  list-style: none;
+}
+
+.cart-box li {
+  margin-bottom: 8px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 5px;
+}
+
+.total {
+  font-weight: bold;
+  color: #ee4d2d;
+}
+
+.close-btn {
+  float: right;
+  cursor: pointer;
+  font-size: 18px;
+}
+  /* PAY BUTTON PRO */
+.pay-btn {
+  text-decoration: none;
+  background: linear-gradient(45deg, #ff5722, #cf0000);
+  color: white;
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 16px;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+/* Hover effect */
+.pay-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* Glow animation */
+.pay-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
+  transition: 0.5s;
+}
+
+.pay-btn:hover::before {
+  left: 100%;
+}
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #000000;
+}
+
+header {
+  background: linear-gradient(90deg, #ee4d2d, #ff9800);
+  padding: 12px 25px;
+  color: rgb(0, 0, 0);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* LOGO */
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* SEARCH */
+.search-box {
+  display: flex;
+  width: 40%;
+  background: white;
+  border-radius: 25px;
+  overflow: hidden;
+}
+
+.search-box input {
+  flex: 1;
+  border: none;
+  padding: 8px 12px;
+  outline: none;
+}
+
+.search-box button {
+  background: #d84315;
+  border: none;
+  color: white;
+  padding: 8px 15px;
+  cursor: pointer;
+}
+
+/* RIGHT MENU */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* BUTTON */
+.nav-btn {
+  background: white;
+  color: #ee4d2d;
+  padding: 6px 12px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav-btn:hover {
+  background: black;
+  color: white;
+}
+
+/* PROFILE */
+.profile-btn {
+  background: black;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  text-decoration: none;
+}
+
+.profile-btn:hover {
+  background: #333;
+}
+
+/* header*/
+.logout {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* PRODUCTS */
+.card h3{
+   color: rgb(255, 255, 255);     /* ប្ដូរពណ៌តាមចិត្ត */
+}
+
+.products {
+  
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap: 15px;
+  padding: 20px;
+}
+
+/* CARD */
+.card {
+  background: rgb(255, 255, 255);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(255, 254, 254, 0.2);
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 10px;
+}
+
+.price {
+  color: #000000;
+  font-weight: bold;
+}
+
+/* BUTTON */
+button {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  background: #000000;
+  color: rgb(255, 255, 255);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #d84315;
+}
+
+/* CART PANEL */
+.cart {
+  position: fixed;
+  right: -350px;
+  top: 0;
+  width: 300px;
+  height: 100%;
+  background: white;
+  padding: 15px;
+  box-shadow: -5px 0 20px rgba(255, 255, 255, 0.2);
+  transition: 0.3s;
+}
+
+.cart.active {
+  right: 0;
+}
+
+.cart h3 {
+  margin-top: 0;
+}
+
+.back-btn {
+  display: inline-block;
+  text-decoration: none;
+  background: #000000;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 15px;
+  margin-top: 10px;
+}
+
+.back-btn:hover {
+  background: rgb(255, 255, 255);
+}
+</style>
+
+</head>
+
+<body>
+<script src="script.js"></script>
+</body>
+<header>
+  <h2>🛒 SASA Shop</h2>
+   <a href="profile.html" class="profile-btn">👤 Profile</a>
+   <div class="cart-icon" onclick="toggleCart()">
+      🛒
+      <span class="cart-count" id="count">0</span>
+    </div>
+</header>
+
+<div class="products">
+
+ 
+
+  <div class="card">
+    <img src="c:\Users\user\Downloads\1234.png">
+    <div class="card-body">
+
+    </div>
+  </div>
+
+</div>
+<!-- CART -->
+<div class="cart" id="cartBox">
+
+  <div class="cart-header">
+    <h3>🧾 Your Cart</h3>
+    <span class="close-btn" onclick="toggleCart()">✖</span>
+  </div>
+
+  <ul id="list"></ul>
+
+  <div class="cart-footer">
+    <h3 id="total">Total: $0</h3>
+
+    <a href="payment.html" class="pay-btn">
+      💳 Checkout Now
+    </a>
+  </div>
+
+</div>
+
+</a>
+
+</div>
+
+<script>
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function toggleCart(){
+  document.getElementById("cartBox").classList.toggle("active");
+}
+
+function add(name, price) {
+  cart.push({name, price});
+  localStorage.setItem("cart", JSON.stringify(cart));
+  show();
+  toggleCart(); 
+}
+
+function show() {
+  let list = document.getElementById("list");
+  list.innerHTML = "";
+  let total = 0;
+
+  cart.forEach(item => {
+    let li = document.createElement("li");
+    li.innerText = item.name + " - $" + item.price;
+    list.appendChild(li);
+    total += item.price;
+  });
+
+  document.getElementById("total").innerText = "Total: $" + total;
+}
+
+function clearCart() {
+  cart = [];
+  localStorage.removeItem("cart");
+  show();
+}
+
+show();
+
+</script>
+
+</body>
+</html>
+
+<div class="products">
+
+  <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lswlslt90mu1a6.webp">
+    <div class="card-body">
+      <h4>LOAFER </h4>
+      <p class="price">$15</p>
+      <button onclick="add('LOAFER ',15)">Add</button>
+    </div>
+  </div>
+ <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-lh7np6ds91ki41.webp">
+    <div class="card-body">
+      <h4>Sandal” </h4>
+      <p class="price">$10</p>
+      <button onclick="add('Sandal” ',10)">Add</button>
+    </div>
+  </div> <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lzy3aooj9e3lb4.webp">
+    <div class="card-body">
+      <h4> STOMP</h4>
+      <p class="price">$16</p>
+      <button onclick="add(' STOMP',16)">Add</button>
+    </div>
+  
+  </div> <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7ra0g-m793b6b3mer706.webp">
+    <div class="card-body">
+      <h4>Sandal” </h4>
+      <p class="price">$12</p>
+      <button onclick="add('Sandal” ',12)">Add</button>
+    </div>
+  </div> <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7ra0g-m8ggegwxlgzod7.webp">
+    <div class="card-body">
+      <h4>HIGF </h4>
+      <p class="price">$25</p>
+      <button onclick="add('HIGF ',25)">Add</button>
+    </div>
+  </div> <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-81ztc-mmpzq2dqkn4567.webp">
+    <div class="card-body">
+      <h4>Hottrend </h4>
+      <p class="price">$19</p>
+      <button onclick="add('Hottrend ',19)">Add</button>
+    </div>
+  
+  </div> <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lvxat4cwm1uh8a.webp">
+    <div class="card-body">
+      <h4>PVC</h4>
+      <p class="price">$9</p>
+      <button onclick="add('PVC',9)">Add</button>
+    </div>
+  </div> <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7ras8-mbpi6wnhe5iqf3.webp">
+    <div class="card-body">
+      <h4>S Odyssey </h4>
+      <p class="price">$29</p>
+      <button onclick="add('SOdyssey (G61SD)',29)">Add</button>
+    </div>
+  </div> <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lxdo4xqa1ejfd1.webp">
+    <div class="card-body">
+      <h4>MWC </h4>
+      <p class="price">$25</p>
+      <button onclick="add('MWC ',25)">Add</button>
+    </div>
+  </div> <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lymh27kbpr9p84.webp">
+    <div class="card-body">
+      <h4>SANYU</h4>
+      <p class="price">$50</p>
+      <button onclick="add('SANYU',50)">Add</button>
+    </div>
+  </div> <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7ras8-mck1er5dojoc5e.webp">
+    <div class="card-body">
+      <h4>SANYU 2</h4>
+      <p class="price">$30</p>
+      <button onclick="add('SANYU 2',30)">Add</button>
+    </div>
+  </div> <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-820l4-mimxw31o05j7fa.webp">
+    <div class="card-body">
+      <h4>Legion i</h4>
+      <p class="price">$50</p>
+      <button onclick="add('Legion i',50)">Add</button>
+    </div>
+  </div> <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7ras8-m1festugyzsv5b.webp">
+    <div class="card-body">
+      <h4>mary jane</h4>
+      <p class="price">$45</p>
+      <button onclick="add('mary jane',45)">Add</button>
+    </div>
+  </div> <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7ra0g-m9qte0xi9wka3c.webp">
+    <div class="card-body">
+      <h4>Nitro </h4>
+      <p class="price">$70</p>
+      <button onclick="add('Nitro ',70)">Add</button>
+    </div>
+  </div> <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7ras8-m1fdk00qq7o86c.webp">
+    <div class="card-body">
+      <h4>SCAR 18 </h4>
+      <p class="price">$67</p>
+      <button onclick="add('SCAR 18 ',67)">Add</button>
+    </div>
+  </div>
+   <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7ras8-mcvu3pzxn7mk63@resize_w900_nl.webp">
+    <div class="card-body">
+      <h4>Cross MPG </h4>
+      <p class="price">$50</p>
+      <button onclick="add('Cross MPG ',50)">Add</button>
+    </div>
+  </div>
+
+   <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7ra0g-m6yajwrl59i011.webp">
+    <div class="card-body">
+      <h4>sandal</h4>
+      <p class="price">$30</p>
+      <button onclick="add('sandal',30)">Add</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="badge">Sale</div>
+    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lzg2tqdxnych5e.webp">
+    <div class="card-body">
+      <h4>ming Dop</h4>
+      <p class="price">$50</p>
+      <button onclick="add('ming Dop',50)">Add</button>
+    </div>
+  </div>
+
+ 
+  <div class="card">
+    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lwbmhjbalejd42.webp">
+    <div class="card-body">
+      <h4>Swift</h4>
+      <p class="price">$12</p>
+      <button onclick="add('Swift',12)">Add</button>
+    </div>
+  </div><div class="card">
+    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7ras8-m1i3b0wcmrf7d8.webp">
+    <div class="card-body">
+      <h4>  vintage </h4>
+      <p class="price">$40</p>
+      <button onclick="add('  vintage ',40)">Add</button>
+    </div>
+  </div><div class="card">
+    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7ra0g-m7i383mcxyyb60.webp">
+    <div class="card-body">
+      <h4>KTC</h4>
+      <p class="price">$25</p>
+      <button onclick="add('KTC',25)">Add</button>
+    </div>
+  </div><div class="card">
+    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7ra0g-m9gawohvtobyd1.webp">
+    <div class="card-body">
+      <h4>MS</h4>
+      <p class="price">$10</p>
+      <button onclick="add('MS',10)">Add</button>
+    </div>
+  </div><div class="card">
+    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-820l4-meuxtb69g8hx20.webp">
+    <div class="card-body">
+      <h4>Stealth </h4>
+      <p class="price">$50</p>
+      <button onclick="add('Stealth',5)">Add</button>
+    </div>
+  </div>
+<div class="card">
+    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7ras8-m4zfcpnfh8vqf8.webp">
+    <div class="card-body">
+      <h4>Gam</h4>
+      <p class="price">$30</p>
+      <button onclick="add('Gam',30)">Add</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7ra0g-m8rg4szqn7gi68.webp">
+    <div class="card-body">
+      <h4>Dell </h4>
+      <p class="price">$12</p>
+      <button onclick="add('Dell',12)">Add</button>
+    </div>
+  </div>
+  <div class="card">
+    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-81ztc-mmby57lr2olc71.webp">
+    <div class="card-body">
+      <h4>pad  </h4>
+      <p class="price">$60</p>
+      <button onclick="add('pad',60)">Add</button>
+    </div>
+  </div>
+</div>
+ 
+<script>
+ if (localStorage.getItem("login") !== "true") {
+  window.location.href = "login.html";
+}
+
+function logout() {
+  localStorage.clear();
+  window.location.href = "login.html";
+}
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function add(name, price) {
+  cart.push({name, price});
+  localStorage.setItem("cart", JSON.stringify(cart));
+  show();
+}
+
+function show() {
+  let list = document.getElementById("list");
+  list.innerHTML = "";
+  let total = 0;
+
+  cart.forEach(item => {
+    let li = document.createElement("li");
+    li.innerText = item.name + " - $" + item.price;
+    list.appendChild(li);
+    total += item.price;
+  });
+
+  document.getElementById("total").innerText = "Total: $" + total;
+}
+
+function clearCart() {
+  cart = [];
+  localStorage.removeItem("cart");
+  show();
+}
+
+function checkout() {
+  let name = document.getElementById("name").value;
+  let address = document.getElementById("address").value;
+
+  if(cart.length === 0){
+    alert("Cart empty ❌");
+    return;
+  }
+
+  if(name === "" || address === ""){
+    alert("Fill info ❗");
+    return;
+  }
+
+  document.getElementById("qrBox").style.display = "block";
+}
+
+function confirmPayment() {
+  alert("Payment Success 🎉");
+
+  cart = [];
+  localStorage.removeItem("cart");
+  show();
+
+  document.getElementById("qrBox").style.display = "none";
+}
+
+show(); 
+
+
+
+</script>
+
+</body>
+</html>
+</body>
+</html> 
+<header>
+</header>
+   <a href="cart.html" class="next-btn">Next </a>                         
+
+<a href="shop.html" class="back-btn">
+   Back
+</a>

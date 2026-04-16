@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ksa Shop</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #f1f3f6;
+}
+
+/* Header */
+header {
+  background: linear-gradient(90deg, #4CAF50, #2e7d32);
+  color: white;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Products */
+.products {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Card */
+.card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: 0.3s;
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* Badge */
+.badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: red;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+/* Image */
+.card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+/* Content */
+.card-body {
+  padding: 15px;
+}
+
+.price {
+  color: red;
+  font-weight: bold;
+}
+
+/* Button */
+button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: #4CAF50;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background: #2e7d32;
+}
+
+/* Cart */
+.cart {
+  background: white;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+/* Input */
+input {
+  padding: 10px;
+  width: 200px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin: 5px;
+}
+
+/* Logout */
+.logout {
+  background: red;
+  padding: 8px 15px;
+  width: auto;
+  border-radius: 6px;
+}
+
+/* QR Box */
+.qr-box {
+  text-align: center;
+  margin-top: 20px;
+  display: none;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+  <h2>🛒 Ksa Shop</h2>
+  <button class="logout" onclick="logout()">Logout</button>
+</header>
+
+
+<div class="products">
+
+  <!-- Product 1 -->
+  <div class="card">
+    <div class="Epic Apollo Dial Comfort Black Platinum">🔥 Hot</div>
+    <img src="https://imgs.search.brave.com/nKSRXBymd7hXowf4AaXg2RExfvPIXSdH_VmqRDKb-Go/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9wcm9z/a2F0ZXJzcGxhY2Uu/Y29tL3dwLWNvbnRl/bnQvdXBsb2Fkcy8y/MDIyLzA2L0VwaWMt/U3Rvcm0tZ3JpbmQt/c2hvZXMtMi5qcGc">
+    <div class="card-body">
+      <h3>Epic Apollo Dial Comfort Black Platinum</h3>
+      <p class="price">$30</p>
+      <button onclick="add('Epic Apollo Dial Comfort Black Platinum',30)">Add to Cart</button>
+    </div>
+  </div>
+
+  <!-- Product 2 -->
+  <div class="card">
+    <div class="badge">Sale</div>
+    <img src="https://imgs.search.brave.com/_YsRBB-uv1Vdz5KSxcJsXbH1T3WHS90gF_HM6zeuuio/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9wcm9z/a2F0ZXJzcGxhY2Uu/Y29tL3dwLWNvbnRl/bnQvdXBsb2Fkcy8y/MDIzLzEwL0VQSUMt/TG93LVJhdmVuLUdy/aW5kLVNob2VzLTQu/anBn">
+    <div class="card-body">
+      <h3>EPIC Storm Grind
+
+
+
+EPIC Storm Grind </h3>
+      <p class="price">$50</p>
+      <button onclick="add('EPIC Storm Grind',50)">Add to Cart</button>
+    </div>
+  </div>
+
+  <!-- Product 3 -->
+  <div class="card">
+    <img src="https://proskatersplace.com/wp-content/uploads/2023/10/EPIC-Red-Lava-Grind-Shoes-3-300x300.jpg">
+    <div class="card-body">
+      <h3>EPIC Low Raven Grind Shoes</h3>
+      <p class="price">$15</p>
+      <button onclick="add('Epic Apollo Dial Comfort Black Platinum',15)">Add to Cart</button>
+    </div>
+  </div>
+   <div class="card">
+    <img src="https://imgs.search.brave.com/GpVShGcB1qlhhR1JSbxy7NDkIoeAKOXXw7iCtjgOzCg/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWcu/bXlzaG9wbGluZS5j/b20vaW1hZ2Uvc3Rv/cmUvMTcwOTA4OTI4/MDQ4Ny9QUjc0OTdC/STE5NTI2LTE0MDAw/MC0zNzQzNi1FcGlj/LVN0b21wZXItU1o0/LTM1M3g0MDAtMDEz/M2QyZjgtNmY1OS00/MmVhLWFkZWUtMDdj/YWM2M2M4Y2I0XzE4/MDB4LmpwZz93PTM1/MyZoPTM1MyZxPTgw">
+    <div class="card-body">
+      <h3>epic</h3>
+      <p class="price">$30</p>
+      <button onclick="add('Epic Apollo Dial Comfort Black Platinum',15)">Add to Cart</button>
+    </div>
+  </div>
+   <div class="card">
+    <img src="https://imgs.search.brave.com/-xlY5GqO_QknLRqQf99XoVGLjel6Ozx0-QP_AvqD57s/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9wcm9z/a2F0ZXJzcGxhY2Uu/Y29tL3dwLWNvbnRl/bnQvdXBsb2Fkcy8y/MDIzLzEwL0VQSUMt/SHlwZS1HcmluZC1T/aG9lcy0yLmpwZw">
+    <div class="card-body">
+      <h3>EPIC - Stomper (Black/Gum) Grind Shoes</h3>
+      <p class="price">$20</p>
+      <button onclick="add('sa',15)">Add to Cart</button>
+    </div>
+  </div>
+   <div class="card">
+    <img src="https://imgs.search.brave.com/No24w3Z3RNwI_HlB21JPavhdAMJqNwvuyMqePxbJvAA/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93d3cu/ZXBpY2Jvd2xpbmcu/Y29tL3dwLWNvbnRl/bnQvdXBsb2Fkcy8y/MDI2LzAxL2VwaWNf/c2hvZXNfd2hpdGVf/Z29sZF9sYWNlXzJf/ZW5oYW5jZWQtMS0z/MDB4MzAwLnBuZw">
+    <div class="card-body">
+      <h3>EPIC Hype Grind Shoes</h3>
+      <p class="price">$25</p>
+      <button onclick="add('Bag',15)">Add to Cart</button>
+    </div>
+  </div> <div class="card">
+    <img src="https://imgs.search.brave.com/kudISU4_QPIQV9ZSfm-9x9zzSVxIAKFwIKxuO6U6VQg/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9wcm9z/a2F0ZXJzcGxhY2Uu/Y29tL3dwLWNvbnRl/bnQvdXBsb2Fkcy8y/MDIzLzEwL0VQSUMt/U3RvbXBlci1Hcmlu/ZC1TaG9lcy0yLTMw/MHgzMDAuanBn">
+    <div class="card-body">
+      <h3>Epic Boost T-1 Performance</h3>
+      <p class="price">$15</p>
+      <button onclick="add('Bag',15)">Add to Cart</button>
+    </div>
+  </div>
+
+  <!-- Product 4 -->
+  <div class="card">
+    <img src="https://imgs.search.brave.com/bUE3E7I7eJRiyrgyMYLyhcB_NlZtun9OmL4kotPvjC4/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMtbmEuc3NsLWlt/YWdlcy1hbWF6b24u/Y29tL2ltYWdlcy9J/LzQxc2xTQ2ZxQzhM/LmpwZw">
+    <div class="card-body">
+      <h3>Epic Storm Grindshoes</h3>
+      <p class="price">$30</p>
+      <button onclick="add('Watch',30)">Add to Cart</button>
+    </div>
+  </div>
+
+</div>
+
+
+</div>
+
+<div class="cart">
+  <h2>🧾 Cart</h2>
+
+  <button onclick="clearCart()">Clear Cart</button>
+  <button onclick="checkout()">Pay Now 💳</button>
+
+  <br><br>
+
+  <input type="text" id="name" placeholder="Your Name"><br>
+  <input type="text" id="address" placeholder="Your Address"><br>
+
+  <ul id="list"></ul>
+  <h3 id="total"></h3>
+
+  <!-- ABA QR -->
+  <div class="qr-box" id="qrBox">
+    <h3>📱 Scan ABA to Pay</h3>
+    <img src="c:\Users\user\Pictures\Screenshots\Screenshot (40).png" width="200"><br><br>
+    <button onclick="confirmPayment()">I Paid ✅</button>
+  </div>
+</div>
+
+<script>
+if (localStorage.getItem("login") !== "true") {
+  window.location.href = "login.html";
+}
+
+function logout() {
+  localStorage.clear();
+  window.location.href = "login.html";
+}
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function add(name, price) {
+  cart.push({name, price});
+  localStorage.setItem("cart", JSON.stringify(cart));
+  show();
+}
+
+function show() {
+  let list = document.getElementById("list");
+  list.innerHTML = "";
+  let total = 0;
+
+  cart.forEach(item => {
+    let li = document.createElement("li");
+    li.innerText = item.name + " - $" + item.price;
+    list.appendChild(li);
+    total += item.price;
+  });
+
+  document.getElementById("total").innerText = "Total: $" + total;
+}
+
+function clearCart() {
+  cart = [];
+  localStorage.removeItem("cart");
+  show();
+}
+
+function checkout() {
+  let name = document.getElementById("name").value;
+  let address = document.getElementById("address").value;
+
+  if(cart.length === 0){
+    alert("Cart empty ❌");
+    return;
+  }
+
+  if(name === "" || address === ""){
+    alert("Fill info ❗");
+    return;
+  }
+
+  document.getElementById("qrBox").style.display = "block";
+}
+
+function confirmPayment() {
+  alert("Payment Success 🎉");
+
+  cart = [];
+  localStorage.removeItem("cart");
+  show();
+
+  document.getElementById("qrBox").style.display = "none";
+}
+
+show();
+</script>
+
+</body>
+</html>

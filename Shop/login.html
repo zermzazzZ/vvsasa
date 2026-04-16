@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login - Ksa Shop</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* 🔥 Dark gradient like UXDA */
+  background: linear-gradient(120deg, #000, #1a1a1a);
+  color: white;
+}
+
+/* Login Box */
+.box {
+  background: #1c1c1c;
+  padding: 40px;
+  border-radius: 15px;
+  width: 320px;
+  text-align: center;
+
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+.box h2 {
+  margin-bottom: 20px;
+  color: orange;
+}
+
+/* Input */
+input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #333;
+  background: #111;
+  color: white;
+}
+
+input:focus {
+  border: 1px solid orange;
+  outline: none;
+}
+
+/* Buttons */
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+/* Orange main button */
+.signup {
+  background: orange;
+  color: black;
+}
+
+/* Dark button */
+.login {
+  background: #333;
+  color: white;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+/* Text */
+.text {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #aaa;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+  <h2>🔐 Ksa Shop</h2>
+
+  <input type="text" id="user" placeholder="Username">
+  <input type="password" id="pass" placeholder="Password">
+
+  <button class="signup" onclick="signup()">Sign Up</button>
+  <button class="login" onclick="login()">Login</button>
+
+  <div class="text">Welcome to your shop 🛒</div>
+</div>
+
+<script>
+function signup() {
+  let u = user.value;
+  let p = pass.value;
+
+  if (!u || !p) {
+    alert("Fill all info ❗");
+    return;
+  }
+
+  localStorage.setItem("user", u);
+  localStorage.setItem("pass", p);
+
+  alert("Signup success ✅");
+}
+
+function login() {
+  let u = user.value;
+  let p = pass.value;
+
+  if (u === localStorage.getItem("user") &&
+      p === localStorage.getItem("pass")) {
+
+    localStorage.setItem("login", "true");
+    window.location.href = "shop.html";
+
+  } else {
+    alert("Wrong login ❌");
+  }
+}
+</script>
+
+</body>
+</html>

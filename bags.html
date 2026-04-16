@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>SASA Shop PRO</title>
+
+<style>
+      .shop-logo{
+  display:flex;
+  align-items:center;
+  gap:5px;
+  font-size:18px;
+  font-weight:bold;
+  color:#000000;
+}
+
+.shop-logo img{
+  width:75px;
+  height:75px;
+  border-radius:50%;
+  object-fit:cover;
+  box-shadow:0 4px 10px rgba(0,0,0,0.2);
+}
+.cart-count.bump {
+  transform: scale(1.3);
+}
+  /* Profile button (special) */
+.profile-btn {
+  text-decoration: none;
+  background: rgb(#ee4d2d);
+  color: white;
+  padding: 5px 5px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+}
+.cart-icon {
+  position: fixed;
+  top: 100px; /* ពីមុន 15px → កែជា 30px */
+  right: 100px;
+  font-size: 22px;
+}
+  /* CART ICON */
+.cart-icon {
+  position: fixed;
+  top: 100px;
+  right: 0px;
+  font-size: 50px;
+  cursor: pointer;
+}
+  .next-btn {
+  text-decoration: none;
+  background: linear-gradient(45deg, #000000, #000000);
+  color: rgb(255, 255, 255);
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.back-btn:hover {
+  background: rgb(255, 255, 255);
+}
+.next-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+  /* CART ICON */
+.cart-icon {
+  position: fixed;
+  top: 15px;
+  right: 20px;
+  font-size: 40px;
+  cursor: pointer;
+}
+
+.cart-count {
+  background: red;
+  color: white;
+  border-radius: 50%;
+  padding: 3px 7px;
+  font-size: 12px;
+  position: absolute;
+  top: -8px;
+  right: -10px;
+}
+
+/* CART PANEL */
+.cart-box {
+  position: fixed;
+  right: -350px;
+  top: 0;
+  width: 300px;
+  height: 100%;
+  background: white;
+  box-shadow: -5px 0 20px rgba(255, 255, 255, 0.948);
+  padding: 15px;
+  transition: 0.3s;
+}
+
+.cart-box.active {
+  right: 0;
+}
+
+.cart-box h3 {
+  margin-top: 0;
+}
+
+.cart-box ul {
+  padding: 0;
+  list-style: none;
+}
+
+.cart-box li {
+  margin-bottom: 8px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 5px;
+}
+
+.total {
+  font-weight: bold;
+  color: #ee4d2d;
+}
+
+.close-btn {
+  float: right;
+  cursor: pointer;
+  font-size: 18px;
+}
+  /* PAY BUTTON PRO */
+.pay-btn {
+  text-decoration: none;
+  background: linear-gradient(45deg, #ff5722, #cf0000);
+  color: white;
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 16px;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+/* Hover effect */
+.pay-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* Glow animation */
+.pay-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
+  transition: 0.5s;
+}
+
+.pay-btn:hover::before {
+  left: 100%;
+}
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #000000;
+}
+
+header {
+  background: linear-gradient(90deg, #ee4d2d, #ff9800);
+  padding: 12px 25px;
+  color: rgb(0, 0, 0);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* LOGO */
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* SEARCH */
+.search-box {
+  display: flex;
+  width: 40%;
+  background: white;
+  border-radius: 25px;
+  overflow: hidden;
+}
+
+.search-box input {
+  flex: 1;
+  border: none;
+  padding: 8px 12px;
+  outline: none;
+}
+
+.search-box button {
+  background: #d84315;
+  border: none;
+  color: white;
+  padding: 8px 15px;
+  cursor: pointer;
+}
+
+/* RIGHT MENU */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* BUTTON */
+.nav-btn {
+  background: white;
+  color: #ee4d2d;
+  padding: 6px 12px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav-btn:hover {
+  background: black;
+  color: white;
+}
+
+/* PROFILE */
+.profile-btn {
+  background: black;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  text-decoration: none;
+}
+
+.profile-btn:hover {
+  background: #333;
+}
+
+/* header*/
+.logout {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* PRODUCTS */
+.card h3{
+   color: rgb(255, 255, 255);     /* ប្ដូរពណ៌តាមចិត្ត */
+}
+
+.products {
+  
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap: 15px;
+  padding: 20px;
+}
+
+/* CARD */
+.card {
+  background: rgb(255, 255, 255);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(255, 254, 254, 0.2);
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 10px;
+}
+
+.price {
+  color: #000000;
+  font-weight: bold;
+}
+
+/* BUTTON */
+button {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  background: #000000;
+  color: rgb(255, 255, 255);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #d84315;
+}
+
+/* CART PANEL */
+.cart {
+  position: fixed;
+  right: -350px;
+  top: 0;
+  width: 300px;
+  height: 100%;
+  background: white;
+  padding: 15px;
+  box-shadow: -5px 0 20px rgba(255, 255, 255, 0.2);
+  transition: 0.3s;
+}
+
+.cart.active {
+  right: 0;
+}
+
+.cart h3 {
+  margin-top: 0;
+}
+
+.back-btn {
+  display: inline-block;
+  text-decoration: none;
+  background: #000000;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 15px;
+  margin-top: 10px;
+}
+
+.back-btn:hover {
+  background: rgb(255, 255, 255);
+}
+</style>
+
+</head>
+
+<body>
+<script src="script.js"></script>
+</body>
+<header>
+  <h2 class="shop-logo">
+<div class="category">
+<a href="shop.html" class="menu-item active">
+  <img src="c:\Users\user\Downloads\sasa.jpg" 
+  alt="SASA Logo"> 
+</h2>
+   <a href="profile.html" class="profile-btn">👤 Profile</a>
+   <div class="cart-icon" onclick="toggleCart()">
+      🛒
+      <span class="cart-count" id="count">0</span>
+    </div>
+</header>
+
+<div class="products">
+
+ 
+
+  <div class="card">
+    <img src="c:\Users\user\Downloads\Untitled design.jpg">
+    <div class="card-body">
+
+    </div>
+  </div>
+
+</div>
+<!-- CART -->
+<div class="cart" id="cartBox">
+
+  <div class="cart-header">
+    <h3>🧾 Your Cart</h3>
+    <span class="close-btn" onclick="toggleCart()">✖</span>
+  </div>
+
+  <ul id="list"></ul>
+
+  <div class="cart-footer">
+    <h3 id="total">Total: $0</h3>
+
+    <a href="payment.html" class="pay-btn">
+      💳 Checkout Now
+    </a>
+  </div>
+
+</div>
+
+</a>
+
+</div>
+
+<script>
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function toggleCart(){
+  document.getElementById("cartBox").classList.toggle("active");
+}
+
+function add(name, price) {
+  cart.push({name, price});
+  localStorage.setItem("cart", JSON.stringify(cart));
+  show();
+  toggleCart(); 
+}
+
+function show() {
+  let list = document.getElementById("list");
+  list.innerHTML = "";
+  let total = 0;
+
+  cart.forEach(item => {
+    let li = document.createElement("li");
+    li.innerText = item.name + " - $" + item.price;
+    list.appendChild(li);
+    total += item.price;
+  });
+
+  document.getElementById("total").innerText = "Total: $" + total;
+}
+
+function clearCart() {
+  cart = [];
+  localStorage.removeItem("cart");
+  show();
+}
+
+show();
+
+</script>
+
+</body>
+</html>
+
+<div class="products">
+
+  <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://m.media-amazon.com/images/I/81d55wIku8L._AC_UL480_FMwebp_QL65_.jpg">
+    <div class="card-body">
+      <h4>Large duffel bags</h4>
+      <p class="price">$128</p>
+      <button onclick="add('Large duffel bags',128)">Add</button>
+    </div>
+  </div>
+ <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://m.media-amazon.com/images/I/51+idbUyWnL._AC_UL480_FMwebp_QL65_.jpg">
+    <div class="card-body">
+      <h4>WOLFpak 25L Tactical” </h4>
+      <p class="price">$110</p>
+      <button onclick="add('WOLFpak 25L Tactical',110)">Add</button>
+    </div>
+  </div> <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://m.media-amazon.com/images/I/71PLh3BR0uL._AC_UL480_FMwebp_QL65_.jpg">
+    <div class="card-body">
+      <h4>Apenze Small Gym Bag</h4>
+      <p class="price">$160</p>
+      <button onclick="add('Apenze Small Gym Bag',160)">Add</button>
+    </div>
+  
+  </div> <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://m.media-amazon.com/images/I/81Q7ETvwUKL._AC_UL480_FMwebp_QL65_.jpg">
+    <div class="card-body">
+      <h4>Duffle Bag for Travel” </h4>
+      <p class="price">$120</p>
+      <button onclick="add('Duffle Bag for Travel',120)">Add</button>
+    </div>
+  </div> <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://m.media-amazon.com/images/I/61aGCBrk-hL._AC_UL480_FMwebp_QL65_.jpg">
+    <div class="card-body">
+      <h4>BAGSMART Cross Body</h4>
+      <p class="price">$30</p>
+      <button onclick="add('BAGSMART Cross Body',30)">Add</button>
+    </div>
+  </div> <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://m.media-amazon.com/images/I/61ojqUsOgkL._AC_UL480_FMwebp_QL65_.jpg">
+    <div class="card-body">
+      <h4>ETRONIK Gym Bag </h4>
+      <p class="price">$40</p>
+      <button onclick="add('ETRONIK Gym Bag',40)">Add</button>
+    </div>
+  
+  </div> <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://m.media-amazon.com/images/I/51h7YvVhLoL._AC_UL480_FMwebp_QL65_.jpg">
+    <div class="card-body">
+      <h4>LOVEVOOK Laptop</h4>
+      <p class="price">$99</p>
+      <button onclick="add('LOVEVOOK Laptop',99)">Add</button>
+    </div>
+  </div> <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://m.media-amazon.com/images/I/61sufLjWbHL._AC_UL480_FMwebp_QL65_.jpg">
+    <div class="card-body">
+      <h4>LOVEVOOK Laptop </h4>
+      <p class="price">$290</p>
+      <button onclick="add('LOVEVOOK Laptop Backpack',290)">Add</button>
+    </div>
+  </div> <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://m.media-amazon.com/images/I/71CeCG61SIL._AC_UL480_FMwebp_QL65_.jpg">
+    <div class="card-body">
+      <h4>LOVEVOOK Tote Bag</h4>
+      <p class="price">$250</p>
+      <button onclick="add('LOVEVOOK Tote Bag for Women',250)">Add</button>
+    </div>
+  </div> <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://m.media-amazon.com/images/I/81CVGMlJO-L._AC_UL480_FMwebp_QL65_.jpg">
+    <div class="card-body">
+      <h4>adidas Unisex </h4>
+      <p class="price">$50</p>
+      <button onclick="add('adidas Unisex Diablo ',50)">Add</button>
+    </div>
+  </div> <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://m.media-amazon.com/images/I/91qj4fLcciL._AC_UL480_FMwebp_QL65_.jpg">
+    <div class="card-body">
+      <h4>WOLFpak 45L </h4>
+      <p class="price">$300</p>
+      <button onclick="add('WOLFpak 45L ',300)">Add</button>
+    </div>
+  </div> <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://m.media-amazon.com/images/I/611UNz0hXeL._AC_UL480_FMwebp_QL65_.jpg">
+    <div class="card-body">
+      <h4> BlackVoyage</h4>
+      <p class="price">$100</p>
+      <button onclick="add(' BlackVoyage Vortex ',100)">Add</button>
+    </div>
+  </div> <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://m.media-amazon.com/images/I/71JwJVrdKaL._AC_UL480_FMwebp_QL65_.jpg">
+    <div class="card-body">
+      <h4>Kids Backpack</h4>
+      <p class="price">$45</p>
+      <button onclick="add('Kids Backpacks,',45)">Add</button>
+    </div>
+  </div> <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://m.media-amazon.com/images/I/91yTMNzm17L._AC_UL480_FMwebp_QL65_.jpg">
+    <div class="card-body">
+      <h4>Vailoin Fireproo</h4>
+      <p class="price">$70</p>
+      <button onclick="add('Vailoin Fireproof Messenger Bag',70)">Add</button>
+    </div>
+  </div> <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://m.media-amazon.com/images/I/81mc+qJLeBL._AC_SR405%2C405_.jpg">
+    <div class="card-body">
+      <h4>bagasin </h4>
+      <p class="price">$67</p>
+      <button onclick="add('bagasin ',67)">Add</button>
+    </div>
+  </div>
+   <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://m.media-amazon.com/images/I/910zyw8PIWL._AC_SY575_.jpg">
+    <div class="card-body">
+      <h4>Business Bag  </h4>
+      <p class="price">$50</p>
+      <button onclick="add('Business Bag  ',50)">Add</button>
+    </div>
+  </div>
+
+   <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://m.media-amazon.com/images/I/61LBreY9WnL._AC_UL480_FMwebp_QL65_.jpg">
+    <div class="card-body">
+      <h4>BAGSMART Expandable</h4>
+      <p class="price">$300</p>
+      <button onclick="add('KTC 32 Inch 2K 120Hz ',300)">Add</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="badge">Sale</div>
+    <img src="https://m.media-amazon.com/images/I/816xNhRMcCL._AC_UL480_FMwebp_QL65_.jpg">
+    <div class="card-body">
+      <h4>sqlp Large</h4>
+      <p class="price">$50</p>
+      <button onclick="add('sqlp Large Work',50)">Add</button>
+    </div>
+  </div>
+
+ 
+  <div class="card">
+    <img src="https://m.media-amazon.com/images/I/71WJg+BrE6L._AC_UL480_FMwebp_QL65_.jpg">
+    <div class="card-body">
+      <h4>YeohJoy 60th</h4>
+      <p class="price">$12</p>
+      <button onclick="add('YeohJoy 60th',12)">Add</button>
+    </div>
+  </div><div class="card">
+    <img src="https://m.media-amazon.com/images/I/71Qcx0KAT+L._AC_UL480_FMwebp_QL65_.jpg">
+    <div class="card-body">
+      <h4> LOVEVOOK Laptop</h4>
+      <p class="price">$100</p>
+      <button onclick="add(' LOVEVOOK Laptop',100)">Add</button>
+    </div>
+  </div><div class="card">
+    <img src="https://m.media-amazon.com/images/I/51HK1WoTaSL._AC_UL480_FMwebp_QL65_.jpg">
+    <div class="card-body">
+      <h4>Lushandy PVC </h4>
+      <p class="price">$250</p>
+      <button onclick="add('Lushandy PVC ',250)">Add</button>
+    </div>
+  </div><div class="card">
+    <img src="https://m.media-amazon.com/images/I/714a1Di5s1L._AC_UL480_FMwebp_QL65_.jpg">
+    <div class="card-body">
+      <h4>Canvas Tote Bag</h4>
+      <p class="price">$100</p>
+      <button onclick="add('Canvas Tote Bag',100)">Add</button>
+    </div>
+  </div><div class="card">
+    <img src="https://m.media-amazon.com/images/I/61LsB1k8zsL._AC_UL480_FMwebp_QL65_.jpg">
+    <div class="card-body">
+      <h4>Bellroy Tokyo</h4>
+      <p class="price">$150</p>
+      <button onclick="add('Bellroy Tokyo',150)">Add</button>
+    </div>
+  </div>
+<div class="card">
+    <img src="https://m.media-amazon.com/images/I/61cqLXIKgTL._AC_UL480_FMwebp_QL65_.jpg">
+    <div class="card-body">
+      <h4>bagasin</h4>
+      <p class="price">$300</p>
+      <button onclick="add('bagasin',300)">Add</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="https://m.media-amazon.com/images/I/91zOCVTvobL._AC_SY675_.jpg">
+    <div class="card-body">
+      <h4>Business Bag  </h4>
+      <p class="price">$120</p>
+      <button onclick="add('Business Bag  ',120)">Add</button>
+    </div>
+  </div>
+  <div class="card">
+    <img src="https://m.media-amazon.com/images/I/81JXyujv2qL._AC_SY675_.jpg">
+    <div class="card-body">
+      <h4> Genuine Leather </h4>
+      <p class="price">$60</p>
+      <button onclick="add('Genuine Leather ',60)">Add</button>
+    </div>
+  </div>
+</div>
+ 
+<script>
+ if (localStorage.getItem("login") !== "true") {
+  window.location.href = "login.html";
+}
+
+function logout() {
+  localStorage.clear();
+  window.location.href = "login.html";
+}
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function add(name, price) {
+  cart.push({name, price});
+  localStorage.setItem("cart", JSON.stringify(cart));
+  show();
+}
+
+function show() {
+  let list = document.getElementById("list");
+  list.innerHTML = "";
+  let total = 0;
+
+  cart.forEach(item => {
+    let li = document.createElement("li");
+    li.innerText = item.name + " - $" + item.price;
+    list.appendChild(li);
+    total += item.price;
+  });
+
+  document.getElementById("total").innerText = "Total: $" + total;
+}
+
+function clearCart() {
+  cart = [];
+  localStorage.removeItem("cart");
+  show();
+}
+
+function checkout() {
+  let name = document.getElementById("name").value;
+  let address = document.getElementById("address").value;
+
+  if(cart.length === 0){
+    alert("Cart empty ❌");
+    return;
+  }
+
+  if(name === "" || address === ""){
+    alert("Fill info ❗");
+    return;
+  }
+
+  document.getElementById("qrBox").style.display = "block";
+}
+
+function confirmPayment() {
+  alert("Payment Success 🎉");
+
+  cart = [];
+  localStorage.removeItem("cart");
+  show();
+
+  document.getElementById("qrBox").style.display = "none";
+}
+
+show(); 
+
+
+
+</script>
+
+</body>
+</html>
+</body>
+</html> 
+<header>
+</header>
+   <a href="cart.html" class="next-btn">Next </a>                         
+
+<a href="shop.html" class="back-btn">
+   Back
+</a>

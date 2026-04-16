@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>SASA Shop </title>
+
+<style>
+  .shop-logo{
+  display:flex;
+  align-items:center;
+  gap:5px;
+  font-size:18px;
+  font-weight:bold;
+  color:#000000;
+}
+
+.shop-logo img{
+  width:75px;
+  height:75px;
+  border-radius:50%;
+  object-fit:cover;
+  box-shadow:0 4px 10px rgba(0,0,0,0.2);
+}
+  .products {
+  .products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px;
+}
+}
+
+.card {
+  background: #111;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 20px; /* លុប margin ចាស់ */
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.card-body {
+  padding: 8px;
+}
+
+button {
+  .card {
+  width: calc(25% - 10px); /* 4 items / row */
+}
+}
+.flash-header {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 20px;
+}
+
+.flash-text {
+  font-size: 22px;
+  font-weight: bold;
+  color: #ff5722;
+  letter-spacing: 1px;
+}
+
+.timer {
+  display: flex;
+  gap: px;
+}
+
+.timer span {
+  background: rgb(255, 251, 251);
+  color: #ff5722;
+  padding: 5px 8px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+}
+  .chat-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #ff562200;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+
+.wishlist.active {
+  color: red;
+  transform: scale(1.2);
+}
+.slider {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+}
+
+.slides {
+  display: flex;
+  width: 200%; /* 2 images */
+  transition: transform 0.5s ease;
+}
+
+.slides img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* 🔥 Arrow */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.4);
+  color: white;
+  font-size: 25px;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.arrow.left { left: 10px; }
+.arrow.right { right: 10px; }
+
+.left { left: 10px; }
+.right { right: 10px; }
+  .card {
+  position: relative;
+  background: #1e293b;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* 🔥 Badge */
+.badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: red;
+  color: white;
+  padding: 5px 8px;
+  font-size: 12px;
+  border-radius: 5px;
+}
+
+/* 💰 Price */
+.price .old {
+  text-decoration: line-through;
+  color: gray;
+  margin-right: 5px;
+}
+
+.price .new {
+  color: #ff5722;
+  font-weight: bold;
+}
+.category {
+  display: grid;
+  grid-template-columns: repeat(8, 2fr); /* 4 item ក្នុង 1 ជួរ */
+  gap: 20px;
+  padding: 20px;
+  justify-items: center;
+}
+
+.category::-webkit-scrollbar {
+  display: none;
+}
+
+/* 🔥 Item */
+.menu-item {
+  min-width: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  transition: 0.3s;
+}
+
+/* 🔥 Icon */
+.menu-item img {
+  width: 70px;
+  height: 70px;
+  background: #fff;
+  border-radius: 50%;
+  padding: 10px;
+  transition: 0.3s;
+}
+
+/* 🔥 Hover effect */
+.menu-item:hover img {
+  transform: scale(1.15);
+  box-shadow: 0 0 15px #ff5722;
+}
+
+/* 🔥 Active */
+.menu-item.active img {
+  box-shadow: 0 0 20px #ff5722;
+  transform: scale(1.1);
+}
+
+.menu-item p {
+  margin-top: 8px;
+  font-size: 13px;
+}
+
+.item {
+  width: 100px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.item img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+
+  background: #fff;
+  border-radius: 50%;   /* 🔥 ធ្វើអោយមូល */
+  padding: 10px;
+
+  transition: 0.3s;
+}
+
+.item img:hover {
+  transform: scale(1.1);
+}
+
+.item p {
+  color: white;
+  font-size: 13px;
+  margin-top: 8px;
+}
+  .cart-icon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 5px;
+  cursor: pointer;
+  background: #d9820000;
+  border-radius: 50%;
+  width: 2px;
+  height: 2px;
+  box-shadow: 0 9px 90px rgba(0,0,0,0.15);
+  transition: 0.3s;
+}
+
+.cart-icon:hover {
+  transform: scale(1.1);
+  background: #f5f5f500;
+}
+
+.cart-count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: rgb(0, 0, 0);
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 3px 7px;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+  .cart-count {
+  transition: 0.3s;
+}
+
+.cart-count.bump {
+  transform: scale(1.3);
+}
+  /* Profile button (special) */
+.profile-btn {
+  text-decoration: none;
+  background: rgb(#ee4d2d);
+  color: white;
+  padding: 5px 5px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+  .profile-btn:hover {
+  background: #000000;
+}
+.cart-icon {
+  position: fixed;
+  top: 100px; /* ពីមុន 15px → កែជា 30px */
+  right: 100px;
+  font-size: 22px;
+}
+  /* CART ICON */
+.cart-icon {
+  position: fixed;
+  top: 100px;
+  right: 0px;
+  font-size: 50px;
+  cursor: pointer;
+}
+  .next-btn {
+  text-decoration: none;
+  background: linear-gradient(45deg, #ee4d2d, #ee4d2d);
+  color: white;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.next-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+  /* CART ICON */
+.cart-icon {
+  position: fixed;
+  top: 30px;
+  right: 25px;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.cart-count {
+  background: red;
+  color: white;
+  border-radius: 50%;
+  padding: 3px 7px;
+  font-size: 12px;
+  position: absolute;
+  top: -8px;
+  right: -10px;
+}
+
+/* CART PANEL */
+.cart-box {
+  position: fixed;
+  right: -350px;
+  top: 0;
+  width: 100px;
+  height: 100%;
+  background: rgb(12, 11, 11);
+  box-shadow: -5px 0 20px rgba(0,0,0,0.3);
+  padding: 5px;
+  transition: 0.3s;
+}
+
+.cart-box.active {
+  right: 10;
+}
+
+.cart-box h3 {
+  margin-top: 0;
+}
+
+.cart-box ul {
+  padding: 0;
+  list-style: none;
+}
+
+.cart-box li {
+  margin-bottom: 1px;
+  border-bottom: 1px solid #000000;
+  padding-bottom: 1px;
+}
+
+.total {
+  font-weight: bold;
+  color: #000000;
+}
+
+.close-btn {
+  float: right;
+  cursor: pointer;
+  font-size: 18px;
+}
+  /* PAY BUTTON PRO */
+.pay-btn {
+  text-decoration: none;
+  background: linear-gradient(45deg, #000000, #000000);
+  color: white;
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 16px;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+/* Hover effect */
+.pay-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* Glow animation */
+.pay-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
+  transition: 0.5s;
+}
+
+.pay-btn:hover::before {
+  left: 100%;
+}
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #ff0b0b;
+}
+
+header {
+  background: linear-gradient(90deg, #ee4d2d, #ee4d2d);
+  padding: 12px 25px;
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+
+
+/* RIGHT MENU */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* BUTTON */
+.nav-btn {
+  background: white;
+  color: #ee4d2d;
+  padding: 6px 12px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav-btn:hover {
+  background: black;
+  color: white;
+}
+
+/* PROFILE */
+.profile-btn {
+  background: black;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  text-decoration: none;
+}
+
+.profile-btn:hover {
+  background: #333;
+}
+
+/* header*/
+.logout {
+  background: transparent;
+  border: none;
+  color: rgb(255, 18, 18);
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* PRODUCTS */
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,5fr));
+  gap: 50px;
+  padding: 100px;
+}
+
+/* CARD */
+.card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 0px;
+}
+
+.price {
+  color: #ee4d2d;
+  font-weight: bold;
+}
+
+/* BUTTON */
+button {
+  width: 100%;
+  padding: 1px;
+  border: none;
+  background: #ee4d2d;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #d84315;
+}
+
+/* CART PANEL */
+.cart {
+  position: fixed;
+  right: -350px;
+  top: 0;
+  width: 300px;
+  height: 100%;
+  background: white;
+  padding: 15px;
+  box-shadow: -5px 0 20px rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+.cart.active {
+  right: 0;
+}
+
+.cart h3 {
+  margin-top: 0;
+}
+
+.back-btn {
+  display: inline-block;
+  text-decoration: none;
+  background: #ee4d2d;
+  color: white;
+  padding: 0px 0px;
+  border-radius: 15px;
+  margin-top: 10px;
+}
+
+.back-btn:hover {
+  background: black;
+}
+</style>
+
+</head>
+
+<body>
+<script src="script.js"></script>
+</body>
+<header>
+  
+ <h2 class="shop-logo">
+  <img src="c:\Users\user\Downloads\sasa.jpg" 
+  alt="SASA Logo"> 
+  SASASHOP
+</h2>
+
+   <a href="profile.html" class="profile-btn">👤 Profile</a>
+ <div class="cart-icon" onclick="toggleCart()">
+ 🛒Cart<span class="cart-count" id="count">0</span>
+ 
+    </div>
+</header>
+<div class="slider">
+  <div class="slides" id="slides">
+     <img src="https://content.abt.com/media/blog/iPhone-17-header.webp">
+    <img src="https://m.media-amazon.com/images/S/al-na-9d5791cf-3faf/0ea5bce4-a0ca-4c2a-b2fe-7842b5857ab4._CR0%2C16%2C3000%2C600_SX1920_.jpg">
+    <img src="https://m.media-amazon.com/images/S/al-na-9d5791cf-3faf/a511db10-801e-4737-9daf-9828dc10469b._SL5000_CR0%2C1298%2C5000%2C1000_SX1920_.jpg">
+   <img src="c:\Users\user\Downloads\Untitled design.pdf">
+    <img src="https://m.media-amazon.com/images/I/81n1T4CYfmL._AC_UL480_FMwebp_QL65_.jpg">
+    <img src="https://m.media-amazon.com/images/S/al-na-9d5791cf-3faf/3e3726be-256d-48da-8759-1465f881c11c._CR0%2C0%2C3000%2C600_SX1920_.jpg">
+    <img src="https://m.media-amazon.com/images/S/al-na-9d5791cf-3faf/797a168d-2026-4e6b-b6fe-8a02ee6d9403._CR0%2C43%2C3000%2C600_SX1920_.jpg">
+    <img src="https://m.media-amazon.com/images/S/al-na-9d5791cf-3faf/797a168d-2026-4e6b-b6fe-8a02ee6d9403._CR0%2C43%2C3000%2C600_SX1920_.jpg">
+    <img src="https://m.media-amazon.com/images/S/al-na-9d5791cf-3faf/108173c4-108d-4d44-a351-2c5148b4567e._CR0%2C0%2C3000%2C600_SX1920_.png">
+   <img src="https://thumbs.dreamstime.com/b/vinnytsia-ukraine-september-vector-banner-iphone-vector-illustration-app-web-presentation-design-vector-banner-iphone-230042240.jpg?w=992">
+    <img src="https://thumbs.dreamstime.com/b/vinnytsia-ukraine-september-vector-banner-iphone-vector-illustration-app-web-presentation-design-vector-banner-iphone-230042240.jpg?w=992">
+    <img src="https://thumbs.dreamstime.com/b/vinnytsia-ukraine-september-vector-banner-iphone-vector-illustration-app-web-presentation-design-vector-banner-iphone-230042240.jpg?w=992">
+     <img src="https://content.abt.com/media/blog/iPhone-17-header.webp">
+    <img src="https://img.freepik.com/free-psd/new-smartphone-social-media-cover-design-template_47987-25433.jpg?semt=ais_incoming&w=740&q=80">
+    <img src="https://m.media-amazon.com/images/S/al-na-9d5791cf-3faf/5fc7940b-d0e6-4501-b9ca-a4b70cdc588c._CR0%2C0%2C3000%2C600_SX1920_.jpg">
+   <img src="https://m.media-amazon.com/images/S/al-na-9d5791cf-3faf/1bbb880f-f447-4faf-b27d-efcce2303273._CR0%2C0%2C3000%2C600_SX1920_.jpg">
+    <img src="https://m.media-amazon.com/images/S/al-na-9d5791cf-3faf/1bbb880f-f447-4faf-b27d-efcce2303273._CR0%2C0%2C3000%2C600_SX1920_.jpg">
+  <img src="https://content.abt.com/media/blog/iPhone-17-header.webp">
+    <img src="https://m.media-amazon.com/images/S/al-na-9d5791cf-3faf/0ea5bce4-a0ca-4c2a-b2fe-7842b5857ab4._CR0%2C16%2C3000%2C600_SX1920_.jpg">
+    <img src="https://m.media-amazon.com/images/S/al-na-9d5791cf-3faf/a511db10-801e-4737-9daf-9828dc10469b._SL5000_CR0%2C1298%2C5000%2C1000_SX1920_.jpg">
+   <img src="c:\Users\user\Downloads\Untitled design.pdf">
+    <img src="https://m.media-amazon.com/images/I/81n1T4CYfmL._AC_UL480_FMwebp_QL65_.jpg">
+    <img src="https://m.media-amazon.com/images/S/al-na-9d5791cf-3faf/3e3726be-256d-48da-8759-1465f881c11c._CR0%2C0%2C3000%2C600_SX1920_.jpg">
+    <img src="https://m.media-amazon.com/images/S/al-na-9d5791cf-3faf/797a168d-2026-4e6b-b6fe-8a02ee6d9403._CR0%2C43%2C3000%2C600_SX1920_.jpg">
+    <img src="https://m.media-amazon.com/images/S/al-na-9d5791cf-3faf/797a168d-2026-4e6b-b6fe-8a02ee6d9403._CR0%2C43%2C3000%2C600_SX1920_.jpg">
+    <img src="https://m.media-amazon.com/images/S/al-na-9d5791cf-3faf/108173c4-108d-4d44-a351-2c5148b4567e._CR0%2C0%2C3000%2C600_SX1920_.png">
+   <img src="https://thumbs.dreamstime.com/b/vinnytsia-ukraine-september-vector-banner-iphone-vector-illustration-app-web-presentation-design-vector-banner-iphone-230042240.jpg?w=992">
+    <img src="https://thumbs.dreamstime.com/b/vinnytsia-ukraine-september-vector-banner-iphone-vector-illustration-app-web-presentation-design-vector-banner-iphone-230042240.jpg?w=992">
+    <img src="https://thumbs.dreamstime.com/b/vinnytsia-ukraine-september-vector-banner-iphone-vector-illustration-app-web-presentation-design-vector-banner-iphone-230042240.jpg?w=992">
+     <img src="https://content.abt.com/media/blog/iPhone-17-header.webp">
+    <img src="https://img.freepik.com/free-psd/new-smartphone-social-media-cover-design-template_47987-25433.jpg?semt=ais_incoming&w=740&q=80">
+    <img src="https://m.media-amazon.com/images/S/al-na-9d5791cf-3faf/5fc7940b-d0e6-4501-b9ca-a4b70cdc588c._CR0%2C0%2C3000%2C600_SX1920_.jpg">
+   <img src="https://m.media-amazon.com/images/S/al-na-9d5791cf-3faf/1bbb880f-f447-4faf-b27d-efcce2303273._CR0%2C0%2C3000%2C600_SX1920_.jpg">
+    <img src="https://m.media-amazon.com/images/S/al-na-9d5791cf-3faf/1bbb880f-f447-4faf-b27d-efcce2303273._CR0%2C0%2C3000%2C600_SX1920_.jpg">
+      <img src="https://content.abt.com/media/blog/iPhone-17-header.webp">
+    <img src="https://m.media-amazon.com/images/S/al-na-9d5791cf-3faf/0ea5bce4-a0ca-4c2a-b2fe-7842b5857ab4._CR0%2C16%2C3000%2C600_SX1920_.jpg">
+    <img src="https://m.media-amazon.com/images/S/al-na-9d5791cf-3faf/a511db10-801e-4737-9daf-9828dc10469b._SL5000_CR0%2C1298%2C5000%2C1000_SX1920_.jpg">
+   <img src="c:\Users\user\Downloads\Untitled design.pdf">
+    <img src="https://m.media-amazon.com/images/I/81n1T4CYfmL._AC_UL480_FMwebp_QL65_.jpg">
+    <img src="https://m.media-amazon.com/images/S/al-na-9d5791cf-3faf/3e3726be-256d-48da-8759-1465f881c11c._CR0%2C0%2C3000%2C600_SX1920_.jpg">
+    <img src="https://m.media-amazon.com/images/S/al-na-9d5791cf-3faf/797a168d-2026-4e6b-b6fe-8a02ee6d9403._CR0%2C43%2C3000%2C600_SX1920_.jpg">
+    <img src="https://m.media-amazon.com/images/S/al-na-9d5791cf-3faf/797a168d-2026-4e6b-b6fe-8a02ee6d9403._CR0%2C43%2C3000%2C600_SX1920_.jpg">
+    <img src="https://m.media-amazon.com/images/S/al-na-9d5791cf-3faf/108173c4-108d-4d44-a351-2c5148b4567e._CR0%2C0%2C3000%2C600_SX1920_.png">
+   <img src="https://thumbs.dreamstime.com/b/vinnytsia-ukraine-september-vector-banner-iphone-vector-illustration-app-web-presentation-design-vector-banner-iphone-230042240.jpg?w=992">
+    <img src="https://thumbs.dreamstime.com/b/vinnytsia-ukraine-september-vector-banner-iphone-vector-illustration-app-web-presentation-design-vector-banner-iphone-230042240.jpg?w=992">
+    <img src="https://thumbs.dreamstime.com/b/vinnytsia-ukraine-september-vector-banner-iphone-vector-illustration-app-web-presentation-design-vector-banner-iphone-230042240.jpg?w=992">
+     <img src="https://content.abt.com/media/blog/iPhone-17-header.webp">
+    <img src="https://img.freepik.com/free-psd/new-smartphone-social-media-cover-design-template_47987-25433.jpg?semt=ais_incoming&w=740&q=80">
+    <img src="https://m.media-amazon.com/images/S/al-na-9d5791cf-3faf/5fc7940b-d0e6-4501-b9ca-a4b70cdc588c._CR0%2C0%2C3000%2C600_SX1920_.jpg">
+   <img src="https://m.media-amazon.com/images/S/al-na-9d5791cf-3faf/1bbb880f-f447-4faf-b27d-efcce2303273._CR0%2C0%2C3000%2C600_SX1920_.jpg">
+    <img src="https://m.media-amazon.com/images/S/al-na-9d5791cf-3faf/1bbb880f-f447-4faf-b27d-efcce2303273._CR0%2C0%2C3000%2C600_SX1920_.jpg">
+  </div>
+<div class="card">
+  <img src="img1.jpg">
+  <p>$10</p>
+</div>
+  <div class="arrow left" onclick="prev()">  ❮​​ </div>
+  <div class="arrow right" onclick="next()"> ❯ </div>
+
+</div>
+</div>
+<div class="category">
+<a href="cart.html" class="menu-item active">
+    <img src="https://down-vn.img.susercontent.com/file/86c294aae72ca1db5f541790f7796260@resize_w640_nl.webp">
+    <p>Watches</p>
+  </a>
+
+  <a href="cart2.html" class="menu-item">
+    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-820l4-mehipkbxm1vq70.webp">
+    <p>Phone</p>
+  </a>
+
+  <a href="camera.html" class="menu-item">
+    <img src="https://down-vn.img.susercontent.com/file/ec14dd4fc238e676e43be2a911414d4d@resize_w640_nl.webp">
+    <p>Camera</p>
+  </a>
+
+  <a href="computer.html" class="menu-item">
+    <img src="https://down-vn.img.susercontent.com/file/c3f3edfaa9f6dafc4825b77d8449999d@resize_w640_nl.webp">
+    <p>Computer</p>
+  </a>
+  <a href="bags.html" class="menu-item active">
+    <img src="https://down-vn.img.susercontent.com/file/18fd9d878ad946db2f1bf4e33760c86f@resize_w640_nl.webp">
+    <p>Men Bags</p>
+  </a>
+
+  <a href="toys.html" class="menu-item">
+    <img src="https://down-vn.img.susercontent.com/file/ce8f8abc726cafff671d0e5311caa684@resize_w640_nl.webp">
+    <p>Toys</p>
+  </a>
+
+  <a href="wowman.html" class="menu-item">
+    <img src="https://down-vn.img.susercontent.com/file/48630b7c76a7b62bc070c9e227097847@resize_w640_nl.webp">
+    <p>Women Shoes</p>
+  </a>
+
+  <a href="shoesmen.html" class="menu-item">
+    <img src="https://down-vn.img.susercontent.com/file/74ca517e1fa74dc4d974e5d03c3139de@resize_w640_nl.webp">
+    <p>Men Shoes</p>
+  </a>
+
+</div>
+</header>
+<div class="category">
+<a href="cart.html" class="menu-item active">
+    <img src="https://cdn-icons-png.flaticon.com/512/992/992700.png">
+    <p>Men</p>
+  </a>
+
+  <a href="shop.html" class="menu-item">
+    <img src="https://cdn-icons-png.flaticon.com/512/15/15874.png">
+    <p>Phone</p>
+  </a>
+
+  <a href="shop.html" class="menu-item">
+    <img src="https://cdn-icons-png.flaticon.com/512/2921/2921822.png">
+    <p>Computer</p>
+  </a>
+
+  <a href="shop.html" class="menu-item">
+    <img src="https://cdn-icons-png.flaticon.com/512/2920/2920244.png">
+    <p>Camera</p>
+  </a>
+  <a href="cart.html" class="menu-item active">
+    <img src="https://cdn-icons-png.flaticon.com/512/992/992700.png">
+    <p>Men</p>
+  </a>
+
+  <a href="shop.html" class="menu-item">
+    <img src="https://cdn-icons-png.flaticon.com/512/15/15874.png">
+    <p>Phone</p>
+  </a>
+
+  <a href="shop.html" class="menu-item">
+    <img src="https://cdn-icons-png.flaticon.com/512/2921/2921822.png">
+    <p>Computer</p>
+  </a>
+
+  <a href="shop.html" class="menu-item">
+    <img src="https://cdn-icons-png.flaticon.com/512/2920/2920244.png">
+    <p>Camera</p>
+  </a>
+
+</div>
+</div>
+
+<!-- CART -->
+<div class="cart" id="cartBox">
+<script>
+
+function getEndOfDay() {
+  let now = new Date();
+  let end = new Date();
+  end.setHours(23, 59, 59, 999);
+  return end;
+}
+
+let endTime = getEndOfDay();
+
+function updateTimer() {
+  let now = new Date().getTime();
+  let distance = endTime - now;
+
+  if (distance <= 0) {
+    endTime = getEndOfDay(); // 🔥 reset
+  }
+
+  let h = Math.floor(distance / (1000 * 60 * 60));
+  let m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  let s = Math.floor((distance % (1000 * 60)) / 1000);
+
+  document.getElementById("h").innerText = String(h).padStart(2,'0');
+  document.getElementById("m").innerText = String(m).padStart(2,'0');
+  document.getElementById("s").innerText = String(s).padStart(2,'0');
+}
+
+setInterval(updateTimer, 1000);
+</script>
+  <div class="cart-header">
+    <h3>🧾 Your Cart</h3>
+    <span class="close-btn" onclick="toggleCart()">✖</span>
+  </div>
+
+  <ul id="list"></ul>
+
+  <div class="cart-footer">
+    <h3 id="total">Total: $0</h3>
+
+    <a href="payment.html" class="pay-btn">
+      💳 Checkout Now
+    </a>
+  </div>
+<div class="chat-btn" onclick="openChat()">💬 Chat</div>
+
+  </div>
+
+</a>
+
+</div>
+
+<script>
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function toggleCart(){
+  document.getElementById("cartBox").classList.toggle("active");
+}
+
+function add(name, price) {
+  cart.push({name, price});
+  localStorage.setItem("cart", JSON.stringify(cart));
+  show();
+  toggleCart(); // បើចង់អោយវាលោតចេញ
+}
+
+function show() {
+  let list = document.getElementById("list");
+  list.innerHTML = "";
+  let total = 0;
+
+  cart.forEach(item => {
+    let li = document.createElement("li");
+    li.innerText = item.name + " - $" + item.price;
+    list.appendChild(li);
+    total += item.price;
+  });
+
+  document.getElementById("total").innerText = "Total: $" + total;
+}
+
+function clearCart() {
+  cart = [];
+  localStorage.removeItem("cart");
+  show();
+}
+
+show();
+
+</script>
+
+<script>
+let index = 0;
+function toggleWish(el) {
+  el.classList.toggle("active");
+}
+function next() {
+  const slides = document.getElementById("slides");
+  const total = slides.children.length;
+
+  index++;
+  if (index >= total) index = 0;
+
+  slides.style.transform = "translateX(-" + (index * 100) + "%)";
+}
+
+function prev() {
+  const slides = document.getElementById("slides");
+  const total = slides.children.length;
+
+  index--;
+  if (index < 0) index = total - 1;
+
+  slides.style.transform = "translateX(-" + (index * 100) + "%)";
+}
+
+/* Auto slide */
+setInterval(next, 10000);
+</script>
+</body>
+</html>
+
+
+ 
+<script>
+ if (localStorage.getItem("login") !== "true") {
+  window.location.href = "login.html";
+}
+function openChat() {
+  document.getElementById("chatBox").style.display = "block";
+}
+
+function closeChat() {
+  document.getElementById("chatBox").style.display = "none";
+}
+function logout() {
+  localStorage.clear();
+  window.location.href = "login.html";
+}
+
+
+
+function add(name, price) {
+  cart.push({name, price});
+  localStorage.setItem("cart", JSON.stringify(cart));
+  show();
+}
+
+function show() {
+  let list = document.getElementById("list");
+  list.innerHTML = "";
+  let total = 0;
+
+  cart.forEach(item => {
+    let li = document.createElement("li");
+    li.innerText = item.name + " - $" + item.price;
+    list.appendChild(li);
+    total += item.price;
+  });
+
+  document.getElementById("total").innerText = "Total: $" + total;
+}
+
+function clearCart() {
+  cart = [];
+  localStorage.removeItem("cart");
+  show();
+}
+
+function checkout() {
+  let name = document.getElementById("name").value;
+  let address = document.getElementById("address").value;
+
+  if(cart.length === 0){
+    alert("Cart empty ❌");
+    return;
+  }
+
+  if(name === "" || address === ""){
+    alert("Fill info ❗");
+    return;
+  }
+
+  document.getElementById("qrBox").style.display = "block";
+}
+
+function confirmPayment() {
+  alert("Payment Success 🎉");
+
+  cart = [];
+  localStorage.removeItem("cart");
+  show();
+
+  document.getElementById("qrBox").style.display = "none";
+}
+
+show(); 
+
+
+
+</script>
+
+</body>
+</html>
+</body>
+</html> 
+<header>
+ <div class="flash-header">
+  <h2>FLASH SALE</h2>
+
+  <div class="timer">
+    <span id="h">0</span> :
+    <span id="m">0</span> :
+    <span id="s">00</span>
+  </div>
+</div>
+
+</header>                         
+
+   
+<div class="products">
+  <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://imgs.search.brave.com/MPsgxI5GoiV05HQgHDLURri5lnOa2tisYNEg1M753yk/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAxNi8w/My8wNS8wOS8wNS93/cmlzdC13YXRjaC0x/MjM3NDE4XzY0MC5q/cGc">
+     <span class="discount">-40%
+    <div class="card-body">
+      <h4>Epic Apollo</h4>
+      <p class="price">$30</p>
+      <button onclick="add('Epic Apollo',30)">Add</button>
+    </div>
+  </div>
+ <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lllzuhs9w3i488.webp"><span class="discount">-5%
+    <div class="card-body">
+      <h4>iphone 16 plus</h4>
+      <p class="price">$999</p>
+      <button onclick="add('iphone 16 plus',999)">Add</button>
+    </div>
+    
+  </div> <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://m.media-amazon.com/images/I/81n1T4CYfmL._AC_UL480_FMwebp_QL65_.jpg"><span class="discount">-5%
+    <div class="card-body">
+      <h4>ASUS ROG Strix G16</h4>
+      <p class="price">$1,299</p>
+      <button onclick="add('ASUS ROG Strix G16',1299)">Add</button>
+    </div>
+  </div> <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7ra0g-m7zzvm8avkha81.webp"><span class="discount">-20%
+    <div class="card-body">
+      <h4>CAMERA A9 WiFi Mini</h4>
+      <p class="price">$30</p>
+      <button onclick="add('CAMERA A9 WiFi Mini',30)">Add</button>
+    </div>
+  </div> <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://m.media-amazon.com/images/I/71GhOCogx0L._AC_UL480_FMwebp_QL65_.jpg"><span class="discount">-5%
+    <div class="card-body">
+      <h4>ASUS ROG Strix SCAR 18</h4>
+      <p class="price">$3,000</p>
+      <button onclick="add('ASUS ROG Strix SCAR 18',3000)">Add</button>
+    </div>
+  </div> <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://m.media-amazon.com/images/I/71TvKdAmIjL._AC_UL480_FMwebp_QL65_.jpg"><span class="discount">-5%
+    <div class="card-body">
+      <h4>ASUS ROG Strix G16</h4>
+      <p class="price">$1,299</p>
+      <button onclick="add('ASUS ROG Strix G16',1299)">Add</button>
+    </div>
+  </div> <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://imgs.search.brave.com/v-FE0aV4HJB16nJOU4DOkFnkhnMoB9I7LZiovLu0ly0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAxOS8w/My8wNy8yMC8wNi93/cmlzdC13YXRjaC00/MDQwOTcyXzY0MC5q/cGc">
+    <div class="card-body">
+      <h4>Epic Apollo</h4>
+      <p class="price">$30</p>
+      <button onclick="add('Epic Apollo',30)">Add</button>
+    </div>
+  </div> <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://imgs.search.brave.com/ef19OjOeSOQmglHxgikay2MNcYzKokkwnXvWzXqnjcs/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9wcmV2/aWV3LnJlZGQuaXQv/eW91ci1iZXN0LXdo/YXRzLXRoZS1iZXN0/LXdhdGNoLXBob3Rv/LXlvdS1oYXZlLXRh/a2VuLXYwLWwyNzVv/dzc1dTl4ZTEucG5n/P3dpZHRoPTE3ODQm/Zm9ybWF0PXBuZyZh/dXRvPXdlYnAmcz01/MzU0NGZjMTVhN2Yy/NmU5OGEwY2ZjOThl/YmQzNDYxZDgyMGNh/Zjgw">
+    <div class="card-body">
+      <h4>Epic Apollo</h4>
+      <p class="price">$30</p>
+      <button onclick="add('Epic Apollo',30)">Add</button>
+    </div>
+  </div> <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://imgs.search.brave.com/Do4heFoX32RIORX5IcW7ESjAbZ0rfLeS7zj_8WAJEQs/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMucGV4ZWxzLmNv/bS9waG90b3MvMzQ2/MDI1MDYvcGV4ZWxz/LXBob3RvLTM0NjAy/NTA2L2ZyZWUtcGhv/dG8tb2YtZWxlZ2Fu/dC1sdXh1cnktd2F0/Y2gtd2l0aC1sZWF0/aGVyLXN0cmFwLW9u/LWRpc3BsYXkuanBl/Zz9hdXRvPWNvbXBy/ZXNzJmNzPXRpbnlz/cmdiJmRwcj0xJnc9/NTAw">
+    <div class="card-body">
+      <h4>Epic Apollo</h4>
+      <p class="price">$30</p>
+      <button onclick="add('Epic Apollo',30)">Add</button>
+    </div>
+  </div> <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://imgs.search.brave.com/bdErhFIVAbeX_a0tjWHxbJqCh0TpEO_7FrXJiWb17EU/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMucGV4ZWxzLmNv/bS9waG90b3MvMzM1/MTE3NTUvcGV4ZWxz/LXBob3RvLTMzNTEx/NzU1L2ZyZWUtcGhv/dG8tb2YtZWxlZ2Fu/dC1zaWx2ZXItd2F0/Y2gtd2l0aC1sdXh1/cmlvdXMtZGVzaWdu/LmpwZWc_YXV0bz1j/b21wcmVzcyZjcz10/aW55c3JnYiZkcHI9/MSZ3PTUwMA">
+    <div class="card-body">
+      <h4>Epic Apollo</h4>
+      <p class="price">$30</p>
+      <button onclick="add('Epic Apollo',30)">Add</button>
+    </div>
+  
+  </div> <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://imgs.search.brave.com/v-FE0aV4HJB16nJOU4DOkFnkhnMoB9I7LZiovLu0ly0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAxOS8w/My8wNy8yMC8wNi93/cmlzdC13YXRjaC00/MDQwOTcyXzY0MC5q/cGc">
+    <div class="card-body">
+      <h4>Epic Apollo</h4>
+      <p class="price">$30</p>
+      <button onclick="add('Epic Apollo',30)">Add</button>
+    </div>
+  </div> <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://imgs.search.brave.com/P4bQljQJheajQeIoTVvJGk0aUJfuxlHs0EmHUNqXyNk/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAxNi8w/OC8yOC8xMS8yMC9j/bG9jay0xNjI1NzAz/XzY0MC5qcGc">
+    <div class="card-body">
+      <h4>Epic Apollo</h4>
+      <p class="price">$30</p>
+      <button onclick="add('Epic Apollo',30)">Add</button>
+    </div>
+  </div> <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://imgs.search.brave.com/ndMz-KWzAa5tmc9_C_ZuIZQA0bRx-Fcu_f8sHmXlZZU/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAxMy8w/OS8zMC8yMS81OC9t/YWxlLXdhdGNoLTE4/ODc4Ml82NDAuanBn">
+    <div class="card-body">
+      <h4>Epic Apollo</h4>
+      <p class="price">$30</p>
+      <button onclick="add('Epic Apollo',30)">Add</button>
+    </div>
+  </div> <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://imgs.search.brave.com/3uZNuLl4TyCFsO7-S_9axg9GYlnImD8OnWIkRMPylAc/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTM5/Mzg1NDcxOC9waG90/by90b3AtZG93bi1p/bWFnZS1vZi1jbGFz/c2ljLXZpbnRhZ2Ut/bWVuLWFjY2Vzc29y/aWVzLXdpdGgtYm93/LXRpZS1uZWF0bHkt/YXJyYW5nZWQuanBn/P3M9NjEyeDYxMiZ3/PTAmaz0yMCZjPXBX/bFFGZ2pOQ3VOQkcw/UUNRYzVQYjdaS2Qx/LXYxN0YxcmNvc3Bk/eTl4SDA9">
+    <div class="card-body">
+      <h4>Epic Apollo</h4>
+      <p class="price">$30</p>
+      <button onclick="add('Epic Apollo',30)">Add</button>
+    </div>
+  </div> <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://imgs.search.brave.com/qpxiOQU8lXN3l4e6-_FPERKMzoQiojyEmmvBqwCRuyc/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly90aHVt/YnMuZHJlYW1zdGlt/ZS5jb20vYi9sdXh1/cnktd2F0Y2hlcy0x/NzU1ODc1My5qcGc">
+    <div class="card-body">
+      <h4>Epic Apollo</h4>
+      <p class="price">$30</p>
+      <button onclick="add('Epic Apollo',30)">Add</button>
+    </div>
+  </div> <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://imgs.search.brave.com/qr8qKQ-0JRfUNCHG8FcYEYtsxZJyxdqxOIfnoLdDF9g/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAyMi8w/OS8yMS8wNi8zNS93/YXRjaC03NDY5NjAx/XzY0MC5qcGc">
+    <div class="card-body">
+      <h4>Epic Apollo</h4>
+      <p class="price">$30</p>
+      <button onclick="add('Epic Apollo',30)">Add</button>
+    </div>
+  </div> <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://imgs.search.brave.com/213ZXqD8ndh6MgQn4sEhb_cBQ1w6aUnjRWLulsfpINI/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMudW5zcGxhc2gu/Y29tL3Bob3RvLTE1/MTEzNzAyMzUzOTkt/MTgwMmNhZTFkMzJm/P2ZtPWpwZyZxPTYw/Jnc9MzAwMCZhdXRv/PWZvcm1hdCZmaXQ9/Y3JvcCZpeGxpYj1y/Yi00LjEuMCZpeGlk/PU0zd3hNakEzZkRC/OE1IeHpaV0Z5WTJo/OE1UaDhmSGRoZEdO/b2ZHVnVmREI4ZkRC/OGZId3c">
+    <div class="card-body">
+      <h4>Epic Apollo</h4>
+      <p class="price">$30</p>
+      <button onclick="add('Epic Apollo',30)">Add</button>
+    </div>
+  </div> <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://imgs.search.brave.com/o3s8sb1eBh0FSDyXzhf44md1j6xpuDMOY740pIe99ms/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMucGV4ZWxzLmNv/bS9waG90b3MvMzgy/OTQ0MS9wZXhlbHMt/cGhvdG8tMzgyOTQ0/MS5qcGVnP2F1dG89/Y29tcHJlc3MmY3M9/dGlueXNyZ2ImZHBy/PTEmdz0yNTImZml0/PWNyb3AmaD00MDg">
+    <div class="card-body">
+      <h4>Epic Apollo</h4>
+      <p class="price">$30</p>
+      <button onclick="add('Epic Apollo',30)">Add</button>
+    </div>
+  </div> <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://imgs.search.brave.com/LtbAvSJzAOo2nd63mxOXMp7itd70qzrOm9yyKa8DEvI/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAyMy8w/NS8zMS8xOC80OC93/YXRjaC04MDMyMDU0/XzY0MC5qcGc">
+    <div class="card-body">
+      <h4>Epic Apollo</h4>
+      <p class="price">$30</p>
+      <button onclick="add('Epic Apollo',30)">Add</button>
+    </div>
+  </div>
+   <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://imgs.search.brave.com/E2T5iI9ncHxBAVKj5ueSHu7vKUzHkj0LtUiJ4q6MdCs/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTcy/MzgwMTQ2L3Bob3Rv/L2dvbGQtd2F0Y2gu/anBnP3M9NjEyeDYx/MiZ3PTAmaz0yMCZj/PS1kN2xENzNqcnhD/MV9BWWhSbnk4SGZ4/R0podjdpRmZlbzZN/ZXZWdFY0d0k9">
+    <div class="card-body">
+      <h4>Epic Apollo</h4>
+      <p class="price">$30</p>
+      <button onclick="add('Epic Apollo',30)">Add</button>
+    </div>
+  </div>
+
+   <div class="card">
+    <div class="badge">🔥 Hot</div>
+    <img src="https://imgs.search.brave.com/MUwHtaBIlCqS7KgUsrNlvcBHH3YbJEyacymmfNIR5QU/rs:fit:0:180:1:0/g:ce/aHR0cHM6Ly9ybHYu/emNhY2hlLmNvbS8t/cmVlNGM0OWYzYWQ2/NjQ3ZDA5ZWUzMjA4/OGI5MTI5MTdhX3pk/OWZjXzEzMC5qcGc_/cmx2bmV0PTE">
+    <div class="card-body">
+      <h4>Epic Apollo</h4>
+      <p class="price">$30</p>
+      <button onclick="add('Epic Apollo',30)">Add</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="badge">Sale</div>
+    <img src="https://proskatersplace.com/wp-content/uploads/2023/10/EPIC-Low-Raven-Grind-Shoes-4.jpg">
+      <span class="discount">-40%</span><div class="card-body"></div>
+    <div class="card-body">
+      <h4>Storm Grind</h4>
+      <p class="price">$50</p>
+      <button onclick="add('Storm Grind',50)">Add</button>
+    </div>
+  </div>
+
+ 
+  <div class="card">
+    <img src="https://imgs.search.brave.com/0Gu51-WRJdaFxttCZABX6GwouGbIWAujDgkqV4eTqgA/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAyMi8w/OS8wNS8xOC80OC93/YXRjaC03NDM0OTQ2/XzY0MC5qcGc">
+    <div class="card-body"> <span class="discount">-40%</span><div class="card-body"></div>
+      <h4>Red Lava</h4>
+      <p class="price">$15</p>
+      <button onclick="add('Red Lava',15)">Add</button>
+    </div>
+  </div><div class="card">
+    <img src="https://imgs.search.brave.com/jzDRtmyrPhSneHTIoQevrNMVD-0pL6Fqi1SxvnbSUNw/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMucGV4ZWxzLmNv/bS9waG90b3MvMzY4/MTI0MTUvcGV4ZWxz/LXBob3RvLTM2ODEy/NDE1L2ZyZWUtcGhv/dG8tb2YtZWxlZ2Fu/dC1zaWx2ZXItd3Jp/c3Qtd2F0Y2gtb24t/ZGlzcGxheS1zdGFu/ZC5qcGVnP2F1dG89/Y29tcHJlc3MmY3M9/dGlueXNyZ2ImZHBy/PTEmdz01MDA">
+     <span class="discount">-40%</span><div class="card-body">
+      <h4>Red Lava</h4>
+  <p class="price">$15</p>
+     
+<div class="price-box">
+
+</div>
+    </div>
+
+<style>/* PRODUCTS */
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,5fr));
+  gap: 50px;
+  padding: 100px;
+}
+
+/* CARD */
+.card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 0px;
+}
+
+.price {
+  color: #ee4d2d;
+  font-weight: bold;
+}
+
+/* BUTTON */
+button {
+  width: 100%;
+  padding: 1px;
+  border: none;
+  background: #ee4d2d;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #d84315;
+}
+
+/* CART PANEL */
+.cart {
+  position: fixed;
+  right: -350px;
+  top: 0;
+  width: 300px;
+  height: 100%;
+  background: white;
+  padding: 15px;
+  box-shadow: -5px 0 20px rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+.cart.active {
+  right: 0;
+}
+
+.cart h3 {
+  margin-top: 0;
+}
+
+.back-btn {
+  display: inline-block;
+  text-decoration: none;
+  background: #ee4d2d;
+  color: white;
+  padding: 0px 0px;
+  border-radius: 15px;
+  margin-top: 10px;
+}
+
+.back-btn:hover {
+  background: black;
+}
+  .price-box {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 5px 0;
+}
+
+.old {
+  color: #888;
+  text-decoration: line-through;
+  font-size: 13px;
+}
+
+.new {
+  color: #ff424f;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.discount {
+  background: #ff0011;
+  color: white;
+  font-size: 20px;
+  padding: 2px 5px;
+  border-radius: 3px;
+}
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #0f0f0f;
+}
+
+/* PRODUCTS GRID */
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 10px;
+}
+
+/* CARD */
+.card {
+  width: calc(30% - 0.05px);
+  background: #111;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+/* IMAGE */
+.card img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+}
+
+/* BODY */
+.card-body {
+  padding: 8px;
+  color: white;
+}
+
+
+</style>
+</head>
+
+<body>
+
+<div class="products">
+
+
+</div>
+<script>
+  <script>
+  let percent = Math.round((oldPrice - newPrice)/oldPrice * 100);
+  return percent + "%";
+}
+</script>
+   <button onclick="add('Red Lava',15)">Add</button>
+}
+</script>
+
+</body>
+</html>
+ 

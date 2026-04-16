@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SASA Shop - Ultra Auth PRO</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+   .shop-logo{
+  display:flex;
+  align-items:center;
+  gap:5px;
+  font-size:18px;
+  font-weight:bold;
+  color:#000000;
+}
+
+.shop-logo img{
+  width:100px;
+  height:100px;
+  border-radius:80%;
+  object-fit:cover;
+  box-shadow:0 4px 10px rgba(0,0,0,0.2);
+}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  min-height:100vh;
+  display:flex;
+  background:
+  radial-gradient(circle at top left,#ff6a0030,transparent 35%),
+  radial-gradient(circle at bottom right,#ee4d2d30,transparent 35%),
+  linear-gradient(135deg,#0b0b0b,#141414,#0d0d0d);
+  overflow:hidden;
+}
+
+/* LEFT */
+.left{
+  flex:1;
+  background:linear-gradient(145deg,#ee4d2d,#ee4d2d);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  color:#000000;
+  position:relative;
+  overflow:hidden;
+}
+
+.left::before,
+.left::after{
+  content:'';
+  position:absolute;
+  border-radius:50%;
+  background:rgba(255,255,255,.08);
+  animation:float 6s infinite ease-in-out;
+}
+
+.left::before{
+  width:260px;
+  height:260px;
+  top:8%;
+  left:10%;
+}
+
+.left::after{
+  width:180px;
+  height:180px;
+  bottom:10%;
+  right:12%;
+}
+
+.left h1{
+  font-size:65px;
+  z-index:2;
+  text-shadow:0 10px 25px rgba(0,0,0,.2);
+}
+
+.left p{
+  margin-top:10px;
+  font-size:18px;
+  z-index:2;
+}
+
+/* RIGHT */
+.right{
+  flex:1;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
+
+/* CARD */
+.card{
+  width:100%;
+  max-width:430px;
+  padding:32px;
+  border-radius:28px;
+  background:rgba(255,255,255,.05);
+  backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:0 25px 80px rgba(0,0,0,.45);
+  position:relative;
+  animation:show .6s ease;
+}
+
+/* QR */
+.qr{
+  position:absolute;
+  top:18px;
+  right:18px;
+  padding:10px 16px;
+  border-radius:40px;
+  background:#ffffff10;
+  color:#fff;
+  font-size:12px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.qr:hover{
+  background:#ee4d2d;
+  transform:translateY(-2px);
+}
+
+/* TAB */
+.tab{
+  display:flex;
+  gap:25px;
+  margin-bottom:24px;
+}
+
+.tab div{
+  cursor:pointer;
+  color:#888;
+  font-weight:600;
+  position:relative;
+}
+
+.tab .active{
+  color:#ff7b00;
+}
+
+.tab .active::after{
+  content:'';
+  position:absolute;
+  left:0;
+  bottom:-6px;
+  width:100%;
+  height:3px;
+  background:#ff7b00;
+  border-radius:10px;
+}
+
+/* INPUT */
+.input-group{
+  position:relative;
+  margin-bottom:16px;
+}
+
+input{
+  width:100%;
+  padding:16px 14px;
+  border-radius:14px;
+  border:1px solid #2e2e2e;
+  background:#0f0f0f;
+  color:#fff;
+  outline:none;
+  transition:.3s;
+}
+
+input:focus{
+  border-color:#ee4d2d;
+  box-shadow:0 0 0 4px rgba(255,123,0,.15);
+}
+
+label{
+  position:absolute;
+  left:14px;
+  top:50%;
+  transform:translateY(-50%);
+  color:#666;
+  font-size:13px;
+  transition:.3s;
+  background:#0f0f0f;
+  padding:0 6px;
+}
+
+input:focus+label,
+input:not(:placeholder-shown)+label{
+  top:0;
+  font-size:11px;
+  color:#ee4d2d;
+}
+
+/* BUTTON */
+.main-btn{
+  width:100%;
+  padding:15px;
+  border:none;
+  border-radius:14px;
+  background:linear-gradient(90deg,#ee4d2d,#ee4d2d);
+  color:#fff;
+  font-size:15px;
+  font-weight:700;
+  cursor:pointer;
+  margin-top:6px;
+  transition:.3s;
+}
+
+.main-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 28px rgba(238,77,45,.35);
+}
+
+/* EXTRA */
+.extra{
+  margin-top:14px;
+  display:flex;
+  justify-content:space-between;
+  color:#999;
+  font-size:12px;
+}
+
+/* SOCIAL */
+.social{
+  display:flex;
+  gap:12px;
+  margin-top:18px;
+}
+
+.social button{
+  flex:1;
+  padding:12px;
+  border:none;
+  border-radius:12px;
+  font-weight:700;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.social button:hover{
+  transform:translateY(-2px);
+}
+
+.fb{
+  background:#1877f2;
+  color:#fff;
+}
+
+.gg{
+  background:#fff;
+  color:#111;
+}
+
+/* SWITCH */
+.switch{
+  text-align:center;
+  margin-top:18px;
+  font-size:13px;
+  color:#888;
+}
+
+.switch span{
+  color:#ee4d2d;
+  font-weight:700;
+  cursor:pointer;
+}
+
+/* ANIMATION */
+@keyframes show{
+  from{
+    opacity:0;
+    transform:translateY(25px) scale(.96);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-18px);}
+}
+
+/* MOBILE */
+@media(max-width:900px){
+  body{
+    flex-direction:column;
+  }
+
+  .left{
+    min-height:35vh;
+  }
+
+  .left h1{
+    font-size:42px;
+  }
+
+  .card{
+    max-width:100%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- LEFT -->
+<div class="left">
+  <h1></h1> <h2 class="shop-logo">
+  <img src="c:\Users\user\Downloads\sasa.jpg" 
+  alt="SASA Logo"> 
+</h2>
+  <h1>SASA Shop</h1>
+  <p>Fast • Secure • Modern</p>
+</div>
+
+<!-- RIGHT -->
+<div class="right">
+<div class="card">
+
+<div class="qr">QR Login</div>
+
+<!-- LOGIN -->
+<div id="loginBox">
+
+<div class="tab">
+<div class="active">Log In</div>
+<div onclick="showSignup()">Sign Up</div>
+</div>
+
+<div class="input-group">
+<input type="text" placeholder=" " id="loginUser">
+<label>Email / Username</label>
+</div>
+
+<div class="input-group">
+<input type="password" placeholder=" " id="loginPass">
+<label>Password</label>
+</div>
+
+<button class="main-btn" onclick="login()">LOG IN</button>
+
+<div class="extra">
+<span>Forgot Password?</span>
+<span></span>
+</div>
+
+<div class="social">
+<button class="fb">Facebook</button>
+<button class="gg">Google</button>
+</div>
+
+<div class="switch">
+New to SASA? <span onclick="showSignup()">Sign Up</span>
+</div>
+
+</div>
+
+<!-- SIGNUP -->
+<div id="signupBox" style="display:none;">
+
+<div class="tab">
+<div onclick="showLogin()">Log In</div>
+<div class="active">Sign Up</div>
+</div>
+
+<div class="input-group">
+<input type="text" placeholder=" " id="regUser">
+<label>Username</label>
+</div>
+
+<div class="input-group">
+<input type="password" placeholder=" " id="regPass">
+<label>Password</label>
+</div>
+
+<button class="main-btn" onclick="signup()">SIGN UP</button>
+
+<div class="social">
+<button class="fb">Facebook</button>
+<button class="gg">Google</button>
+</div>
+
+<div class="switch">
+Have account? <span onclick="showLogin()">Log In</span>
+</div>
+
+</div>
+
+</div>
+</div>
+
+<script>
+function showSignup(){
+  loginBox.style.display="none";
+  signupBox.style.display="block";
+}
+
+function showLogin(){
+  signupBox.style.display="none";
+  loginBox.style.display="block";
+}
+
+function getUsers(){
+  return JSON.parse(localStorage.getItem("users") || "[]");
+}
+
+function saveUsers(data){
+  localStorage.setItem("users",JSON.stringify(data));
+}
+
+function signup(){
+  let u=regUser.value.trim();
+  let p=regPass.value.trim();
+
+  if(!u || !p){
+    alert("Please fill all fields");
+    return;
+  }
+
+  let users=getUsers();
+
+  if(users.find(x=>x.user===u)){
+    alert("User already exists");
+    return;
+  }
+
+  users.push({user:u,pass:p});
+  saveUsers(users);
+
+  alert("Signup Success");
+  showLogin();
+}
+
+function login(){
+  let u=loginUser.value.trim();
+  let p=loginPass.value.trim();
+
+  let users=getUsers();
+
+  let found=users.find(x=>x.user===u && x.pass===p);
+
+  if(found){
+    localStorage.setItem("session","true");
+    window.location.href="shop.html";
+  }else{
+    alert("Wrong Login");
+  }
+}
+</script>
+
+</body>
+</html>

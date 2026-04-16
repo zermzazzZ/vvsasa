@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Payment - SASA Shop</title>
+
+<style>
+  #total {
+  color: #ee4d2d;
+  font-weight: bold;
+  text-align: center;
+}
+body {
+  margin: 0;
+  font-family: Arial;
+  background: linear-gradient(135deg, #ee4d2d, #ff9800);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* BOX */
+.box {
+  background: white;
+  padding: 25px;
+  border-radius: 20px;
+  width: 350px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+  text-align: center;
+}
+
+/* INPUT */
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+/* BUTTON */
+button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(45deg, #000, #ff9800);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+/* QR BOX */
+.qr-box {
+  display: none;
+  margin-top: 15px;
+}
+
+.qr-box img {
+  width: 200px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+  <h2>💳 Payment</h2>
+
+  <input type="text" placeholder="Card Number">
+  <input type="text" placeholder="Name on Card">
+  <input type="text" placeholder="MM/YY">
+  <input type="text" placeholder="CVV">
+<h3 id="total">Total: $0</h3> <h3>🧾 Your Items</h3>
+<ul id="itemList"></ul>
+
+<p id="subtotal"></p>
+<p id="discount"></p>
+<p id="tax"></p>
+
+<button onclick="showQR()">Pay Now</button>
+ 
+
+  <!-- QR CODE -->
+  <div class="qr-box" id="qrBox">
+    <h3>📱 Scan to Pay</h3>
+
+    <!-- 👉 អ្នកអាចប្ដូររូប QR -->
+    <img src="c:\Users\user\Pictures\Screenshots\Screenshot (112).png">
+
+    <button onclick="confirmPayment()">✅ I Paid</button>
+  </div>
+
+</div>
+
+<script>
+  
+function showQR() {
+  document.getElementById("qrBox").style.display = "block";
+}
+
+function confirmPayment() {
+  alert("🎉 Payment Successful!");
+  localStorage.removeItem("cart");
+  window.location.href = "shop.html";
+  
+}
+</script>
+
+</body>
+</html>
