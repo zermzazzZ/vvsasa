@@ -43,7 +43,18 @@ function showLogin(){ $('signupBox').classList.add('hidden');$('loginBox').class
 function users(){ return JSON.parse(localStorage.getItem('users')||'[]'); }
 function save(arr){ localStorage.setItem('users',JSON.stringify(arr)); }
 function signup(){ let u=$('regUser').value.trim(),p=$('regPass').value.trim(); if(!u||!p) return msg('signupMsg','Please fill all fields',1); let arr=users(); if(arr.find(x=>x.user===u)) return msg('signupMsg','User already exists',1); arr.push({user:u,pass:p}); save(arr); msg('signupMsg','Signup successful'); setTimeout(showLogin,700); }
-function login(){ let u=$('loginUser').value.trim(),p=$('loginPass').value.trim(); let found=users().find(x=>x.user===u&&x.pass===p); if(!found) return msg('loginMsg','Wrong username or password',1); localStorage.setItem('session','true'); msg('loginMsg','Login success. Redirecting...'); setTimeout(()=>location.href='shop.html',700); }
+function login(){
+ let u=$('loginUser').value.trim();
+ let p=$('loginPass').value.trim();
+
+ let found=users().find(x=>x.user===u&&x.pass===p);
+
+ if(!found) return msg('loginMsg','Wrong username or password',1);
+
+ localStorage.setItem('session','true');
+
+ window.location.href='Shop/shop.html';
+}
 function msg(id,t,e){ let el=$(id); el.textContent=t; el.className='msg'+(e?' err':''); }
 </script>
 </body>
