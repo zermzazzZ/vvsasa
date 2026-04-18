@@ -1,113 +1,587 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Payment - SASA Shop</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SASA Shop - DIAMOND PAYMENT</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-  #total {
-  color: #ee4d2d;
-  font-weight: bold;
-  text-align: center;
-}
-body {
-  margin: 0;
-  font-family: Arial;
-  background: linear-gradient(135deg, #ee4d2d, #ff9800);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
 }
 
-/* BOX */
-.box {
-  background: white;
-  padding: 25px;
-  border-radius: 20px;
-  width: 350px;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-  text-align: center;
+body{
+min-height:100vh;
+background:
+radial-gradient(circle at top left,#fff3e8,#ffffff 28%),
+radial-gradient(circle at bottom right,#eaf0ff,#ffffff 30%),
+linear-gradient(135deg,#f8f9ff,#ffffff);
+padding:28px;
+color:#111;
 }
 
-/* INPUT */
-input {
-  width: 100%;
-  padding: 10px;
-  margin: 8px 0;
-  border-radius: 10px;
-  border: 1px solid #ccc;
+/* LAYOUT */
+.container{
+max-width:1450px;
+margin:auto;
+display:grid;
+grid-template-columns:1.15fr .85fr;
+gap:28px;
+align-items:start;
 }
 
-/* BUTTON */
-button {
-  width: 100%;
-  padding: 12px;
-  border: none;
-  border-radius: 30px;
-  background: linear-gradient(45deg, #000, #ff9800);
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-  margin-top: 10px;
+/* GLASS CARD */
+.card{
+background:rgba(255,255,255,.88);
+backdrop-filter:blur(18px);
+border:1px solid rgba(255,255,255,.65);
+border-radius:32px;
+padding:32px;
+box-shadow:
+0 25px 60px rgba(0,0,0,.08),
+0 8px 20px rgba(255,255,255,.7) inset;
 }
 
-/* QR BOX */
-.qr-box {
-  display: none;
-  margin-top: 15px;
+/* LEFT */
+.logo{
+font-size:36px;
+font-weight:800;
+background:linear-gradient(135deg,#ff6a00,#ff005d);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+margin-bottom:8px;
 }
 
-.qr-box img {
-  width: 200px;
+.badge{
+display:inline-block;
+padding:8px 14px;
+border-radius:999px;
+background:#111;
+color:#fff;
+font-size:12px;
+font-weight:700;
+margin-bottom:16px;
+}
+
+h1{
+font-size:42px;
+line-height:1.1;
+margin-bottom:10px;
+font-weight:800;
+}
+
+.desc{
+font-size:15px;
+color:#666;
+margin-bottom:26px;
+}
+
+.grid2{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:16px;
+}
+
+.group{
+margin-bottom:16px;
+}
+
+label{
+display:block;
+font-size:14px;
+font-weight:700;
+margin-bottom:8px;
+}
+
+input,textarea{
+width:100%;
+padding:16px 18px;
+border-radius:18px;
+border:1px solid #ececec;
+background:#fafafa;
+outline:none;
+font-size:15px;
+transition:.25s;
+}
+
+textarea{
+height:120px;
+resize:none;
+}
+
+input:focus,textarea:focus{
+background:#fff;
+border-color:#ff6a00;
+box-shadow:0 0 0 5px rgba(255,106,0,.08);
+}
+
+/* METHODS */
+.method-title{
+margin-top:10px;
+margin-bottom:14px;
+font-size:16px;
+font-weight:800;
+}
+
+.methods{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:12px;
+}
+
+.pay{
+padding:18px 10px;
+border-radius:22px;
+text-align:center;
+font-weight:700;
+font-size:14px;
+cursor:pointer;
+border:2px solid #eee;
+background:#fff;
+transition:.25s;
+}
+
+.pay:hover{
+transform:translateY(-3px);
+}
+
+.pay.active{
+border-color:#ff6a00;
+background:linear-gradient(135deg,#ff6a00,#ff005d);
+color:#fff;
+box-shadow:0 14px 28px rgba(255,80,0,.22);
+}
+
+.pay span{
+display:block;
+font-size:24px;
+margin-bottom:6px;
+}
+
+/* BTN */
+.order-btn{
+margin-top:24px;
+width:100%;
+padding:18px;
+border:none;
+border-radius:22px;
+font-size:18px;
+font-weight:800;
+cursor:pointer;
+color:#fff;
+background:linear-gradient(135deg,#ff6a00,#ff005d);
+box-shadow:0 16px 32px rgba(255,70,0,.25);
+transition:.25s;
+}
+
+.order-btn:hover{
+transform:translateY(-3px) scale(1.01);
+}
+
+.note{
+margin-top:16px;
+padding:14px 16px;
+border-radius:18px;
+background:#f7f9ff;
+font-size:13px;
+color:#666;
+font-weight:600;
+}
+
+/* RIGHT */
+.right{
+position:sticky;
+top:28px;
+}
+
+.top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px;
+}
+
+.top h2{
+font-size:30px;
+font-weight:800;
+}
+
+.count{
+padding:9px 15px;
+border-radius:999px;
+background:#111;
+color:#fff;
+font-size:13px;
+font-weight:700;
+}
+
+.items{
+display:flex;
+flex-direction:column;
+gap:14px;
+max-height:430px;
+overflow:auto;
+padding-right:3px;
+}
+
+.item{
+display:flex;
+gap:14px;
+padding:14px;
+border-radius:22px;
+background:#f8f9ff;
+border:1px solid #eee;
+}
+
+.item img{
+width:78px;
+height:78px;
+border-radius:18px;
+object-fit:cover;
+}
+
+.info{
+flex:1;
+}
+
+.name{
+font-weight:800;
+font-size:15px;
+margin-bottom:4px;
+}
+
+.meta{
+font-size:13px;
+color:#777;
+}
+
+.price{
+margin-top:6px;
+font-size:19px;
+font-weight:800;
+color:#ff5a00;
+}
+
+.summary{
+margin-top:22px;
+padding-top:18px;
+border-top:1px dashed #ddd;
+}
+
+.row{
+display:flex;
+justify-content:space-between;
+margin-bottom:12px;
+font-size:15px;
+color:#555;
+}
+
+.total{
+margin-top:12px;
+padding:18px;
+border-radius:22px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:linear-gradient(135deg,#111,#1d1d1d);
+color:#fff;
+}
+
+.total span:last-child{
+font-size:32px;
+font-weight:800;
+color:#00ff95;
+}
+
+.trust{
+margin-top:16px;
+text-align:center;
+font-size:13px;
+color:#777;
+}
+
+/* SUCCESS */
+.popup{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.55);
+display:none;
+justify-content:center;
+align-items:center;
+z-index:999;
+}
+
+.popbox{
+width:430px;
+max-width:95%;
+background:#fff;
+border-radius:30px;
+padding:34px;
+text-align:center;
+animation:show .35s ease;
+}
+
+@keyframes show{
+from{transform:scale(.8);opacity:0}
+to{transform:scale(1);opacity:1}
+}
+
+.ok{
+font-size:72px;
+margin-bottom:10px;
+}
+
+.popbox h3{
+font-size:30px;
+margin-bottom:10px;
+}
+
+.popbox p{
+font-size:15px;
+color:#666;
+margin-bottom:18px;
+}
+
+.popbox button{
+padding:14px 22px;
+border:none;
+border-radius:18px;
+cursor:pointer;
+font-weight:800;
+color:#fff;
+background:linear-gradient(135deg,#ff6a00,#ff005d);
+}
+
+/* MOBILE */
+@media(max-width:1050px){
+.container{
+grid-template-columns:1fr;
+}
+.right{
+position:static;
+}
+}
+
+@media(max-width:700px){
+body{
+padding:15px;
+}
+.card{
+padding:22px;
+border-radius:24px;
+}
+.grid2{
+grid-template-columns:1fr;
+}
+.methods{
+grid-template-columns:1fr 1fr;
+}
+h1{
+font-size:30px;
+}
+.top h2{
+font-size:24px;
+}
 }
 
 </style>
-
 </head>
 
 <body>
 
-<div class="box">
-  <h2>💳 Payment</h2>
+<div class="container">
 
-  <input type="text" placeholder="Card Number">
-  <input type="text" placeholder="Name on Card">
-  <input type="text" placeholder="MM/YY">
-  <input type="text" placeholder="CVV">
-<h3 id="total">Total: $0</h3> <h3>🧾 Your Items</h3>
-<ul id="itemList"></ul>
+<!-- LEFT -->
+<div class="card">
 
-<p id="subtotal"></p>
-<p id="discount"></p>
-<p id="tax"></p>
+<div class="logo">💎 SASA Payment</div>
+<div class="badge">ULTRA SECURE CHECKOUT</div>
 
-<button onclick="showQR()">Pay Now</button>
- 
+<h1>Complete Your<br>Luxury Order</h1>
+<div class="desc">
+Fast shipping • Trusted payment • Premium experience
+</div>
 
-  <!-- QR CODE -->
-  <div class="qr-box" id="qrBox">
-    <h3>📱 Scan to Pay</h3>
+<div class="grid2">
+<div class="group">
+<label>Full Name</label>
+<input type="text" placeholder="Your full name">
+</div>
 
-    <!-- 👉 អ្នកអាចប្ដូររូប QR -->
-    <img src="c:\Users\user\Pictures\Screenshots\Screenshot (112).png">
+<div class="group">
+<label>Phone Number</label>
+<input type="text" placeholder="Phone number">
+</div>
+</div>
 
-    <button onclick="confirmPayment()">✅ I Paid</button>
-  </div>
+<div class="group">
+<label>Email Address</label>
+<input type="email" placeholder="example@gmail.com">
+</div>
+
+<div class="group">
+<label>Delivery Address</label>
+<textarea placeholder="Street / City / Province / Country"></textarea>
+</div>
+
+<div class="method-title">Choose Payment Method</div>
+
+<div class="methods">
+<div class="pay active" onclick="selectPay(this)">
+<span>💵</span>Cash
+</div>
+
+<div class="pay" onclick="selectPay(this)">
+<span>🏦</span>ABA
+</div>
+
+<div class="pay" onclick="selectPay(this)">
+<span>📱</span>Wing
+</div>
+
+<div class="pay" onclick="selectPay(this)">
+<span>💳</span>Card
+</div>
+</div>
+
+<button class="order-btn" onclick="orderNow()">Confirm Order</button>
+
+<div class="note">
+🔒 SSL Encryption • Safe Checkout • Auto Sync Cart
+</div>
 
 </div>
 
+<!-- RIGHT -->
+<div class="card right">
+
+<div class="top">
+<h2>Your Cart</h2>
+<div class="count" id="count">0 Items</div>
+</div>
+
+<div class="items" id="cartItems"></div>
+
+<div class="summary">
+
+<div class="row">
+<span>Subtotal</span>
+<span id="sub">$0</span>
+</div>
+
+<div class="row">
+<span>Shipping</span>
+<span id="ship">$0</span>
+</div>
+
+<div class="row">
+<span>Discount</span>
+<span id="discount">$0</span>
+</div>
+
+<div class="row">
+<span>Tax</span>
+<span id="tax">$0</span>
+</div>
+
+<div class="total">
+<span>Total</span>
+<span id="total">$0</span>
+</div>
+
+<div class="trust">
+⭐ Trusted by thousands of customers
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- POPUP -->
+<div class="popup" id="popup">
+<div class="popbox">
+<div class="ok">✅</div>
+<h3>Payment Success</h3>
+<p>Your order has been placed successfully.</p>
+<button onclick="goShop()">Continue Shopping</button>
+</div>
+</div>
+
 <script>
-  
-function showQR() {
-  document.getElementById("qrBox").style.display = "block";
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function renderCart(){
+
+let box = document.getElementById("cartItems");
+box.innerHTML = "";
+
+if(cart.length===0){
+box.innerHTML = "<p style='color:#777'>Your cart is empty.</p>";
 }
 
-function confirmPayment() {
-  alert("🎉 Payment Successful!");
-  localStorage.removeItem("cart");
-  window.location.href = "shop.html";
-  
+let subtotal = 0;
+
+cart.forEach(item=>{
+
+subtotal += Number(item.price);
+
+box.innerHTML += `
+<div class="item">
+<img src="${item.img || 'https://via.placeholder.com/100'}">
+<div class="info">
+<div class="name">${item.name}</div>
+<div class="meta">Premium Product</div>
+<div class="price">$${item.price}</div>
+</div>
+</div>
+`;
+
+});
+
+let shipping = cart.length>0 ? 5 : 0;
+let discount = subtotal>=1000 ? 50 : 0;
+let tax = Math.round(subtotal*0.02);
+let total = subtotal + shipping + tax - discount;
+
+document.getElementById("count").innerText = cart.length + " Items";
+document.getElementById("sub").innerText = "$"+subtotal;
+document.getElementById("ship").innerText = "$"+shipping;
+document.getElementById("discount").innerText = "$"+discount;
+document.getElementById("tax").innerText = "$"+tax;
+document.getElementById("total").innerText = "$"+total;
+
 }
+
+function selectPay(el){
+document.querySelectorAll(".pay").forEach(x=>{
+x.classList.remove("active");
+});
+el.classList.add("active");
+}
+
+function orderNow(){
+
+if(cart.length===0){
+alert("Cart is empty!");
+return;
+}
+
+localStorage.removeItem("cart");
+document.getElementById("popup").style.display="flex";
+}
+
+function goShop(){
+window.location.href="shop.html";
+}
+
+renderCart();
 </script>
 
 </body>
