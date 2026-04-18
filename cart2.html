@@ -3,29 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>SASA Shop Upgrade Plus</title>
+<title>SASA Shop </title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-  
-  .next-btn {
-  text-decoration: none;
-  background: linear-gradient(45deg, #ee4d2d, #ff0055);
-  color: rgb(0, 0, 0);
-  padding: 8px 15px;
-  border-radius: 20px;
-  font-weight: bold;
-  transition: 0.3s;
-}
-
-.next-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-.back-btn {
+  .back-btn {
   display: inline-block;
   text-decoration: none;
-  background: #ff0055;
-  color: rgb(0, 0, 0);
+  background: #ee4d2d;
+  color: white;
   padding: 6px 12px;
   border-radius: 15px;
   margin-top: 10px;
@@ -38,274 +25,286 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial,Helvetica,sans-serif;
+font-family:'Poppins',sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
 }
 
 body{
-background:linear-gradient(-45deg,#f5f7fa,#eef2f7,#ffffff,#f8fafc);
-background-size:400% 400%;
-animation:bgMove 12s ease infinite;
+background:linear-gradient(135deg,#f8f9ff,#eef2ff,#ffffff);
 color:#111;
 overflow-x:hidden;
 }
 
-@keyframes bgMove{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
+/* LOADER */
+#loader{
+position:fixed;
+inset:0;
+background:#fff;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+font-size:32px;
+font-weight:800;
+color:#ff0055;
 }
 
 /* HEADER */
 header{
 position:sticky;
 top:0;
-z-index:999;
-padding:14px 25px;
+z-index:1000;
+padding:16px 30px;
 display:flex;
-align-items:center;
 justify-content:space-between;
-gap:15px;
-background:rgba(17,17,17,.92);
-backdrop-filter:blur(14px);
-box-shadow:0 10px 25px rgba(0,0,0,.15);
+align-items:center;
+background:rgba(255,255,255,.8);
+backdrop-filter:blur(18px);
+box-shadow:0 8px 30px rgba(0,0,0,.08);
 }
 
 .logo{
-font-size:28px;
-font-weight:900;
-color:#ff0055;
-text-shadow:0 0 12px #ff9900(255,153,0,.55);
+font-size:32px;
+font-weight:800;
+background:linear-gradient(135deg,#ff5a00,#ff0055);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
-.search-box{
-flex:1;
-max-width:700px;
-display:flex;
-overflow:hidden;
-border-radius:40px;
-background:#fff;
-box-shadow:0 10px 25px rgba(0,0,0,.08);
-border:2px solid transparent;
-transition:.3s;
-}
-
-.search-box:focus-within{
-border-color:#ff0055;
-transform:translateY(-2px);
-}
-
-.search-box input{
-flex:1;
-padding:14px 16px;
-border:none;
-outline:none;
-font-size:15px;
-}
-
-.search-box button{
-border:none;
-padding:14px 20px;
-font-weight:bold;
-background:#ff0055;
-cursor:pointer;
-}
-
-.menu{
+.right{
 display:flex;
 align-items:center;
 gap:12px;
 }
 
-.btn{
-text-decoration:none;
-padding:10px 16px;
+.search{
+padding:12px 18px;
+border:none;
+outline:none;
 border-radius:30px;
-font-weight:bold;
-color:#111;
-background:#fff;
-transition:.3s;
+width:240px;
+background:#f1f3f8;
 }
 
-.btn:hover{
-background:#ff9900;
-transform:translateY(-3px);
-box-shadow:0 12px 25px rgba(255,153,0,.25);
+.icon-btn{
+width:44px;
+height:44px;
+border-radius:50%;
+border:none;
+cursor:pointer;
+font-size:18px;
+background:#111;
+color:#fff;
 }
 
-.cart-icon{
+.cart{
+position:relative;
 font-size:28px;
 cursor:pointer;
-position:relative;
-color:#fff;
 }
 
 .count{
 position:absolute;
 top:-8px;
-right:-10px;
+right:-8px;
 background:#ff0055;
-color:#111;
-font-size:12px;
-font-weight:bold;
-padding:3px 7px;
+color:#fff;
+padding:4px 8px;
+font-size:11px;
 border-radius:50%;
-transition:.25s;
+font-weight:700;
 }
 
 /* HERO */
 .hero{
-margin:25px;
-padding:45px;
-border-radius:26px;
-background:linear-gradient(135deg,#ff9900,#ff0055);
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:20px;
-flex-wrap:wrap;
-color:#fff;
-position:relative;
+padding:20px;
+}
+
+.slider{
+height:450px;
+border-radius:35px;
 overflow:hidden;
+position:relative;
+box-shadow:0 25px 60px rgba(0,0,0,.15);
 }
 
-.hero::after{
-content:"";
+.slide{
 position:absolute;
-top:-50px;
-right:-50px;
-width:180px;
-height:180px;
-background:rgba(255,255,255,.12);
-border-radius:50%;
+inset:0;
+background-size:cover;
+background-position:center;
+display:flex;
+align-items:center;
+padding:55px;
+opacity:0;
+transition:1s;
 }
 
-.hero::before{
-content:"";
+.slide.active{
+opacity:1;
+}
+
+.overlay{
+background:linear-gradient(to right,rgba(0,0,0,.72),rgba(0,0,0,.18));
 position:absolute;
-bottom:-60px;
-left:-60px;
-width:220px;
-height:220px;
-background:rgba(255,255,255,.08);
-border-radius:50%;
+inset:0;
 }
 
-.hero h1{
-font-size:42px;
-margin-bottom:12px;
+.content{
+position:relative;
+z-index:2;
+color:#fff;
+max-width:550px;
 }
 
-.hero p{
-margin-bottom:18px;
+.content h1{
+font-size:64px;
+line-height:1.05;
+margin-bottom:15px;
+}
+
+.content p{
 font-size:18px;
+margin-bottom:22px;
 }
 
-.hero a{
-text-decoration:none;
-padding:14px 24px;
+.content a{
+display:inline-block;
+padding:15px 28px;
 border-radius:40px;
 background:#fff;
 color:#111;
-font-weight:bold;
+font-weight:800;
+text-decoration:none;
+}
+
+/* TITLE */
+.title{
+padding:0 20px;
+font-size:30px;
+font-weight:800;
+margin:18px 0;
 }
 
 /* PRODUCTS */
 .products{
-padding:0 25px 30px;
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
 gap:22px;
+padding:0 20px 50px;
 }
 
 .card{
 background:#fff;
-border-radius:22px;
+border-radius:28px;
 overflow:hidden;
-transition:.35s;
-box-shadow:0 12px 25px rgba(0,0,0,.08);
-border:1px solid rgba(0,0,0,.05);
+box-shadow:0 18px 35px rgba(0,0,0,.08);
+transition:.3s;
 position:relative;
 }
 
 .card:hover{
-transform:translateY(-10px) scale(1.02);
-box-shadow:0 20px 35px rgba(0,0,0,.15);
+transform:translateY(-10px);
+}
+
+.badge{
+position:absolute;
+top:14px;
+left:14px;
+padding:6px 12px;
+border-radius:20px;
+font-size:12px;
+font-weight:800;
+color:#fff;
+background:linear-gradient(135deg,#ff0055,#ff7b00);
+}
+
+.wish{
+position:absolute;
+top:14px;
+right:14px;
+width:42px;
+height:42px;
+border-radius:50%;
+background:#fff;
+display:flex;
+justify-content:center;
+align-items:center;
+cursor:pointer;
+font-size:18px;
 }
 
 .card img{
 width:100%;
-height:230px;
+height:260px;
 object-fit:cover;
-background:#fff;
-transition:.4s;
 }
 
-.card:hover img{
-transform:scale(1.06);
+.body{
+padding:20px;
 }
 
-.card-body{
-padding:16px;
+.name{
+font-size:20px;
+font-weight:700;
+margin-bottom:8px;
 }
 
-.badge{
-display:inline-block;
-padding:6px 10px;
-border-radius:20px;
-background:#ff0055;
-color:#111;
-font-size:12px;
-font-weight:bold;
-margin-bottom:10px;
-box-shadow:0 10px 20px rgba(255,153,0,.35);
+.desc{
+font-size:13px;
+color:#777;
+margin-bottom:12px;
 }
 
-.card h3{
-font-size:17px;
-height:45px;
-margin-bottom:10px;
+.row{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:15px;
 }
 
 .price{
-font-size:24px;
-font-weight:900;
-color:#ff0055;
-margin-bottom:12px;
+font-size:26px;
+font-weight:800;
+color:#ff5a00;
+}
+
+.rate{
+font-size:14px;
+font-weight:700;
 }
 
 .buy{
 width:100%;
-padding:11px;
+padding:14px;
 border:none;
-border-radius:14px;
-font-weight:bold;
+border-radius:18px;
+background:linear-gradient(135deg,#ff5a00,#ff0055);
+color:#fff;
+font-weight:800;
 cursor:pointer;
-background:linear-gradient(45deg,#ff9900,#ff0055);
-color:#000000;
-transition:.3s;
-}
-
-.buy:hover{
-transform:translateY(-3px);
-box-shadow:0 12px 25px rgba(255,153,0,.25);
 }
 
 /* CART */
-.cart{
+.cart-box{
 position:fixed;
-right:-380px;
 top:0;
-width:360px;
+right:-430px;
+width:420px;
 height:100%;
-background:#fff;
-padding:20px;
-transition:.35s;
-z-index:1000;
-box-shadow:-10px 0 25px rgba(0,0,0,.15);
+background:rgba(255,255,255,.92);
+backdrop-filter:blur(18px);
+padding:24px;
+transition:.4s;
+z-index:3000;
 overflow:auto;
+box-shadow:-15px 0 40px rgba(0,0,0,.15);
 }
 
-.cart.active{
+.cart-box.active{
 right:0;
 }
 
@@ -313,624 +312,408 @@ right:0;
 float:right;
 font-size:24px;
 cursor:pointer;
+font-weight:800;
 }
 
-.cart h2{
-color:#ff6600;
-margin-bottom:15px;
+.cart-box h2{
+font-size:30px;
+margin-bottom:18px;
 }
 
-.cart li{
+.cart-box li{
 list-style:none;
-padding:12px 0;
+padding:14px 0;
 border-bottom:1px solid #eee;
 display:flex;
 justify-content:space-between;
+align-items:center;
+}
+
+.qty{
+display:flex;
+gap:8px;
+align-items:center;
+}
+
+.qty button{
+width:28px;
+height:28px;
+border:none;
+border-radius:50%;
+background:#111;
+color:#fff;
+cursor:pointer;
 }
 
 .total{
-font-size:24px;
-font-weight:900;
-margin:18px 0;
-color:#ff6600;
+font-size:30px;
+font-weight:800;
+margin-top:18px;
+color:#ff0055;
 }
 
 .checkout{
 display:block;
 text-align:center;
-text-decoration:none;
-padding:13px;
-border-radius:14px;
-background:linear-gradient(45deg,#ff9900,#ff0055);
+padding:14px;
+margin-top:16px;
+border-radius:18px;
+background:#111;
 color:#fff;
-font-weight:bold;
-transition:.3s;
-}
-
-.checkout:hover{
-transform:translateY(-3px);
+text-decoration:none;
+font-weight:800;
 }
 
 /* TOAST */
 .toast{
 position:fixed;
-bottom:25px;
-left:50%;
-transform:translateX(-50%);
+bottom:30px;
+right:30px;
 background:#111;
-color:#000000;
-padding:14px 22px;
-border-radius:40px;
-font-weight:bold;
-box-shadow:0 12px 30px rgba(0,0,0,.2);
-opacity:0;
-pointer-events:none;
-transition:.35s;
+color:#fff;
+padding:14px 20px;
+border-radius:18px;
+display:none;
 z-index:9999;
 }
 
-.toast.show{
-opacity:1;
-bottom:35px;
+/* FLOAT */
+.float{
+position:fixed;
+bottom:20px;
+left:20px;
+display:flex;
+flex-direction:column;
+gap:12px;
+z-index:999;
+}
+
+.float a{
+width:55px;
+height:55px;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+text-decoration:none;
+font-size:24px;
+color:#fff;
+background:#25D366;
+box-shadow:0 8px 25px rgba(0,0,0,.2);
+}
+
+.float a:last-child{
+background:#229ED9;
 }
 
 /* FOOTER */
 footer{
-padding:25px;
+padding:35px;
 text-align:center;
-color:#666;
+color:#777;
 }
 
 /* MOBILE */
 @media(max-width:768px){
-header{
-flex-wrap:wrap;
+
+.search{
+display:none;
 }
 
-.search-box{
-order:3;
-width:100%;
-max-width:100%;
+.slider{
+height:280px;
 }
 
-.hero{
-padding:25px;
-margin:18px;
+.content h1{
+font-size:34px;
 }
 
-.hero h1{
-font-size:30px;
+.content p{
+font-size:13px;
 }
 
 .products{
-padding:0 18px 25px;
-grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+grid-template-columns:repeat(2,1fr);
+gap:12px;
 }
 
-.cart{
-width:100%;
+.card img{
+height:150px;
 }
+
+.name{
+font-size:14px;
+}
+
+.price{
+font-size:18px;
+}
+
+.cart-box{
+width:100%;
+right:-100%;
+}
+
 }
 </style>
 </head>
 
 <body>
 
+<div id="loader">Loading...</div>
+
 <header>
 <div class="logo">🛒 SASA Shop</div>
 
-<div class="search-box">
-<input type="text" placeholder="Search premium products...">
-<button>Search</button>
-</div>
+<div class="right">
+<input class="search" placeholder="Search product..." onkeyup="searchProduct(this.value)"> 
+<button class="icon-btn" onclick="darkMode()">🌙</button>
 
-<div class="cart-icon" onclick="toggleCart()">
+<div class="cart" onclick="toggleCart()">
 🛒
 <span class="count" id="count">0</span>
 </div>
 </div>
 </header>
-<section class="products" id="products">
-
-<div class="card">
-<img src="https://down-vn.img.susercontent.com/file/vn-11134207-820l4-mei6b56syfpd9a@resize_w900_nl.webp">
-<div class="card-body">
-<div class="badge">HOT</div>
-<h3>Apple iPhone Air 256GB</h3>
-<div class="price">$1200</div>
-<button class="buy" onclick="add('Apple iPhone Air 256GB',1200)">Add To Cart</button>
-</div>
-</div>
-
-<div class="card">
-<img src="https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-llm05p5nkerg1c@resize_w900_nl.webp">
-<div class="card-body">
-<div class="badge">SALE</div>
-<h3>iPhone 15 128GB</h3>
-<div class="price">$710</div>
-<button class="buy" onclick="add('iPhone 15 128GB',710)">Add To Cart</button>
-</div>
-</div>
-<div class="card">
-<img src="https://down-vn.img.susercontent.com/file/sg-11134301-7renh-m8e9wy9li62ecb@resize_w900_nl.webp">
-<div class="card-body">
-<div class="badge">NEW</div>
-<h3>Apple iPad A16 11 inch</h3>
-<div class="price">$600</div>
-<button class="buy" onclick="add('Apple iPad A16 11 inch',600)">Add To Cart</button>
-</div>
-</div>
-<div class="card">
-<img src="https://down-vn.img.susercontent.com/file/vn-11134207-820l4-mejzo1i16pkx20.webp">
-<div class="card-body">
-<div class="badge">NEW</div>
-<h3>AirPods Pro 3</h3>
-<div class="price">$60</div>
-<button class="buy" onclick="add('AirPods Pro 3',60)">Add To Cart</button>
-</div>
-</div>
-
-<div class="card">
-<img src="https://down-vn.img.susercontent.com/file/vn-11134207-81ztc-mmnxjmluj30m47@resize_w900_nl.webp">
-<div class="card-body">
-<div class="badge">TOP</div>
-<h3>iPad Air M4</h3>
-<div class="price">$700</div>
-<button class="buy" onclick="add('iPad Air M4',700)">Add To Cart</button>
-</div>
-
-</div>
-<div class="card">
-<img src="https://down-vn.img.susercontent.com/file/vn-11134207-820l4-mehipkbxm1vq70.webp">
-<div class="card-body">
-<div class="badge">TOP</div>
-<h3>Apple iPhone 17 Pro Max</h3>
-<div class="price">$1400</div>
-<button class="buy" onclick="add('Apple iPhone 17 Pro Max',1400)">Add To Cart</button>
-</div>
-</div>
-<div class="card">
-<img src="https://down-vn.img.susercontent.com/file/vn-11134207-820l4-meh3u1jyqkg3bb.webp">
-<div class="card-body">
-<div class="badge">NEW</div>
-<h3>Apple iPhone 17 256GB</h3>
-<div class="price">$1200</div>
-<button class="buy" onclick="add('Apple iPhone 17 256GB',1200)">Add To Cart</button>
-</div>
-</div>
-<div class="card">
-<img src="https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lqsqjeb063av85@resize_w900_nl.webp">
-<div class="card-body">
-<div class="badge">NEW</div>
-<h3>iPhone 15 256GB</h3>
-<div class="price">$1110</div>
-<button class="buy" onclick="add('iPhone 15 256GB',1110)">Add To Cart</button>
-</div>
-</div>
-
-<div class="card">
-<img src="https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-m048zqyfsoh9fd.webp">
-<div class="card-body">
-<div class="badge">TOP</div>
-<h3> iPhone 16 Plus 256GB</h3>
-<div class="price">$1300</div>
-<button class="buy" onclick="add('iPhone 16 Plus 256GB',1300)">Add To Cart</button>
-</div>
-</div>
-<div class="card">
-<img src="https://down-vn.img.susercontent.com/file/vn-11134207-820l4-mejvg4toxtl203.webp">
-<div class="card-body">
-<div class="badge">TOP</div>
-<h3> iPhone Air 256GB</h3>
-<div class="price">$1100</div>
-<button class="buy" onclick="add('iPhone Air 256GB',1100)">Add To Cart</button>
-</div>
-</div>
-<div class="card">
-<img src="https://down-vn.img.susercontent.com/file/vn-11134207-820l4-mejvvkjyeps63e.webp">
-<div class="card-body">
-<div class="badge">NEW</div>
-<h3> iPhone 17 Pro Max 1TB</h3>
-<div class="price">$1555</div>
-<button class="buy" onclick="add('iPhone 17 Pro Max 1TB',1555)">Add To Cart</button>
-</div>
-</div>
-
-<div class="card">
-<img src="https://down-vn.img.susercontent.com/file/vn-11134201-7ra0g-m99wd2tchksne3.webp">
-<div class="card-body">
-<div class="badge">TOP</div>
-<h3>Samsung Galaxy S23 Ultra 8GB/256GB</h3>
-<div class="price">$1200</div>
-<button class="buy" onclick="add('Samsung Galaxy S23 Ultra 8GB/256GB',1200)">Add To Cart</button>
-</div>
-</div>
-<div class="card">
-<img src="https://down-vn.img.susercontent.com/file/vn-11134201-7ra0g-m99we80e7czm99.webp">
-<div class="card-body">
-<div class="badge">NEW</div>
-<h3>Galaxy Tab S9</h3>
-<div class="price">$60</div>
-<button class="buy" onclick="add('Galaxy Tab S9',60)">Add To Cart</button>
-</div>
-</div>
-
-<div class="card">
-<img src="https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lybyqwdbd07h8d.webp">
-<div class="card-body">
-<div class="badge">TOP</div>
-<h3>OPPO Reno12 5G 12GB</h3>
-<div class="price">$350</div>
-<button class="buy" onclick="add('OPPO Reno12 5G 12GB',350)">Add To Cart</button>
-</div>
-</div>
-<div class="card">
-<img src="https://down-vn.img.susercontent.com/file/vn-11134207-820l4-mejzo1i16pkx20.webp">
-<div class="card-body">
-<div class="badge">NEW</div>
-<h3>AirPods Pro 3</h3>
-<div class="price">$60</div>
-<button class="buy" onclick="add('AirPods Pro 3',60)">Add To Cart</button>
-</div>
-</div>
-
-<div class="card">
-<img src="https://down-vn.img.susercontent.com/file/vn-11134207-820l4-mejv80m5m51i8b.webp">
-<div class="card-body">
-<div class="badge">TOP</div>
-<h3>iPhone 17 256GB</h3>
-<div class="price">$1220</div>
-<button class="buy" onclick="add('iPhone 17 256GB',1220)">Add To Cart</button>
-</div>
-</div>
-<div class="card">
-<img src="https://down-vn.img.susercontent.com/file/92a74619a0704519a0e0facafd1201d6.webp">
-<div class="card-body">
-<div class="badge">NEW</div>
-<h3>Apple iPhone 14 128GB</h3>
-<div class="price">$600</div>
-<button class="buy" onclick="add('Apple iPhone 14 128GB',600)">Add To Cart</button>
-</div>
-</div>
-
-<div class="card">
-<img src="https://down-vn.img.susercontent.com/file/sg-11134301-7rep0-m8ecr4dr10nlb7.webp">
-<div class="card-body">
-<div class="badge">TOP</div>
-<h3>Apple iPad A16 11 inch </h3>
-<div class="price">$500</div>
-<button class="buy" onclick="add('Apple iPad A16 11 inch ',500)">Add To Cart</button>
-</div>
-</div>
-<div class="card">
-<img src="https://down-vn.img.susercontent.com/file/2feb4e6d6b82bc0ac39943de466ff422.webp">
-<div class="card-body">
-<div class="badge">NEW</div>
-<h3>Apple iPad Pro M1</h3>
-<div class="price">$2260</div>
-<button class="buy" onclick="add('Apple iPad Pro M1',2260)">Add To Cart</button>
-</div>
-</div>
-
-<div class="card">
-<img src="https://down-vn.img.susercontent.com/file/vn-11134201-820l4-mifad7mb1ts171.webp">
-<div class="card-body">
-<div class="badge">TOP</div>
-<h3>Samsung Galaxy S22 Ultra 5G</h3>
-<div class="price">$700</div>
-<button class="buy" onclick="add('Samsung Galaxy S22 Ultra 5G',700)">Add To Cart</button>
-</div>
-</div>
-<div class="card">
-<img src="https://down-vn.img.susercontent.com/file/vn-11134207-81ztc-mm6w319ec3r645@resize_w900_nl.webp">
-<div class="card-body">
-<div class="badge">NEW</div>
-<h3> OPPO Reno13 Pro 5G</h3>
-<div class="price">$460</div>
-<button class="buy" onclick="add('OPPO Reno13 Pro 5G',460)">Add To Cart</button>
-</div>
-</div>
-
-<div class="card">
-<img src="https://down-vn.img.susercontent.com/file/vn-11134207-81ztc-mkhw5oevozd3ea@resize_w900_nl.webp">
-<div class="card-body">
-<div class="badge">TOP</div>
-<h3>OPPO A6 Pro 8GB</h3>
-<div class="price">$300</div>
-<button class="buy" onclick="add('OPPO A6 Pro 8GB',300)">Add To Cart</button>
-</div>
 </div>
 </section>
 
-<div class="cart" id="cartBox">
-<span class="close" onclick="toggleCart()">✖</span>
+<style>
+  /* PROFILE */
+.profile-btn {
+  background: black;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  text-decoration: none;
+}
+
+.profile-btn:hover {
+  background: #333;
+}
+/* CATEGORY SECTION */
+.category{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+gap:18px;
+padding:20px;
+}
+
+/* ITEM */
+.menu-item{
+background:#fff;
+border-radius:24px;
+padding:18px 12px;
+text-align:center;
+text-decoration:none;
+color:#111;
+box-shadow:0 12px 25px rgba(0,0,0,.08);
+transition:.35s;
+position:relative;
+overflow:hidden;
+}
+
+/* HOVER */
+.menu-item:hover{
+transform:translateY(-8px) scale(1.03);
+box-shadow:0 18px 35px rgba(0,0,0,.12);
+}
+
+/* ACTIVE PAGE */
+.menu-item.active{
+background:linear-gradient(135deg,#ff5a00,#ff0055);
+color:#fff;
+}
+
+/* IMAGE */
+.menu-item img{
+width:75px;
+height:75px;
+object-fit:cover;
+border-radius:18px;
+margin-bottom:12px;
+background:#fff;
+padding:6px;
+transition:.3s;
+}
+
+.menu-item:hover img{
+transform:scale(1.08);
+}
+
+/* TEXT */
+.menu-item p{
+font-size:15px;
+font-weight:700;
+margin-top:6px;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+.category{
+grid-template-columns:repeat(2,1fr);
+gap:12px;
+padding:15px;
+}
+
+.menu-item{
+padding:14px 10px;
+border-radius:20px;
+}
+
+.menu-item img{
+width:60px;
+height:60px;
+}
+
+.menu-item p{
+font-size:13px;
+}
+
+}
+</style>
+
+<h2 class="title">PHONE</h2>
+<section class="products" id="products"></section>
+<div class="cart-box" id="cartBox">
+<span class="close" onclick="toggleCart()">✕</span>
 <h2>Your Cart</h2>
 <ul id="list"></ul>
 <div class="total" id="total">$0</div>
-<a href="payment.html" class="checkout">Checkout Now</a>
+<a href="payment.html" class="checkout">Checkout</a>
 </div>
 
-<div class="toast" id="toast">Added To Cart 🛒</div>
+<div class="toast" id="toast">Added To Cart</div>
+
+<div class="float">
+<a href="#" href="payment.html" class="checkout">💬</a>
+</div>
 
 <footer>
-© 2026 SASA Shop Upgrade Plus
+© 2026 – All rights reserved by SASA Shop Company Limited
 </footer>
 
 <script>
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+setTimeout(()=>{
+document.getElementById("loader").style.display="none";
+},1500);
+
+/* PRODUCTS */
+const items=[
+
+{name:"Apple iPhone Air 256GB",price:1200,rate:"⭐4.8",img:"https://down-vn.img.susercontent.com/file/vn-11134207-820l4-mei6b56syfpd9a@resize_w900_nl.webp"},  
+{name:"iPhone 15 128GB",price:770,rate:"⭐4.8",img:"https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-llm05p5nkerg1c@resize_w900_nl.webp"},  
+{name:"iPad A16 11 inch ",price:600,rate:"⭐4.8",img:"https://down-vn.img.susercontent.com/file/sg-11134301-7renh-m8e9wy9li62ecb@resize_w900_nl.webp"},  
+{name:"AirPods Pro 3”  ",price:69,rate:"⭐4.8",img:"https://down-vn.img.susercontent.com/file/vn-11134207-820l4-mejzo1i16pkx20.webp"},
+{name:"iPad Air M4",price:800,rate:"⭐4.9",img:"https://down-vn.img.susercontent.com/file/vn-11134207-81ztc-mmnxjmluj30m47@resize_w900_nl.webp"},  
+{name:"iPhone 17 Pro Max",price:1400,rate:"⭐4.8",img:"https://down-vn.img.susercontent.com/file/vn-11134207-820l4-mehipkbxm1vq70.webp"},
+{name:"iPhone 17 256GB ",price:1200,rate:"⭐4.8",img:"https://down-vn.img.susercontent.com/file/vn-11134207-820l4-meh3u1jyqkg3bb.webp"},
+{name:"iPhone 15 256GB< ",price:1100,rate:"⭐4.8",img:"https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lqsqjeb063av85@resize_w900_nl.webp"},  
+{name:"iPhone 16 Plus 256GB",price:1300,rate:"⭐4.8",img:"https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-m048zqyfsoh9fd.webp"},  
+{name:"Lenovo Legion Pro 7i ",price:450,rate:"⭐4.8",img:"https://down-vn.img.susercontent.com/file/vn-11134207-820l4-mejvg4toxtl203.webp"},
+{name:"iPhone Air 256GB",price:1100,rate:"⭐4.8",img:"https://down-vn.img.susercontent.com/file/vn-11134207-81ztc-mm6w319ec3r645@resize_w900_nl.webp"},
+{name:"iPhone 17 Pro Max 1TB",price:1550,rate:"⭐4.9",img:"https://down-vn.img.susercontent.com/file/vn-11134207-820l4-mejvvkjyeps63e.webp"},
+{name:"Samsung Galaxy S23 Ultra ",price:1270,rate:"⭐5.0",img:"https://down-vn.img.susercontent.com/file/vn-11134201-7ra0g-m99wd2tchksne3.webp"},
+{name:"Galaxy Tab S9 ",price:160,rate:"⭐4.8",img:"https://down-vn.img.susercontent.com/file/vn-11134201-7ra0g-m99we80e7czm99.webp"},
+{name:"OPPO Reno12 5G 12GB",price:350,rate:"⭐4.7",img:"https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lybyqwdbd07h8d.webp"}
+
+];
+
+let cart=JSON.parse(localStorage.getItem("cart"))||[];
+
+function render(data=items){
+let html="";
+data.forEach(item=>{
+html+=`
+<div class="card">
+<div class="badge">HOT</div>
+<div class="wish">♡</div>
+<img src="${item.img}">
+<div class="body">
+<div class="name">${item.name}</div>
+<div class="desc">Premium quality official product</div>
+<div class="row">
+<div class="price">$${item.price}</div>
+<div class="rate">${item.rate}</div>
+</div>
+<button class="buy" onclick="add('${item.name}',${item.price},'${item.img}')">Add To Cart</button>
+</div>
+</div>`;
+});
+document.getElementById("products").innerHTML=html;
+}
+
+function add(name,price,img){
+let f=cart.find(x=>x.name===name);
+if(f){f.qty++;}
+else{cart.push({name,price,img,qty:1});}
+saveCart();
+toast();
+}
+
+function plus(i){cart[i].qty++;saveCart();}
+function minus(i){cart[i].qty--;if(cart[i].qty<=0)cart.splice(i,1);saveCart();}
+
+function saveCart(){
+localStorage.setItem("cart",JSON.stringify(cart));
+showCart();
+}
+
+function showCart(){
+let list=document.getElementById("list");
+let total=0;
+list.innerHTML="";
+cart.forEach((item,i)=>{
+total+=item.price*item.qty;
+list.innerHTML+=`
+<li>
+<div>${item.name}<br>$${item.price} x ${item.qty}</div>
+<div class="qty">
+<button onclick="minus(${i})">-</button>
+<span>${item.qty}</span>
+<button onclick="plus(${i})">+</button>
+</div>
+</li>`;
+});
+document.getElementById("count").innerText=
+cart.reduce((a,b)=>a+b.qty,0);
+document.getElementById("total").innerText="$"+total;
+}
 
 function toggleCart(){
 document.getElementById("cartBox").classList.toggle("active");
 }
 
-function add(name,price){
-cart.push({name,price});
-localStorage.setItem("cart",JSON.stringify(cart));
-show();
-toggleCart();
-toast();
-cartBump();
-}
-
-function show(){
-let list=document.getElementById("list");
-let total=0;
-list.innerHTML="";
-
-cart.forEach(item=>{
-let li=document.createElement("li");
-li.innerHTML="<span>"+item.name+"</span><span>$"+item.price+"</span>";
-list.appendChild(li);
-total += item.price;
-});
-
-document.getElementById("total").innerText="$"+total;
-document.getElementById("count").innerText=cart.length;
-}
-
 function toast(){
 let t=document.getElementById("toast");
-t.classList.add("show");
-
-setTimeout(()=>{
-t.classList.remove("show");
-},1800);
+t.style.display="block";
+setTimeout(()=>t.style.display="none",1500);
 }
 
-function cartBump(){
-let c=document.getElementById("count");
-c.style.transform="scale(1.35)";
-setTimeout(()=>{
-c.style.transform="scale(1)";
-},250);
+function searchProduct(v){
+v=v.toLowerCase();
+render(items.filter(x=>x.name.toLowerCase().includes(v)));
 }
 
-/* SEARCH */
-document.querySelector(".search-box input").addEventListener("keyup",function(){
-let value=this.value.toLowerCase();
-let cards=document.querySelectorAll(".card");
+function darkMode(){
+document.body.style.background="#111";
+document.body.style.color="#fff";
+}
 
-cards.forEach(card=>{
-let text=card.innerText.toLowerCase();
-card.style.display=text.includes(value) ? "block":"none";
-});
-});
+/* SLIDER */
+let s=0;
+setInterval(()=>{
+let slides=document.querySelectorAll(".slide");
+slides.forEach(x=>x.classList.remove("active"));
+s=(s+1)%slides.length;
+slides[s].classList.add("active");
+},3000);
 
-show();
+render();
+showCart();
 </script>
-<!-- 1) ដាក់ក្នុង <head> ខាងក្រោម style ចាស់ -->
 
-<style>
-
-/* =========================
-   MOBILE FULL FIX PRO
-========================= */
-
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-}
-
-/* HEADER */
-.header {
-  background: black;
-  padding: 10px;
-}
-
-.logo {
-  font-size: 18px;
-}
-
-.header-search input {
-  width: 100%;
-  padding: 10px;
-  border-radius: 20px;
-}
-
-/* PRODUCT GRID */
-.products {
-  display: grid;
-  grid-template-columns: 1fr 1fr; /* 2 columns */
-  gap: 10px;
-}
-
-/* MOBILE FIX */
-@media (max-width: 480px) {
-  .products {
-    grid-template-columns: 1fr 1fr; /* នៅតែ 2 card */
-  }
-
-  .banner h2 {
-    font-size: 18px;
-  }
-
-  .banner p {
-    font-size: 14px;
-  }
-}
-
-
-.profile-btn{
-padding:8px 16px !important;
-font-size:15px !important;
-border-radius:30px !important;
-}
-
-.cart-icon{
-position:relative !important;
-top:auto !important;
-right:auto !important;
-font-size:24px !important;
-}
-
-/* HERO */
-.hero{
-margin:12px !important;
-padding:22px !important;
-border-radius:25px !important;
-}
-
-.hero h1{
-font-size:38px !important;
-line-height:1.1;
-margin-bottom:12px;
-}
-
-.hero p{
-font-size:18px !important;
-line-height:1.4;
-margin-bottom:15px;
-}
-
-.hero button{
-padding:12px 24px !important;
-font-size:17px !important;
-border-radius:30px !important;
-}
-
-.card{
-padding:12px !important;
-border-radius:22px !important;
-}
-
-.card img{
-height:150px !important;
-object-fit:contain !important;
-}
-
-.card h3,
-.card h4{
-font-size:17px !important;
-line-height:1.3;
-margin:8px 0;
-}
-
-.price{
-font-size:25px !important;
-margin-bottom:10px;
-}
-
-.card button{
-padding:12px !important;
-font-size:14px !important;
-border-radius:25px !important;
-}
-
-/* CART MOBILE */
-.cart{
-position:fixed !important;
-top:0 !important;
-right:-100% !important;
-width:100% !important;
-height:100vh !important;
-z-index:99999 !important;
-border-radius:0 !important;
-padding:22px !important;
-overflow:auto !important;
-transition:.35s;
-}
-
-.cart.active{
-right:0 !important;
-}
-
-.cart h2,
-.cart h3{
-font-size:32px !important;
-}
-
-/* FOOTER */
-footer{
-padding-bottom:90px;
-}
-
-/* MOBILE NAV */
-.mobile-nav{
-position:fixed;
-bottom:0;
-left:0;
-width:100%;
-background:#111;
-display:flex;
-justify-content:space-around;
-align-items:center;
-padding:10px 0;
-z-index:999999;
-box-shadow:0 -5px 15px rgba(0,0,0,.25);
-}
-
-.mobile-nav a{
-color:white;
-text-decoration:none;
-font-size:13px;
-text-align:center;
-}
-
-.mobile-nav span{
-display:block;
-font-size:22px;
-margin-bottom:4px;
-}
-
-}
-
-/* DESKTOP */
-@media (min-width:769px){
-.mobile-nav{
-display:none;
-}
-}
-
-</style>
-
-
-<!-- 2) ដាក់មុន </body> -->
-
-<div class="mobile-nav">
-
-<a href="shop.html">
-<span>🏠</span>
-Home
-</a>
-
-<a href="#">
-<span>🛍️</span>
-Shop
-</a>
-
-<a href="javascript:toggleCart()">
-<span>🛒</span>
-Cart
-</a>
-
-<a href="profile.html">
-<span>👤</span>
-Profile
-</a>
-
-</div>
 </body>
 </html>
-</header>
-   <a href="cart.html" class="next-btn">Next </a>                         
-<a href="shop.html" class="back-btn"> Back</a>  
+<a href="shop.html" class="back-btn"> Back</a> 
