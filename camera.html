@@ -1,226 +1,472 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>SASA Shop PRO</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SASA Shop WORLD CLASS</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-  .cart-count {
-  transition: 0.3s;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
 }
 
-.cart-count.bump {
-  transform: scale(1.3);
-}
-  /* Profile button (special) */
-.profile-btn {
-  text-decoration: none;
-  background: rgb(#ee4d2d);
-  color: white;
-  padding: 5px 5px;
-  border-radius: 5px;
-  font-weight: bold;
-  transition: 0.3s;
-}
-  .profile-btn:hover {
-  background: #000000;
-}
-.cart-icon {
-  position: fixed;
-  top: 100px; /* ពីមុន 15px → កែជា 30px */
-  right: 100px;
-  font-size: 22px;
-}
-  /* CART ICON */
-.cart-icon {
-  position: fixed;
-  top: 100px;
-  right: 0px;
-  font-size: 50px;
-  cursor: pointer;
-}
-  .next-btn {
-  text-decoration: none;
-  background: linear-gradient(45deg, #ee4d2d, #ee4d2d);
-  color: white;
-  padding: 8px 15px;
-  border-radius: 20px;
-  font-weight: bold;
-  transition: 0.3s;
+html{
+scroll-behavior:smooth;
 }
 
-.next-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-  /* CART ICON */
-.cart-icon {
-  position: fixed;
-  top: 15px;
-  right: 20px;
-  font-size: 22px;
-  cursor: pointer;
+body{
+background:linear-gradient(135deg,#f8f9ff,#eef2ff,#ffffff);
+color:#111;
+overflow-x:hidden;
 }
 
-.cart-count {
-  background: red;
-  color: white;
-  border-radius: 50%;
-  padding: 3px 7px;
-  font-size: 12px;
-  position: absolute;
-  top: -8px;
-  right: -10px;
+/* LOADER */
+#loader{
+position:fixed;
+inset:0;
+background:#fff;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+font-size:32px;
+font-weight:800;
+color:#ff0055;
 }
 
-/* CART PANEL */
-.cart-box {
-  position: fixed;
-  right: -350px;
-  top: 0;
-  width: 300px;
-  height: 100%;
-  background: white;
-  box-shadow: -5px 0 20px rgba(0,0,0,0.3);
-  padding: 15px;
-  transition: 0.3s;
+/* HEADER */
+header{
+position:sticky;
+top:0;
+z-index:1000;
+padding:16px 30px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(255,255,255,.8);
+backdrop-filter:blur(18px);
+box-shadow:0 8px 30px rgba(0,0,0,.08);
 }
 
-.cart-box.active {
-  right: 0;
+.logo{
+font-size:32px;
+font-weight:800;
+background:linear-gradient(135deg,#ff5a00,#ff0055);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
-.cart-box h3 {
-  margin-top: 0;
+.right{
+display:flex;
+align-items:center;
+gap:12px;
 }
 
-.cart-box ul {
-  padding: 0;
-  list-style: none;
+.search{
+padding:12px 18px;
+border:none;
+outline:none;
+border-radius:30px;
+width:240px;
+background:#f1f3f8;
 }
 
-.cart-box li {
-  margin-bottom: 8px;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 5px;
+.icon-btn{
+width:44px;
+height:44px;
+border-radius:50%;
+border:none;
+cursor:pointer;
+font-size:18px;
+background:#111;
+color:#fff;
 }
 
-.total {
-  font-weight: bold;
-  color: #ee4d2d;
+.cart{
+position:relative;
+font-size:28px;
+cursor:pointer;
 }
 
-.close-btn {
-  float: right;
-  cursor: pointer;
-  font-size: 18px;
-}
-  /* PAY BUTTON PRO */
-.pay-btn {
-  text-decoration: none;
-  background: linear-gradient(45deg, #ff5722, #000000);
-  color: white;
-  padding: 12px 25px;
-  border-radius: 30px;
-  font-weight: bold;
-  font-size: 16px;
-  display: inline-block;
-  position: relative;
-  overflow: hidden;
-  transition: 0.3s;
+.count{
+position:absolute;
+top:-8px;
+right:-8px;
+background:#ff0055;
+color:#fff;
+padding:4px 8px;
+font-size:11px;
+border-radius:50%;
+font-weight:700;
 }
 
-/* Hover effect */
-.pay-btn:hover {
-  transform: scale(1.08);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+/* HERO */
+.hero{
+padding:20px;
 }
 
-/* Glow animation */
-.pay-btn::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
-  transition: 0.5s;
+.slider{
+height:450px;
+border-radius:35px;
+overflow:hidden;
+position:relative;
+box-shadow:0 25px 60px rgba(0,0,0,.15);
 }
 
-.pay-btn:hover::before {
-  left: 100%;
-}
-body {
-  margin: 0;
-  font-family: Arial;
-  background: #f5f5f5;
-}
-
-header {
-  background: linear-gradient(90deg, #ee4d2d, #ff9800);
-  padding: 12px 25px;
-  color: white;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+.slide{
+position:absolute;
+inset:0;
+background-size:cover;
+background-position:center;
+display:flex;
+align-items:center;
+padding:55px;
+opacity:0;
+transition:1s;
 }
 
-/* LOGO */
-.logo {
-  font-size: 22px;
-  font-weight: bold;
+.slide.active{
+opacity:1;
 }
 
-/* SEARCH */
-.search-box {
-  display: flex;
-  width: 40%;
-  background: white;
-  border-radius: 25px;
-  overflow: hidden;
+.overlay{
+background:linear-gradient(to right,rgba(0,0,0,.72),rgba(0,0,0,.18));
+position:absolute;
+inset:0;
 }
 
-.search-box input {
-  flex: 1;
-  border: none;
-  padding: 8px 12px;
-  outline: none;
+.content{
+position:relative;
+z-index:2;
+color:#fff;
+max-width:550px;
 }
 
-.search-box button {
-  background: #d84315;
-  border: none;
-  color: white;
-  padding: 8px 15px;
-  cursor: pointer;
+.content h1{
+font-size:64px;
+line-height:1.05;
+margin-bottom:15px;
 }
 
-/* RIGHT MENU */
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.content p{
+font-size:18px;
+margin-bottom:22px;
 }
 
-/* BUTTON */
-.nav-btn {
-  background: white;
-  color: #ee4d2d;
-  padding: 6px 12px;
-  border-radius: 20px;
-  text-decoration: none;
-  font-weight: bold;
+.content a{
+display:inline-block;
+padding:15px 28px;
+border-radius:40px;
+background:#fff;
+color:#111;
+font-weight:800;
+text-decoration:none;
 }
 
-.nav-btn:hover {
-  background: black;
-  color: white;
+/* TITLE */
+.title{
+padding:0 20px;
+font-size:30px;
+font-weight:800;
+margin:18px 0;
 }
 
-/* PROFILE */
+/* PRODUCTS */
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:22px;
+padding:0 20px 50px;
+}
+
+.card{
+background:#fff;
+border-radius:28px;
+overflow:hidden;
+box-shadow:0 18px 35px rgba(0,0,0,.08);
+transition:.3s;
+position:relative;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.badge{
+position:absolute;
+top:14px;
+left:14px;
+padding:6px 12px;
+border-radius:20px;
+font-size:12px;
+font-weight:800;
+color:#fff;
+background:linear-gradient(135deg,#ff0055,#ff7b00);
+}
+
+.wish{
+position:absolute;
+top:14px;
+right:14px;
+width:42px;
+height:42px;
+border-radius:50%;
+background:#fff;
+display:flex;
+justify-content:center;
+align-items:center;
+cursor:pointer;
+font-size:18px;
+}
+
+.card img{
+width:100%;
+height:260px;
+object-fit:cover;
+}
+
+.body{
+padding:20px;
+}
+
+.name{
+font-size:20px;
+font-weight:700;
+margin-bottom:8px;
+}
+
+.desc{
+font-size:13px;
+color:#777;
+margin-bottom:12px;
+}
+
+.row{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:15px;
+}
+
+.price{
+font-size:26px;
+font-weight:800;
+color:#ff5a00;
+}
+
+.rate{
+font-size:14px;
+font-weight:700;
+}
+
+.buy{
+width:100%;
+padding:14px;
+border:none;
+border-radius:18px;
+background:linear-gradient(135deg,#ff5a00,#ff0055);
+color:#fff;
+font-weight:800;
+cursor:pointer;
+}
+
+/* CART */
+.cart-box{
+position:fixed;
+top:0;
+right:-430px;
+width:420px;
+height:100%;
+background:rgba(255,255,255,.92);
+backdrop-filter:blur(18px);
+padding:24px;
+transition:.4s;
+z-index:3000;
+overflow:auto;
+box-shadow:-15px 0 40px rgba(0,0,0,.15);
+}
+
+.cart-box.active{
+right:0;
+}
+
+.close{
+float:right;
+font-size:24px;
+cursor:pointer;
+font-weight:800;
+}
+
+.cart-box h2{
+font-size:30px;
+margin-bottom:18px;
+}
+
+.cart-box li{
+list-style:none;
+padding:14px 0;
+border-bottom:1px solid #eee;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.qty{
+display:flex;
+gap:8px;
+align-items:center;
+}
+
+.qty button{
+width:28px;
+height:28px;
+border:none;
+border-radius:50%;
+background:#111;
+color:#fff;
+cursor:pointer;
+}
+
+.total{
+font-size:30px;
+font-weight:800;
+margin-top:18px;
+color:#ff0055;
+}
+
+.checkout{
+display:block;
+text-align:center;
+padding:14px;
+margin-top:16px;
+border-radius:18px;
+background:#111;
+color:#fff;
+text-decoration:none;
+font-weight:800;
+}
+
+/* TOAST */
+.toast{
+position:fixed;
+bottom:30px;
+right:30px;
+background:#111;
+color:#fff;
+padding:14px 20px;
+border-radius:18px;
+display:none;
+z-index:9999;
+}
+
+/* FLOAT */
+.float{
+position:fixed;
+bottom:20px;
+left:20px;
+display:flex;
+flex-direction:column;
+gap:12px;
+z-index:999;
+}
+
+.float a{
+width:55px;
+height:55px;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+text-decoration:none;
+font-size:24px;
+color:#fff;
+background:#25D366;
+box-shadow:0 8px 25px rgba(0,0,0,.2);
+}
+
+.float a:last-child{
+background:#229ED9;
+}
+
+/* FOOTER */
+footer{
+padding:35px;
+text-align:center;
+color:#777;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+.search{
+display:none;
+}
+
+.slider{
+height:280px;
+}
+
+.content h1{
+font-size:34px;
+}
+
+.content p{
+font-size:13px;
+}
+
+.products{
+grid-template-columns:repeat(2,1fr);
+gap:12px;
+}
+
+.card img{
+height:150px;
+}
+
+.name{
+font-size:14px;
+}
+
+.price{
+font-size:18px;
+}
+
+.cart-box{
+width:100%;
+right:-100%;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<div id="loader">Loading...</div>
+
+<header>
+<div class="logo">🛒 SASA Shop</div>
+
+<div class="right">
+<input class="search" placeholder="Search product..." onkeyup="searchProduct(this.value)"> <a href="profile.html" class="profile-btn">👤 Profile</a>
+<button class="icon-btn" onclick="darkMode()">🌙</button>
+
+<div class="cart" onclick="toggleCart()">
+🛒
+<span class="count" id="count">0</span>
+</div>
+</div>
+</header>
+</div>
+</section>
+
+<style>
+  /* PROFILE */
 .profile-btn {
   background: black;
   color: white;
@@ -232,536 +478,227 @@ header {
 .profile-btn:hover {
   background: #333;
 }
-
-/* header*/
-.logout {
-  background: transparent;
-  border: none;
-  color: white;
-  font-size: 18px;
-  cursor: pointer;
+/* CATEGORY SECTION */
+.category{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+gap:18px;
+padding:20px;
 }
 
-/* PRODUCTS */
-.products {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
-  gap: 15px;
-  padding: 20px;
+/* ITEM */
+.menu-item{
+background:#fff;
+border-radius:24px;
+padding:18px 12px;
+text-align:center;
+text-decoration:none;
+color:#111;
+box-shadow:0 12px 25px rgba(0,0,0,.08);
+transition:.35s;
+position:relative;
+overflow:hidden;
 }
 
-/* CARD */
-.card {
-  background: white;
-  border-radius: 10px;
-  overflow: hidden;
-  transition: 0.3s;
+/* HOVER */
+.menu-item:hover{
+transform:translateY(-8px) scale(1.03);
+box-shadow:0 18px 35px rgba(0,0,0,.12);
 }
 
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+/* ACTIVE PAGE */
+.menu-item.active{
+background:linear-gradient(135deg,#ff5a00,#ff0055);
+color:#fff;
 }
 
-.card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
+/* IMAGE */
+.menu-item img{
+width:75px;
+height:75px;
+object-fit:cover;
+border-radius:18px;
+margin-bottom:12px;
+background:#fff;
+padding:6px;
+transition:.3s;
 }
 
-.card-body {
-  padding: 10px;
+.menu-item:hover img{
+transform:scale(1.08);
 }
 
-.price {
-  color: #ee4d2d;
-  font-weight: bold;
+/* TEXT */
+.menu-item p{
+font-size:15px;
+font-weight:700;
+margin-top:6px;
 }
 
-/* BUTTON */
-button {
-  width: 100%;
-  padding: 8px;
-  border: none;
-  background: #ee4d2d;
-  color: white;
-  border-radius: 5px;
-  cursor: pointer;
+/* MOBILE */
+@media(max-width:768px){
+
+.category{
+grid-template-columns:repeat(2,1fr);
+gap:12px;
+padding:15px;
 }
 
-button:hover {
-  background: #d84315;
+.menu-item{
+padding:14px 10px;
+border-radius:20px;
 }
 
-/* CART PANEL */
-.cart {
-  position: fixed;
-  right: -350px;
-  top: 0;
-  width: 300px;
-  height: 100%;
-  background: white;
-  padding: 15px;
-  box-shadow: -5px 0 20px rgba(0,0,0,0.2);
-  transition: 0.3s;
+.menu-item img{
+width:60px;
+height:60px;
 }
 
-.cart.active {
-  right: 0;
+.menu-item p{
+font-size:13px;
 }
 
-.cart h3 {
-  margin-top: 0;
-}
-
-.back-btn {
-  display: inline-block;
-  text-decoration: none;
-  background: #ee4d2d;
-  color: white;
-  padding: 6px 12px;
-  border-radius: 15px;
-  margin-top: 10px;
-}
-
-.back-btn:hover {
-  background: black;
 }
 </style>
 
-</head>
-
-<body>
-<script src="script.js"></script>
-</body>
-<header>
-  <h2>🛒 SASA Shop</h2>
-   <a href="profile.html" class="profile-btn">👤 Profile</a>
-   <div class="cart-icon" onclick="toggleCart()">
-      🛒
-      <span class="cart-count" id="count">0</span>
-    </div>
-</header>
-
-<div class="products">
-
-  <div class="card">
-    <img src="https://down-vn.img.susercontent.com/file/sg-11134201-22110-d732dwy60ujvdc.webp">
-    <div class="card-body">
-      <h4></h4>
-      <p class="price"></p>
-
-    </div>
-  </div>
-
-  <div class="card">
-    <img src="https://www.apple.com/v/iphone/home/cj/images/overview/consider_modals/innovation/modal_last__d33bqh7vdo6e_large_2x.jpg">
-    <div class="card-body">
-      <h4>iphone</h4>
-      <p class="price"></p>
-      <button onclick="add('iphone',50)">Add</button>
-    </div>
-  </div>
-
-</div>
-<!-- CART -->
-<div class="cart" id="cartBox">
-
-  <div class="cart-header">
-    <h3>🧾 Your Cart</h3>
-    <span class="close-btn" onclick="toggleCart()">✖</span>
-  </div>
-
-  <ul id="list"></ul>
-
-  <div class="cart-footer">
-    <h3 id="total">Total: $0</h3>
-
-    <a href="payment.html" class="pay-btn">
-      💳 Checkout Now
-    </a>
-  </div>
-
+<h2 class="title">Cameras</h2>
+<section class="products" id="products"></section>
+<div class="cart-box" id="cartBox">
+<span class="close" onclick="toggleCart()">✕</span>
+<h2>Your Cart</h2>
+<ul id="list"></ul>
+<div class="total" id="total">$0</div>
+<a href="payment.html" class="checkout">Checkout</a>
 </div>
 
-</a>
+<div class="toast" id="toast">Added To Cart</div>
 
+<div class="float">
+<a href="#" href="payment.html" class="checkout">💬</a>
 </div>
+
+<footer>
+© 2026 SASA Shop WORLD CLASS VERSION
+</footer>
 
 <script>
+setTimeout(()=>{
+document.getElementById("loader").style.display="none";
+},1500);
 
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+/* PRODUCTS */
+const items=[
+{name:"camera Ezviz",price:75,rate:"⭐4.8",img:"https://down-vn.img.susercontent.com/file/sg-11134201-22110-d732dwy60ujvdc.webp"},  
+{name:"camera pro",price:99,rate:"⭐4.8",img:"https://down-vn.img.susercontent.com/file/vn-11134207-7ra0g-m6t989a0l454a0.webp"},  
+{name:"DV HD 1080P 270",price:19,rate:"⭐4.8",img:"https://down-vn.img.susercontent.com/file/0279f8e31a3a92becd6f9b776e2f581a.webp"},  
+{name:"DV HD 1080P 270",price:29,rate:"⭐4.8",img:"https://down-vn.img.susercontent.com/file/vn-11134103-7ras8-m4096p6yoxb4b5.webp"},
+{name:"Camera IMOU 2",price:80,rate:"⭐4.9",img:"https://down-vn.img.susercontent.com/file/vn-11134207-7ra0g-m72a8d37tb2w7c.webp"},  
+{name:"Xiaomi Smart Camera",price:40,rate:"⭐4.8",img:"https://down-vn.img.susercontent.com/file/vn-11134207-7ras8-mbni4pvlhfmo1c.webp"},  
+{name:"Camera YooSee",price:87,rate:"⭐4.8",img:"https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-lgek77xox4kq77.webp"},
+{name:"camera wifi",price:90,rate:"⭐4.8",img:"https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lyrowc4fsgptdb@resize_w900_nl.webp"},
+{name:" Yoosee 5",price:79,rate:"⭐4.8",img:"https://down-vn.img.susercontent.com/file/vn-11134207-7ras8-m0hf5k5u68pbf5.webp"},  
+{name:"CAMERA A9",price:92,rate:"⭐4.8",img:"https://down-vn.img.susercontent.com/file/sg-11134201-7rd4k-m6s3jm72v3x696.webp"},  
+{name:"CAMERA IMOU",price:20,rate:"⭐4.8",img:"https://down-vn.img.susercontent.com/file/vn-11134207-7ras8-m2rraj1mjg1y6b.webp"},
+{name:"camera Samsung",price:70,rate:"⭐4.8",img:"https://down-vn.img.susercontent.com/file/vn-11134207-7ra0g-madwabpt99so2b.webp"},
+{name:"Camera IP WIFI DAHUA",price:12,rate:"⭐4.9",img:"https://down-vn.img.susercontent.com/file/vn-11134207-81ztc-mkj99wqf7zt2f4.webp"},
+{name:"camera2K/1080P ",price:15,rate:"⭐5.0",img:"https://down-vn.img.susercontent.com/file/vn-11134207-820l4-mie5k04iqwaw6a.webp"},
+{name:"Camera Wific30",price:19,rate:"⭐4.8",img:"https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lmmz3kjxtm8vc9.webp"},
+{name:"V70SE",price:69,rate:"⭐4.7",img:"https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-llucopii0u73f5.webp"}
+];
+
+let cart=JSON.parse(localStorage.getItem("cart"))||[];
+
+function render(data=items){
+let html="";
+data.forEach(item=>{
+html+=`
+<div class="card">
+<div class="badge">HOT</div>
+<div class="wish">♡</div>
+<img src="${item.img}">
+<div class="body">
+<div class="name">${item.name}</div>
+<div class="desc">Premium quality official product</div>
+<div class="row">
+<div class="price">$${item.price}</div>
+<div class="rate">${item.rate}</div>
+</div>
+<button class="buy" onclick="add('${item.name}',${item.price},'${item.img}')">Add To Cart</button>
+</div>
+</div>`;
+});
+document.getElementById("products").innerHTML=html;
+}
+
+function add(name,price,img){
+let f=cart.find(x=>x.name===name);
+if(f){f.qty++;}
+else{cart.push({name,price,img,qty:1});}
+saveCart();
+toast();
+}
+
+function plus(i){cart[i].qty++;saveCart();}
+function minus(i){cart[i].qty--;if(cart[i].qty<=0)cart.splice(i,1);saveCart();}
+
+function saveCart(){
+localStorage.setItem("cart",JSON.stringify(cart));
+showCart();
+}
+
+function showCart(){
+let list=document.getElementById("list");
+let total=0;
+list.innerHTML="";
+cart.forEach((item,i)=>{
+total+=item.price*item.qty;
+list.innerHTML+=`
+<li>
+<div>${item.name}<br>$${item.price} x ${item.qty}</div>
+<div class="qty">
+<button onclick="minus(${i})">-</button>
+<span>${item.qty}</span>
+<button onclick="plus(${i})">+</button>
+</div>
+</li>`;
+});
+document.getElementById("count").innerText=
+cart.reduce((a,b)=>a+b.qty,0);
+document.getElementById("total").innerText="$"+total;
+}
 
 function toggleCart(){
-  document.getElementById("cartBox").classList.toggle("active");
+document.getElementById("cartBox").classList.toggle("active");
 }
 
-function add(name, price) {
-  cart.push({name, price});
-  localStorage.setItem("cart", JSON.stringify(cart));
-  show();
-  toggleCart(); // បើចង់អោយវាលោតចេញ
+function toast(){
+let t=document.getElementById("toast");
+t.style.display="block";
+setTimeout(()=>t.style.display="none",1500);
 }
 
-function show() {
-  let list = document.getElementById("list");
-  list.innerHTML = "";
-  let total = 0;
-
-  cart.forEach(item => {
-    let li = document.createElement("li");
-    li.innerText = item.name + " - $" + item.price;
-    list.appendChild(li);
-    total += item.price;
-  });
-
-  document.getElementById("total").innerText = "Total: $" + total;
+function searchProduct(v){
+v=v.toLowerCase();
+render(items.filter(x=>x.name.toLowerCase().includes(v)));
 }
 
-function clearCart() {
-  cart = [];
-  localStorage.removeItem("cart");
-  show();
+function darkMode(){
+document.body.style.background="#111";
+document.body.style.color="#fff";
 }
 
-show();
+/* SLIDER */
+let s=0;
+setInterval(()=>{
+let slides=document.querySelectorAll(".slide");
+slides.forEach(x=>x.classList.remove("active"));
+s=(s+1)%slides.length;
+slides[s].classList.add("active");
+},3000);
 
+render();
+showCart();
 </script>
 
 </body>
 </html>
-
-<div class="products">
-
-  <div class="card">
-    <div class="badge">🔥 Hot</div>
-    <img src="https://down-vn.img.susercontent.com/file/sg-11134201-22110-d732dwy60ujvdc.webp">
-    <div class="card-body">
-      <h4>camera Ezviz</h4>
-      <p class="price">$75</p>
-      <button onclick="add('camera Ezviz',75)">Add</button>
-    </div>
-  </div>
- <div class="card">
-    <div class="badge">🔥 Hot</div>
-    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7ra0g-m6t989a0l454a0.webp">
-    <div class="card-body">
-      <h4>camera pro</h4>
-      <p class="price">$99</p>
-      <button onclick="add('camera pro',99)">Add</button>
-    </div>
-  </div> <div class="card">
-    <div class="badge">🔥 Hot</div>
-    <img src="https://down-vn.img.susercontent.com/file/vn-11134201-820l4-mh7khi7rxxqh23.webp">
-    <div class="card-body">
-      <h4>DV HD 1080P 270</h4>
-      <p class="price">$45</p>
-      <button onclick="add('DV HD 1080P 270',45)">Add</button>
-    </div>
-  </div> <div class="card">
-    <div class="badge">🔥 Hot</div>
-    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lyrowc4fsgptdb@resize_w900_nl.webp">
-    <div class="card-body">
-      <h4>Camera IMOU 2 </h4>
-      <p class="price">$90</p>
-      <button onclick="add('Camera IMOU 2',90)">Add</button>
-    </div>
-  </div> <div class="card">
-    <div class="badge">🔥 Hot</div>
-    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7ras8-mbni4pvlhfmo1c.webp">
-    <div class="card-body">
-      <h4> Xiaomi Smart Camera</h4>
-      <p class="price">$70</p>
-      <button onclick="add('Xiaomi Smart Camera',70)">Add</button>
-    </div>
-  </div> <div class="card">
-    <div class="badge">🔥 Hot</div>
-    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-lgek77xox4kq77.webp">
-    <div class="card-body">
-      <h4>Camera YooSee</h4>
-      <p class="price">$75</p>
-      <button onclick="add('Camera YooSee',75)">Add</button>
-    </div>
-  </div> <div class="card">
-    <div class="badge">🔥 Hot</div>
-    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lyrowc4fsgptdb@resize_w900_nl.webp">
-    <div class="card-body">
-      <h4>camera wifi</h4>
-      <p class="price">$110</p>
-      <button onclick="add('camera wifi',110)">Add</button>
-    </div>
-  </div> <div class="card">
-    <div class="badge">🔥 Hot</div>
-    <img src="https://down-vn.img.susercontent.com/file/sg-11134201-23020-1msvkpzbwfnve1.webp">
-    <div class="card-body">
-      <h4>Camera an</h4>
-      <p class="price">$125</p>
-      <button onclick="add('Camera an',125)">Add</button>
-    </div>
-  </div> <div class="card">
-    <div class="badge">🔥 Hot</div>
-    <img src="https://down-vn.img.susercontent.com/file/0279f8e31a3a92becd6f9b776e2f581a.webp">
-    <div class="card-body">
-      <h4>Camera Yoosee 3</h4>
-      <p class="price">$150</p>
-      <button onclick="add('Camera Yoosee 3',150)">Add</button>
-    </div>
-  </div> <div class="card">
-    <div class="badge">🔥 Hot</div>
-    <img src="https://down-vn.img.susercontent.com/file/vn-11134103-7ras8-m4096p6yoxb4b5.webp">
-    <div class="card-body">
-      <h4>camera 3</h4>
-      <p class="price">$170</p>
-      <button onclick="add('camera 3',170)">Add</button>
-    </div>
-  
-  </div> <div class="card">
-    <div class="badge">🔥 Hot</div>
-    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7ra0g-m72a8d37tb2w7c.webp">
-    <div class="card-body">
-      <h4>Yoosee 3</h4>
-      <p class="price">$90</p>
-      <button onclick="add('Yoosee 3',90)">Add</button>
-    </div>
-  </div> <div class="card">
-    <div class="badge">🔥 Hot</div>
-    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7ras8-m0hf5k5u68pbf5.webp">
-    <div class="card-body">
-      <h4> Yoosee 5</h4>
-      <p class="price">$80</p>
-      <button onclick="add('Yoosee 5',80)">Add</button>
-    </div>
-  </div> <div class="card">
-    <div class="badge">🔥 Hot</div>
-    <img src="https://down-vn.img.susercontent.com/file/sg-11134201-7rd4k-m6s3jm72v3x696.webp">
-    <div class="card-body">
-      <h4>CAMERA A9 WiFi Mini</h4>
-      <p class="price">$30</p>
-      <button onclick="add('CAMERA A9 WiFi Mini',30)">Add</button>
-    </div>
-  </div> <div class="card">
-    <div class="badge">🔥 Hot</div>
-    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7ra0g-m7zzvm8avkha81.webp">
-    <div class="card-body">
-      <h4>CAMERA A9</h4>
-      <p class="price">$95</p>
-      <button onclick="add('CAMERA A9',95)">Add</button>
-    </div>
-  </div> <div class="card">
-    <div class="badge">🔥 Hot</div>
-    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7ras8-m2rraj1mjg1y6b.webp">
-    <div class="card-body">
-      <h4>CAMERA IMOU</h4>
-      <p class="price">$30</p>
-      <button onclick="add('CAMERA IMOU',30)">Add</button>
-    </div>
-  </div> <div class="card">
-    <div class="badge">🔥 Hot</div>
-    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7ra0g-madwabpt99so2b.webp">
-    <div class="card-body">
-      <h4>camera Samsung</h4>
-      <p class="price">$39</p>
-      <button onclick="add('camera Samsung',39)">Add</button>
-    </div>
-  </div> <div class="card">
-    <div class="badge">🔥 Hot</div>
-    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-81ztc-mkj99wqf7zt2f4.webp">
-    <div class="card-body">
-      <h4>Camera IP WIFI DAHUA</h4>
-      <p class="price">$50</p>
-      <button onclick="add('Camera IP WIFI DAHUA',50)">Add</button>
-    </div>
-  </div> <div class="card">
-    <div class="badge">🔥 Hot</div>
-    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-820l4-mie5k04iqwaw6a.webp">
-    <div class="card-body">
-      <h4>camera2K/1080P </h4>
-      <p class="price">$51</p>
-      <button onclick="add('camera2K/1080P ',51)">Add</button>
-    </div>
-  </div> <div class="card">
-    <div class="badge">🔥 Hot</div>
-    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lmmz3kjxtm8vc9.webp">
-    <div class="card-body">
-      <h4>Camera Wific30</h4>
-      <p class="price">$30</p>
-      <button onclick="add('Camera Wific30',30)">Add</button>
-    </div>
-  </div>
-   <div class="card">
-    <div class="badge">🔥 Hot</div>
-    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-820l4-mehipkbxm1vq70.webp">
-    <div class="card-body">
-      <h4>iphone 17 pro max</h4>
-      <p class="price">$1335</p>
-      <button onclick="add('iphone 17 pro max',1335)">Add</button>
-    </div>
-  </div>
-
-   <div class="card">
-    <div class="badge">🔥 Hot</div>
-    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-llucopii0u73f5.webp">
-    <div class="card-body">
-      <h4>Xiaomi</h4>
-      <p class="price">$230</p>
-      <button onclick="add('Xiaomi 17 Ultra 5G 16GB/512GB',230)">Add</button>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="badge">Sale</div>
-    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7ras8-maw5nmbupa6v77.webp">
-    <div class="card-body">
-      <h4>V70SE</h4>
-      <p class="price">$150</p>
-      <button onclick="add('V70SE',50)">Add</button>
-    </div>
-  </div>
-
- 
-  <div class="card">
-    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7ra0g-m792v86hset8e2.webp">
-    <div class="card-body">
-      <h4>camera YOO5</h4>
-      <p class="price">$120</p>
-      <button onclick="add('Apple AirPods 4th gen',120)">Add</button>
-    </div>
-  </div><div class="card">
-    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lymy6mmtrtep75.webp">
-    <div class="card-body">
-      <h4>  icam365, </h4>
-      <p class="price">$70</p>
-      <button onclick="add('icam365',70)">Add</button>
-    </div>
-  </div><div class="card">
-    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-820l4-mejzo1i16pkx20.webp">
-    <div class="card-body">
-      <h4>Apple AirPods Pro 3</h4>
-      <p class="price">$60</p>
-      <button onclick="add('Apple AirPods Pro 3',60)">Add</button>
-    </div>
-  </div><div class="card">
-    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lyeyy4hci05p04.webp">
-    <div class="card-body">
-      <h4>i camera</h4>
-      <p class="price">$100</p>
-      <button onclick="add('i camera',100)">Add</button>
-    </div>
-  </div><div class="card">
-    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-820l4-mj7uvmma23gke2.webp">
-    <div class="card-body">
-      <h4>camera A16 11  </h4>
-      <p class="price">$50</p>
-      <button onclick="add('camera A16 11',50)">Add</button>
-    </div>
-  </div>
-<div class="card">
-    <img src="https://m.media-amazon.com/images/I/71F4DXptM1L._AC_SL1500_.jpg">
-    <div class="card-body">
-      <h4>camera 36os</h4>
-      <p class="price">$140</p>
-      <button onclick="add('camera 36os',140)">Add</button>
-    </div>
-  </div>
-
-  <div class="card">
-    <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7ras8-m58edx23vn7a6a.webp">
-    <div class="card-body">
-      <h4>cameara tapo</h4>
-      <p class="price">$120</p>
-      <button onclick="add('cameara tapo',120)">Add</button>
-    </div>
-  </div>
-  <div class="card">
-    <img src="https://m.media-amazon.com/images/I/71smzvDXMeL._AC_SL1500_.jpg">
-    <div class="card-body">
-      <h4>TECKNET</h4>
-      <p class="price">$99</p>
-      <button onclick="add('TECKNET',99)">Add</button>
-    </div>
-  </div>
-</div>
- 
-<script>
- if (localStorage.getItem("login") !== "true") {
-  window.location.href = "login.html";
-}
-
-function logout() {
-  localStorage.clear();
-  window.location.href = "login.html";
-}
-
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-function add(name, price) {
-  cart.push({name, price});
-  localStorage.setItem("cart", JSON.stringify(cart));
-  show();
-}
-
-function show() {
-  let list = document.getElementById("list");
-  list.innerHTML = "";
-  let total = 0;
-
-  cart.forEach(item => {
-    let li = document.createElement("li");
-    li.innerText = item.name + " - $" + item.price;
-    list.appendChild(li);
-    total += item.price;
-  });
-
-  document.getElementById("total").innerText = "Total: $" + total;
-}
-
-function clearCart() {
-  cart = [];
-  localStorage.removeItem("cart");
-  show();
-}
-
-function checkout() {
-  let name = document.getElementById("name").value;
-  let address = document.getElementById("address").value;
-
-  if(cart.length === 0){
-    alert("Cart empty ❌");
-    return;
-  }
-
-  if(name === "" || address === ""){
-    alert("Fill info ❗");
-    return;
-  }
-
-  document.getElementById("qrBox").style.display = "block";
-}
-
-function confirmPayment() {
-  alert("Payment Success 🎉");
-
-  cart = [];
-  localStorage.removeItem("cart");
-  show();
-
-  document.getElementById("qrBox").style.display = "none";
-}
-
-show(); 
-
-
-
-</script>
-
-</body>
-</html>
-</body>
-</html> 
-<header>
-  <h2>🛒 </h2>
-
-</header>
-   <a href="cart.html" class="next-btn">Next </a>                         
-<a href="shop.html" class="back-btn"> Back</a>   
-
