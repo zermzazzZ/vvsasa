@@ -1,385 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>SASA Shop PRO</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SASA Shop </title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-  .products {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 20px;
-  padding: 20px;
-}
-
-/* Card */
-.card {
-  background: #1e1e1e;
-  border-radius: 12px;
-  overflow: hidden;
-  transition: 0.3s;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.4);
-  color: white;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(255,87,34,0.4);
-}
-
-/* Image */
-.card img {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-  transition: 0.3s;
-}
-
-.card:hover img {
-  transform: scale(1.05);
-}
-
-/* Body */
-.card-body {
-  padding: 10px;
-  text-align: center;
-}
-
-.card-body h4 {
-  margin: 5px 0;
-  font-size: 16px;
-}
-
-.price {
-  color: #ff5722;
-  font-weight: bold;
-  margin: 5px 0;
-}
-
-/* Button */
-.card button {
-  background: linear-gradient(45deg, #ff5722, #ff9800);
-  border: none;
-  padding: 8px 12px;
-  color: white;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.card button:hover {
-  transform: scale(1.1);
-}
-  .cart-count {
-  transition: 0.3s;
-}
-
-.cart-count.bump {
-  transform: scale(1.3);
-}
-  /* Profile button (special) */
-.profile-btn {
-  text-decoration: none;
-  background: rgb(#ee4d2d);
-  color: white;
-  padding: 5px 5px;
-  border-radius: 5px;
-  font-weight: bold;
-  transition: 0.3s;
-}
-  .profile-btn:hover {
-  background: #000000;
-}
-.cart-icon {
-  position: fixed;
-  top: 100px; /* ពីមុន 15px → កែជា 30px */
-  right: 100px;
-  font-size: 22px;
-}
-  /* CART ICON */
-.cart-icon {
-  position: fixed;
-  top: 100px;
-  right: 0px;
-  font-size: 50px;
-  cursor: pointer;
-}
-  .next-btn {
-  text-decoration: none;
-  background: linear-gradient(45deg, #ee4d2d, #ee4d2d);
-  color: white;
-  padding: 8px 15px;
-  border-radius: 20px;
-  font-weight: bold;
-  transition: 0.3s;
-}
-
-.next-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-  /* CART ICON */
-.cart-icon {
-  position: fixed;
-  top: 15px;
-  right: 20px;
-  font-size: 22px;
-  cursor: pointer;
-}
-
-.cart-count {
-  background: red;
-  color: white;
-  border-radius: 50%;
-  padding: 3px 7px;
-  font-size: 12px;
-  position: absolute;
-  top: -8px;
-  right: -10px;
-}
-
-/* CART PANEL */
-.cart-box {
-  position: fixed;
-  right: -350px;
-  top: 0;
-  width: 300px;
-  height: 100%;
-  background: white;
-  box-shadow: -5px 0 20px rgba(0,0,0,0.3);
-  padding: 15px;
-  transition: 0.3s;
-}
-
-.cart-box.active {
-  right: 0;
-}
-
-.cart-box h3 {
-  margin-top: 0;
-}
-
-.cart-box ul {
-  padding: 0;
-  list-style: none;
-}
-
-.cart-box li {
-  margin-bottom: 8px;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 5px;
-}
-
-.total {
-  font-weight: bold;
-  color: #ee4d2d;
-}
-
-.close-btn {
-  float: right;
-  cursor: pointer;
-  font-size: 18px;
-}
-  /* PAY BUTTON PRO */
-.pay-btn {
-  text-decoration: none;
-  background: linear-gradient(45deg, #ff5722, #000000);
-  color: white;
-  padding: 12px 25px;
-  border-radius: 30px;
-  font-weight: bold;
-  font-size: 16px;
-  display: inline-block;
-  position: relative;
-  overflow: hidden;
-  transition: 0.3s;
-}
-
-/* Hover effect */
-.pay-btn:hover {
-  transform: scale(1.08);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-}
-
-/* Glow animation */
-.pay-btn::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
-  transition: 0.5s;
-}
-
-.pay-btn:hover::before {
-  left: 100%;
-}
-body {
-  margin: 0;
-  font-family: Arial;
-  background: #f5f5f5;
-}
-
-header {
-  background: linear-gradient(90deg, #ee4d2d, #ff9800);
-  padding: 12px 25px;
-  color: white;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-
-/* LOGO */
-.logo {
-  font-size: 22px;
-  font-weight: bold;
-}
-
-/* SEARCH */
-.search-box {
-  display: flex;
-  width: 40%;
-  background: white;
-  border-radius: 25px;
-  overflow: hidden;
-}
-
-.search-box input {
-  flex: 1;
-  border: none;
-  padding: 8px 12px;
-  outline: none;
-}
-
-.search-box button {
-  background: #d84315;
-  border: none;
-  color: white;
-  padding: 8px 15px;
-  cursor: pointer;
-}
-
-/* RIGHT MENU */
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-/* BUTTON */
-.nav-btn {
-  background: white;
-  color: #ee4d2d;
-  padding: 6px 12px;
-  border-radius: 20px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.nav-btn:hover {
-  background: black;
-  color: white;
-}
-
-/* PROFILE */
-.profile-btn {
-  background: black;
-  color: white;
-  padding: 6px 14px;
-  border-radius: 20px;
-  text-decoration: none;
-}
-
-.profile-btn:hover {
-  background: #333;
-}
-
-/* header*/
-.logout {
-  background: transparent;
-  border: none;
-  color: white;
-  font-size: 18px;
-  cursor: pointer;
-}
-
-/* PRODUCTS */
-.products {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
-  gap: 15px;
-  padding: 20px;
-}
-
-/* CARD */
-.card {
-  background: white;
-  border-radius: 10px;
-  overflow: hidden;
-  transition: 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
-
-.card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
-
-.card-body {
-  padding: 10px;
-}
-
-.price {
-  color: #ee4d2d;
-  font-weight: bold;
-}
-
-/* BUTTON */
-button {
-  width: 100%;
-  padding: 8px;
-  border: none;
-  background: #ee4d2d;
-  color: white;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-button:hover {
-  background: #d84315;
-}
-
-/* CART PANEL */
-.cart {
-  position: fixed;
-  right: -350px;
-  top: 0;
-  width: 300px;
-  height: 100%;
-  background: white;
-  padding: 15px;
-  box-shadow: -5px 0 20px rgba(0,0,0,0.2);
-  transition: 0.3s;
-}
-
-.cart.active {
-  right: 0;
-}
-
-.cart h3 {
-  margin-top: 0;
-}
-
-.back-btn {
+  .back-btn {
   display: inline-block;
   text-decoration: none;
   background: #ee4d2d;
@@ -392,440 +21,702 @@ button:hover {
 .back-btn:hover {
   background: black;
 }
-</style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
 
+html{
+scroll-behavior:smooth;
+}
+
+body{
+background:linear-gradient(135deg,#f8f9ff,#eef2ff,#ffffff);
+color:#111;
+overflow-x:hidden;
+}
+
+/* LOADER */
+#loader{
+position:fixed;
+inset:0;
+background:#fff;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+font-size:32px;
+font-weight:800;
+color:#ff0055;
+}
+
+/* HEADER */
+header{
+position:sticky;
+top:0;
+z-index:1000;
+padding:16px 30px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(255,255,255,.8);
+backdrop-filter:blur(18px);
+box-shadow:0 8px 30px rgba(0,0,0,.08);
+}
+
+.logo{
+font-size:32px;
+font-weight:800;
+background:linear-gradient(135deg,#ff5a00,#ff0055);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.right{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.search{
+padding:12px 18px;
+border:none;
+outline:none;
+border-radius:30px;
+width:240px;
+background:#f1f3f8;
+}
+
+.icon-btn{
+width:44px;
+height:44px;
+border-radius:50%;
+border:none;
+cursor:pointer;
+font-size:18px;
+background:#111;
+color:#fff;
+}
+
+.cart{
+position:relative;
+font-size:28px;
+cursor:pointer;
+}
+
+.count{
+position:absolute;
+top:-8px;
+right:-8px;
+background:#ff0055;
+color:#fff;
+padding:4px 8px;
+font-size:11px;
+border-radius:50%;
+font-weight:700;
+}
+
+/* HERO */
+.hero{
+padding:20px;
+}
+
+.slider{
+height:450px;
+border-radius:35px;
+overflow:hidden;
+position:relative;
+box-shadow:0 25px 60px rgba(0,0,0,.15);
+}
+
+.slide{
+position:absolute;
+inset:0;
+background-size:cover;
+background-position:center;
+display:flex;
+align-items:center;
+padding:55px;
+opacity:0;
+transition:1s;
+}
+
+.slide.active{
+opacity:1;
+}
+
+.overlay{
+background:linear-gradient(to right,rgba(0,0,0,.72),rgba(0,0,0,.18));
+position:absolute;
+inset:0;
+}
+
+.content{
+position:relative;
+z-index:2;
+color:#fff;
+max-width:550px;
+}
+
+.content h1{
+font-size:64px;
+line-height:1.05;
+margin-bottom:15px;
+}
+
+.content p{
+font-size:18px;
+margin-bottom:22px;
+}
+
+.content a{
+display:inline-block;
+padding:15px 28px;
+border-radius:40px;
+background:#fff;
+color:#111;
+font-weight:800;
+text-decoration:none;
+}
+
+/* TITLE */
+.title{
+padding:0 20px;
+font-size:30px;
+font-weight:800;
+margin:18px 0;
+}
+
+/* PRODUCTS */
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:22px;
+padding:0 20px 50px;
+}
+
+.card{
+background:#fff;
+border-radius:28px;
+overflow:hidden;
+box-shadow:0 18px 35px rgba(0,0,0,.08);
+transition:.3s;
+position:relative;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.badge{
+position:absolute;
+top:14px;
+left:14px;
+padding:6px 12px;
+border-radius:20px;
+font-size:12px;
+font-weight:800;
+color:#fff;
+background:linear-gradient(135deg,#ff0055,#ff7b00);
+}
+
+.wish{
+position:absolute;
+top:14px;
+right:14px;
+width:42px;
+height:42px;
+border-radius:50%;
+background:#fff;
+display:flex;
+justify-content:center;
+align-items:center;
+cursor:pointer;
+font-size:18px;
+}
+
+.card img{
+width:100%;
+height:260px;
+object-fit:cover;
+}
+
+.body{
+padding:20px;
+}
+
+.name{
+font-size:20px;
+font-weight:700;
+margin-bottom:8px;
+}
+
+.desc{
+font-size:13px;
+color:#777;
+margin-bottom:12px;
+}
+
+.row{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:15px;
+}
+
+.price{
+font-size:26px;
+font-weight:800;
+color:#ff5a00;
+}
+
+.rate{
+font-size:14px;
+font-weight:700;
+}
+
+.buy{
+width:100%;
+padding:14px;
+border:none;
+border-radius:18px;
+background:linear-gradient(135deg,#ff5a00,#ff0055);
+color:#fff;
+font-weight:800;
+cursor:pointer;
+}
+
+/* CART */
+.cart-box{
+position:fixed;
+top:0;
+right:-430px;
+width:420px;
+height:100%;
+background:rgba(255,255,255,.92);
+backdrop-filter:blur(18px);
+padding:24px;
+transition:.4s;
+z-index:3000;
+overflow:auto;
+box-shadow:-15px 0 40px rgba(0,0,0,.15);
+}
+
+.cart-box.active{
+right:0;
+}
+
+.close{
+float:right;
+font-size:24px;
+cursor:pointer;
+font-weight:800;
+}
+
+.cart-box h2{
+font-size:30px;
+margin-bottom:18px;
+}
+
+.cart-box li{
+list-style:none;
+padding:14px 0;
+border-bottom:1px solid #eee;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.qty{
+display:flex;
+gap:8px;
+align-items:center;
+}
+
+.qty button{
+width:28px;
+height:28px;
+border:none;
+border-radius:50%;
+background:#111;
+color:#fff;
+cursor:pointer;
+}
+
+.total{
+font-size:30px;
+font-weight:800;
+margin-top:18px;
+color:#ff0055;
+}
+
+.checkout{
+display:block;
+text-align:center;
+padding:14px;
+margin-top:16px;
+border-radius:18px;
+background:#111;
+color:#fff;
+text-decoration:none;
+font-weight:800;
+}
+
+/* TOAST */
+.toast{
+position:fixed;
+bottom:30px;
+right:30px;
+background:#111;
+color:#fff;
+padding:14px 20px;
+border-radius:18px;
+display:none;
+z-index:9999;
+}
+
+/* FLOAT */
+.float{
+position:fixed;
+bottom:20px;
+left:20px;
+display:flex;
+flex-direction:column;
+gap:12px;
+z-index:999;
+}
+
+.float a{
+width:55px;
+height:55px;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+text-decoration:none;
+font-size:24px;
+color:#fff;
+background:#25D366;
+box-shadow:0 8px 25px rgba(0,0,0,.2);
+}
+
+.float a:last-child{
+background:#229ED9;
+}
+
+/* FOOTER */
+footer{
+padding:35px;
+text-align:center;
+color:#777;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+.search{
+display:none;
+}
+
+.slider{
+height:280px;
+}
+
+.content h1{
+font-size:34px;
+}
+
+.content p{
+font-size:13px;
+}
+
+.products{
+grid-template-columns:repeat(2,1fr);
+gap:12px;
+}
+
+.card img{
+height:150px;
+}
+
+.name{
+font-size:14px;
+}
+
+.price{
+font-size:18px;
+}
+
+.cart-box{
+width:100%;
+right:-100%;
+}
+
+}
+</style>
 </head>
 
 <body>
-<script src="script.js"></script>
-</body>
+
+<div id="loader">Loading...</div>
+
 <header>
-  <h2>🛒 SASA Shop</h2>
-   <a href="profile.html" class="profile-btn">👤 Profile</a>
-   <div class="cart-icon" onclick="toggleCart()">
-      🛒
-      <span class="cart-count" id="count">0</span>
-    </div>
+<div class="logo">🛒 SASA Shop</div>
+
+<div class="right">
+<input class="search" placeholder="Search product..." onkeyup="searchProduct(this.value)"> 
+<button class="icon-btn" onclick="darkMode()">🌙</button>
+
+<div class="cart" onclick="toggleCart()">
+🛒
+<span class="count" id="count">0</span>
+</div>
+</div>
 </header>
-
-<div class="products">
-
-  <div class="card">
-    <img src="https://cdn.pixabay.com/photo/2016/03/05/09/05/wrist-watch-1237418_640.jpg">
-    <div class="card-body">
-      <h4>Epic Apollo</h4>
-      <p class="price">$30</p>
-      <button onclick="add('Epic Apollo',30)">Add</button>
-    </div>
-  </div>
-
-  <div class="card">
-    <img src="https://cdn.pixabay.com/photo/2016/03/05/09/03/wrist-watch-1237417_640.jpg">
-    <div class="card-body">
-      <h4>Storm Watch</h4>
-      <p class="price">$50</p>
-      <button onclick="add('Storm Watch',50)">Add</button>
-    </div>
-  </div>
-
 </div>
-<!-- CART -->
-<div class="cart" id="cartBox">
+</section>
 
-  <div class="cart-header">
-    <h3>🧾 Your Cart</h3>
-    <span class="close-btn" onclick="toggleCart()">✖</span>
-  </div>
+<style>
+  /* PROFILE */
+.profile-btn {
+  background: black;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  text-decoration: none;
+}
 
-  <ul id="list"></ul>
+.profile-btn:hover {
+  background: #333;
+}
+/* CATEGORY SECTION */
+.category{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+gap:18px;
+padding:20px;
+}
 
-  <div class="cart-footer">
-    <h3 id="total">Total: $0</h3>
+/* ITEM */
+.menu-item{
+background:#fff;
+border-radius:24px;
+padding:18px 12px;
+text-align:center;
+text-decoration:none;
+color:#111;
+box-shadow:0 12px 25px rgba(0,0,0,.08);
+transition:.35s;
+position:relative;
+overflow:hidden;
+}
 
-    <a href="payment.html" class="pay-btn">
-      💳 Checkout Now
-    </a>
-  </div>
+/* HOVER */
+.menu-item:hover{
+transform:translateY(-8px) scale(1.03);
+box-shadow:0 18px 35px rgba(0,0,0,.12);
+}
 
+/* ACTIVE PAGE */
+.menu-item.active{
+background:linear-gradient(135deg,#ff5a00,#ff0055);
+color:#fff;
+}
+
+/* IMAGE */
+.menu-item img{
+width:75px;
+height:75px;
+object-fit:cover;
+border-radius:18px;
+margin-bottom:12px;
+background:#fff;
+padding:6px;
+transition:.3s;
+}
+
+.menu-item:hover img{
+transform:scale(1.08);
+}
+
+/* TEXT */
+.menu-item p{
+font-size:15px;
+font-weight:700;
+margin-top:6px;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+.category{
+grid-template-columns:repeat(2,1fr);
+gap:12px;
+padding:15px;
+}
+
+.menu-item{
+padding:14px 10px;
+border-radius:20px;
+}
+
+.menu-item img{
+width:60px;
+height:60px;
+}
+
+.menu-item p{
+font-size:13px;
+}
+
+}
+</style>
+
+<h2 class="title">MEN BAGS</h2>
+<section class="products" id="products"></section>
+<div class="cart-box" id="cartBox">
+<span class="close" onclick="toggleCart()">✕</span>
+<h2>Your Cart</h2>
+<ul id="list"></ul>
+<div class="total" id="total">$0</div>
+<a href="payment.html" class="checkout">Checkout</a>
 </div>
 
-</a>
+<div class="toast" id="toast">Added To Cart</div>
 
+<div class="float">
+<a href="#" href="payment.html" class="checkout">💬</a>
 </div>
+
+<footer>
+© 2026 – All rights reserved by SASA Shop Company Limited
+</footer>
 
 <script>
+setTimeout(()=>{
+document.getElementById("loader").style.display="none";
+},1500);
 
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+/* PRODUCTS */
+const items=[
+{name:"Eclipse Time",price:75,rate:"⭐4.8",img:"https://imgs.search.brave.com/213ZXqD8ndh6MgQn4sEhb_cBQ1w6aUnjRWLulsfpINI/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMudW5zcGxhc2gu/Y29tL3Bob3RvLTE1/MTEzNzAyMzUzOTkt/MTgwMmNhZTFkMzJm/P2ZtPWpwZyZxPTYw/Jnc9MzAwMCZhdXRv/PWZvcm1hdCZmaXQ9/Y3JvcCZpeGxpYj1y/Yi00LjEuMCZpeGlk/PU0zd3hNakEzZkRC/OE1IeHpaV0Z5WTJo/OE1UaDhmSGRoZEdO/b2ZHVnVmREI4ZkRC/OGZId3c"},    
+{name:"Horizon Watch",price:205,rate:"⭐4.8",img:"https://imgs.search.brave.com/o3s8sb1eBh0FSDyXzhf44md1j6xpuDMOY740pIe99ms/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMucGV4ZWxzLmNv/bS9waG90b3MvMzgy/OTQ0MS9wZXhlbHMt/cGhvdG8tMzgyOTQ0/MS5qcGVnP2F1dG89/Y29tcHJlc3MmY3M9/dGlueXNyZ2ImZHBy/PTEmdz0yNTImZml0/PWNyb3AmaD00MDg"},  
+{name:"Apex Chrono",price:175,rate:"⭐4.8",img:"https://imgs.search.brave.com/LtbAvSJzAOo2nd63mxOXMp7itd70qzrOm9yyKa8DEvI/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAyMy8w/NS8zMS8xOC80OC93/YXRjaC04MDMyMDU0/XzY0MC5qcGc"},  
+{name:"Epic Apollo",price:95,rate:"⭐4.8",img:"https://imgs.search.brave.com/MPsgxI5GoiV05HQgHDLURri5lnOa2tisYNEg1M753yk/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAxNi8w/My8wNS8wOS8wNS93/cmlzdC13YXRjaC0x/MjM3NDE4XzY0MC5q/cGc"},  
+{name:"NovaTime",price:159,rate:"⭐4.8",img:"https://imgs.search.brave.com/yiqT8JC1FzTy-5teH9R4sRy8rep8zGeqSxIVlY80aiA/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMucGV4ZWxzLmNv/bS9waG90b3MvNTQy/MTI3MS9wZXhlbHMt/cGhvdG8tNTQyMTI3/MS5qcGVnP2F1dG89/Y29tcHJlc3MmY3M9/dGlueXNyZ2ImZHBy/PTEmdz01MDA"},  
+{name:"Royal Chrono",price:129,rate:"⭐4.8",img:"https://imgs.search.brave.com/g0SMDHviLtn3a4qlMXbJj0AKy7u6s0QkoRDRN2Rmwrw/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAxNi8w/My8wNS8wOS8wMy93/cmlzdC13YXRjaC0x/MjM3NDE3XzY0MC5q/cGc"},  
+{name:"Prestige Time ",price:329,rate:"⭐4.8",img:"https://imgs.search.brave.com/cq9-YbEc6OCXO6t3Tqz7HuiFaacV4MBkjWflh2cJQQY/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAxNi8w/My8wNS8xNC80NC93/cmlzdC13YXRjaC0x/MjM3ODE4XzY0MC5q/cGc"},
+{name:"Silver Pulse ",price:180,rate:"⭐4.9",img:"https://imgs.search.brave.com/Do4heFoX32RIORX5IcW7ESjAbZ0rfLeS7zj_8WAJEQs/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMucGV4ZWxzLmNv/bS9waG90b3MvMzQ2/MDI1MDYvcGV4ZWxz/LXBob3RvLTM0NjAy/NTA2L2ZyZWUtcGhv/dG8tb2YtZWxlZ2Fu/dC1sdXh1cnktd2F0/Y2gtd2l0aC1sZWF0/aGVyLXN0cmFwLW9u/LWRpc3BsYXkuanBl/Zz9hdXRvPWNvbXBy/ZXNzJmNzPXRpbnlz/cmdiJmRwcj0xJnc9/NTAw"},  
+{name:"Prime Hour",price:140,rate:"⭐4.8",img:"https://imgs.search.brave.com/TIzPBZNxUiqQ-v2HRDFBOwQYQQ8wk-yrwkZ4oQDs_8U/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NzFXaWFTTURpR0wu/anBn"},  
+{name:"Classic Crown",price:341,rate:"⭐4.8",img:"https://imgs.search.brave.com/v-FE0aV4HJB16nJOU4DOkFnkhnMoB9I7LZiovLu0ly0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAxOS8w/My8wNy8yMC8wNi93/cmlzdC13YXRjaC00/MDQwOTcyXzY0MC5q/cGc"},
+{name:"Smart Luxe",price:190,rate:"⭐4.8",img:"https://imgs.search.brave.com/ef19OjOeSOQmglHxgikay2MNcYzKokkwnXvWzXqnjcs/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9wcmV2/aWV3LnJlZGQuaXQv/eW91ci1iZXN0LXdo/YXRzLXRoZS1iZXN0/LXdhdGNoLXBob3Rv/LXlvdS1oYXZlLXRh/a2VuLXYwLWwyNzVv/dzc1dTl4ZTEucG5n/P3dpZHRoPTE3ODQm/Zm9ybWF0PXBuZyZh/dXRvPXdlYnAmcz01/MzU0NGZjMTVhN2Yy/NmU5OGEwY2ZjOThl/YmQzNDYxZDgyMGNh/Zjgw"},
+{name:" retro ",price:329,rate:"⭐4.8",img:"https://imgs.search.brave.com/Do4heFoX32RIORX5IcW7ESjAbZ0rfLeS7zj_8WAJEQs/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMucGV4ZWxzLmNv/bS9waG90b3MvMzQ2/MDI1MDYvcGV4ZWxz/LXBob3RvLTM0NjAy/NTA2L2ZyZWUtcGhv/dG8tb2YtZWxlZ2Fu/dC1sdXh1cnktd2F0/Y2gtd2l0aC1sZWF0/aGVyLXN0cmFwLW9u/LWRpc3BsYXkuanBl/Zz9hdXRvPWNvbXBy/ZXNzJmNzPXRpbnlz/cmdiJmRwcj0xJnc9/NTAw"},  
+{name:"Falcon Time",price:332,rate:"⭐4.8",img:"https://imgs.search.brave.com/bdErhFIVAbeX_a0tjWHxbJqCh0TpEO_7FrXJiWb17EU/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMucGV4ZWxzLmNv/bS9waG90b3MvMzM1/MTE3NTUvcGV4ZWxz/LXBob3RvLTMzNTEx/NzU1L2ZyZWUtcGhv/dG8tb2YtZWxlZ2Fu/dC1zaWx2ZXItd2F0/Y2gtd2l0aC1sdXh1/cmlvdXMtZGVzaWdu/LmpwZWc_YXV0bz1j/b21wcmVzcyZjcz10/aW55c3JnYiZkcHI9/MSZ3PTUwMA"},  
+{name:"Midnight Watch ",price:220,rate:"⭐4.8",img:"https://imgs.search.brave.com/v-FE0aV4HJB16nJOU4DOkFnkhnMoB9I7LZiovLu0ly0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAxOS8w/My8wNy8yMC8wNi93/cmlzdC13YXRjaC00/MDQwOTcyXzY0MC5q/cGc"},
+{name:"Aurora Watch",price:202,rate:"⭐4.8",img:"https://imgs.search.brave.com/P4bQljQJheajQeIoTVvJGk0aUJfuxlHs0EmHUNqXyNk/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAxNi8w/OC8yOC8xMS8yMC9j/bG9jay0xNjI1NzAz/XzY0MC5qcGc"},
+{name:"Zenith Hour",price:129,rate:"⭐4.9",img:"https://imgs.search.brave.com/ndMz-KWzAa5tmc9_C_ZuIZQA0bRx-Fcu_f8sHmXlZZU/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAxMy8w/OS8zMC8yMS81OC9t/YWxlLXdhdGNoLTE4/ODc4Ml82NDAuanBn"},
+{name:"Velocity Watch",price:115,rate:"⭐5.0",img:"https://imgs.search.brave.com/3uZNuLl4TyCFsO7-S_9axg9GYlnImD8OnWIkRMPylAc/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTM5/Mzg1NDcxOC9waG90/by90b3AtZG93bi1p/bWFnZS1vZi1jbGFz/c2ljLXZpbnRhZ2Ut/bWVuLWFjY2Vzc29y/aWVzLXdpdGgtYm93/LXRpZS1uZWF0bHkt/YXJyYW5nZWQuanBn/P3M9NjEyeDYxMiZ3/PTAmaz0yMCZjPXBX/bFFGZ2pOQ3VOQkcw/UUNRYzVQYjdaS2Qx/LXYxN0YxcmNvc3Bk/eTl4SDA9"},
+{name:"Crystal Time",price:119,rate:"⭐4.8",img:"https://imgs.search.brave.com/qpxiOQU8lXN3l4e6-_FPERKMzoQiojyEmmvBqwCRuyc/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly90aHVt/YnMuZHJlYW1zdGlt/ZS5jb20vYi9sdXh1/cnktd2F0Y2hlcy0x/NzU1ODc1My5qcGc"},
+{name:"Legacy Watch",price:225,rate:"⭐4.7",img:"https://imgs.search.brave.com/qr8qKQ-0JRfUNCHG8FcYEYtsxZJyxdqxOIfnoLdDF9g/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAyMi8w/OS8yMS8wNi8zNS93/YXRjaC03NDY5NjAx/XzY0MC5qcGc"}
+
+];
+
+let cart=JSON.parse(localStorage.getItem("cart"))||[];
+
+function render(data=items){
+let html="";
+data.forEach(item=>{
+html+=`
+<div class="card">
+<div class="badge">HOT</div>
+<div class="wish">♡</div>
+<img src="${item.img}">
+<div class="body">
+<div class="name">${item.name}</div>
+<div class="desc">Premium quality official product</div>
+<div class="row">
+<div class="price">$${item.price}</div>
+<div class="rate">${item.rate}</div>
+</div>
+<button class="buy" onclick="add('${item.name}',${item.price},'${item.img}')">Add To Cart</button>
+</div>
+</div>`;
+});
+document.getElementById("products").innerHTML=html;
+}
+
+function add(name,price,img){
+let f=cart.find(x=>x.name===name);
+if(f){f.qty++;}
+else{cart.push({name,price,img,qty:1});}
+saveCart();
+toast();
+}
+
+function plus(i){cart[i].qty++;saveCart();}
+function minus(i){cart[i].qty--;if(cart[i].qty<=0)cart.splice(i,1);saveCart();}
+
+function saveCart(){
+localStorage.setItem("cart",JSON.stringify(cart));
+showCart();
+}
+
+function showCart(){
+let list=document.getElementById("list");
+let total=0;
+list.innerHTML="";
+cart.forEach((item,i)=>{
+total+=item.price*item.qty;
+list.innerHTML+=`
+<li>
+<div>${item.name}<br>$${item.price} x ${item.qty}</div>
+<div class="qty">
+<button onclick="minus(${i})">-</button>
+<span>${item.qty}</span>
+<button onclick="plus(${i})">+</button>
+</div>
+</li>`;
+});
+document.getElementById("count").innerText=
+cart.reduce((a,b)=>a+b.qty,0);
+document.getElementById("total").innerText="$"+total;
+}
 
 function toggleCart(){
-  document.getElementById("cartBox").classList.toggle("active");
+document.getElementById("cartBox").classList.toggle("active");
 }
 
-function add(name, price) {
-  cart.push({name, price});
-  localStorage.setItem("cart", JSON.stringify(cart));
-  show();
-  toggleCart(); // បើចង់អោយវាលោតចេញ
+function toast(){
+let t=document.getElementById("toast");
+t.style.display="block";
+setTimeout(()=>t.style.display="none",1500);
 }
 
-function show() {
-  let list = document.getElementById("list");
-  list.innerHTML = "";
-  let total = 0;
-
-  cart.forEach(item => {
-    let li = document.createElement("li");
-    li.innerText = item.name + " - $" + item.price;
-    list.appendChild(li);
-    total += item.price;
-  });
-
-  document.getElementById("total").innerText = "Total: $" + total;
+function searchProduct(v){
+v=v.toLowerCase();
+render(items.filter(x=>x.name.toLowerCase().includes(v)));
 }
 
-function clearCart() {
-  cart = [];
-  localStorage.removeItem("cart");
-  show();
+function darkMode(){
+document.body.style.background="#111";
+document.body.style.color="#fff";
 }
 
-show();
+/* SLIDER */
+let s=0;
+setInterval(()=>{
+let slides=document.querySelectorAll(".slide");
+slides.forEach(x=>x.classList.remove("active"));
+s=(s+1)%slides.length;
+slides[s].classList.add("active");
+},3000);
 
+render();
+showCart();
 </script>
 
 </body>
 </html>
-
-<div class="products">
-
-  <div class="card">
-    <div class="badge">🔥 Hot</div>
-    <img src="https://imgs.search.brave.com/MPsgxI5GoiV05HQgHDLURri5lnOa2tisYNEg1M753yk/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAxNi8w/My8wNS8wOS8wNS93/cmlzdC13YXRjaC0x/MjM3NDE4XzY0MC5q/cGc">
-    <div class="card-body">
-      <h4>Epic Apollo</h4>
-      <p class="price">$30</p>
-      <button onclick="add('Epic Apollo',30)">Add</button>
-    </div>
-  </div>
- <div class="card">
-    <div class="badge">🔥 Hot</div>
-    <img src="https://imgs.search.brave.com/yiqT8JC1FzTy-5teH9R4sRy8rep8zGeqSxIVlY80aiA/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMucGV4ZWxzLmNv/bS9waG90b3MvNTQy/MTI3MS9wZXhlbHMt/cGhvdG8tNTQyMTI3/MS5qcGVnP2F1dG89/Y29tcHJlc3MmY3M9/dGlueXNyZ2ImZHBy/PTEmdz01MDA">
-    <div class="card-body">
-      <h4>Epic Apollo</h4>
-      <p class="price">$30</p>
-      <button onclick="add('Epic Apollo',30)">Add</button>
-    </div>
-  </div> <div class="card">
-    <div class="badge">🔥 Hot</div>
-    <img src="https://imgs.search.brave.com/g0SMDHviLtn3a4qlMXbJj0AKy7u6s0QkoRDRN2Rmwrw/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAxNi8w/My8wNS8wOS8wMy93/cmlzdC13YXRjaC0x/MjM3NDE3XzY0MC5q/cGc">
-    <div class="card-body">
-      <h4>Epic Apollo</h4>
-      <p class="price">$30</p>
-      <button onclick="add('Epic Apollo',30)">Add</button>
-    </div>
-  </div> <div class="card">
-    <div class="badge">🔥 Hot</div>
-    <img src="https://imgs.search.brave.com/cq9-YbEc6OCXO6t3Tqz7HuiFaacV4MBkjWflh2cJQQY/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAxNi8w/My8wNS8xNC80NC93/cmlzdC13YXRjaC0x/MjM3ODE4XzY0MC5q/cGc">
-    <div class="card-body">
-      <h4>Epic Apollo</h4>
-      <p class="price">$30</p>
-      <button onclick="add('Epic Apollo',30)">Add</button>
-    </div>
-  </div> <div class="card">
-    <div class="badge">🔥 Hot</div>
-    <img src="https://imgs.search.brave.com/Do4heFoX32RIORX5IcW7ESjAbZ0rfLeS7zj_8WAJEQs/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMucGV4ZWxzLmNv/bS9waG90b3MvMzQ2/MDI1MDYvcGV4ZWxz/LXBob3RvLTM0NjAy/NTA2L2ZyZWUtcGhv/dG8tb2YtZWxlZ2Fu/dC1sdXh1cnktd2F0/Y2gtd2l0aC1sZWF0/aGVyLXN0cmFwLW9u/LWRpc3BsYXkuanBl/Zz9hdXRvPWNvbXBy/ZXNzJmNzPXRpbnlz/cmdiJmRwcj0xJnc9/NTAw">
-    <div class="card-body">
-      <h4>Epic Apollo</h4>
-      <p class="price">$30</p>
-      <button onclick="add('Epic Apollo',30)">Add</button>
-    </div>
-  </div> <div class="card">
-    <div class="badge">🔥 Hot</div>
-    <img src="https://imgs.search.brave.com/TIzPBZNxUiqQ-v2HRDFBOwQYQQ8wk-yrwkZ4oQDs_8U/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NzFXaWFTTURpR0wu/anBn">
-    <div class="card-body">
-      <h4>Epic Apollo</h4>
-      <p class="price">$30</p>
-      <button onclick="add('Epic Apollo',30)">Add</button>
-    </div>
-  </div> <div class="card">
-    <div class="badge">🔥 Hot</div>
-    <img src="https://imgs.search.brave.com/v-FE0aV4HJB16nJOU4DOkFnkhnMoB9I7LZiovLu0ly0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAxOS8w/My8wNy8yMC8wNi93/cmlzdC13YXRjaC00/MDQwOTcyXzY0MC5q/cGc">
-    <div class="card-body">
-      <h4>Epic Apollo</h4>
-      <p class="price">$30</p>
-      <button onclick="add('Epic Apollo',30)">Add</button>
-    </div>
-  </div> <div class="card">
-    <div class="badge">🔥 Hot</div>
-    <img src="https://imgs.search.brave.com/ef19OjOeSOQmglHxgikay2MNcYzKokkwnXvWzXqnjcs/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9wcmV2/aWV3LnJlZGQuaXQv/eW91ci1iZXN0LXdo/YXRzLXRoZS1iZXN0/LXdhdGNoLXBob3Rv/LXlvdS1oYXZlLXRh/a2VuLXYwLWwyNzVv/dzc1dTl4ZTEucG5n/P3dpZHRoPTE3ODQm/Zm9ybWF0PXBuZyZh/dXRvPXdlYnAmcz01/MzU0NGZjMTVhN2Yy/NmU5OGEwY2ZjOThl/YmQzNDYxZDgyMGNh/Zjgw">
-    <div class="card-body">
-      <h4>Epic Apollo</h4>
-      <p class="price">$30</p>
-      <button onclick="add('Epic Apollo',30)">Add</button>
-    </div>
-  </div> <div class="card">
-    <div class="badge">🔥 Hot</div>
-    <img src="https://imgs.search.brave.com/Do4heFoX32RIORX5IcW7ESjAbZ0rfLeS7zj_8WAJEQs/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMucGV4ZWxzLmNv/bS9waG90b3MvMzQ2/MDI1MDYvcGV4ZWxz/LXBob3RvLTM0NjAy/NTA2L2ZyZWUtcGhv/dG8tb2YtZWxlZ2Fu/dC1sdXh1cnktd2F0/Y2gtd2l0aC1sZWF0/aGVyLXN0cmFwLW9u/LWRpc3BsYXkuanBl/Zz9hdXRvPWNvbXBy/ZXNzJmNzPXRpbnlz/cmdiJmRwcj0xJnc9/NTAw">
-    <div class="card-body">
-      <h4>Epic Apollo</h4>
-      <p class="price">$30</p>
-      <button onclick="add('Epic Apollo',30)">Add</button>
-    </div>
-  </div> <div class="card">
-    <div class="badge">🔥 Hot</div>
-    <img src="https://imgs.search.brave.com/bdErhFIVAbeX_a0tjWHxbJqCh0TpEO_7FrXJiWb17EU/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMucGV4ZWxzLmNv/bS9waG90b3MvMzM1/MTE3NTUvcGV4ZWxz/LXBob3RvLTMzNTEx/NzU1L2ZyZWUtcGhv/dG8tb2YtZWxlZ2Fu/dC1zaWx2ZXItd2F0/Y2gtd2l0aC1sdXh1/cmlvdXMtZGVzaWdu/LmpwZWc_YXV0bz1j/b21wcmVzcyZjcz10/aW55c3JnYiZkcHI9/MSZ3PTUwMA">
-    <div class="card-body">
-      <h4>Epic Apollo</h4>
-      <p class="price">$30</p>
-      <button onclick="add('Epic Apollo',30)">Add</button>
-    </div>
-  
-  </div> <div class="card">
-    <div class="badge">🔥 Hot</div>
-    <img src="https://imgs.search.brave.com/v-FE0aV4HJB16nJOU4DOkFnkhnMoB9I7LZiovLu0ly0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAxOS8w/My8wNy8yMC8wNi93/cmlzdC13YXRjaC00/MDQwOTcyXzY0MC5q/cGc">
-    <div class="card-body">
-      <h4>Epic Apollo</h4>
-      <p class="price">$30</p>
-      <button onclick="add('Epic Apollo',30)">Add</button>
-    </div>
-  </div> <div class="card">
-    <div class="badge">🔥 Hot</div>
-    <img src="https://imgs.search.brave.com/P4bQljQJheajQeIoTVvJGk0aUJfuxlHs0EmHUNqXyNk/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAxNi8w/OC8yOC8xMS8yMC9j/bG9jay0xNjI1NzAz/XzY0MC5qcGc">
-    <div class="card-body">
-      <h4>Epic Apollo</h4>
-      <p class="price">$30</p>
-      <button onclick="add('Epic Apollo',30)">Add</button>
-    </div>
-  </div> <div class="card">
-    <div class="badge">🔥 Hot</div>
-    <img src="https://imgs.search.brave.com/ndMz-KWzAa5tmc9_C_ZuIZQA0bRx-Fcu_f8sHmXlZZU/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAxMy8w/OS8zMC8yMS81OC9t/YWxlLXdhdGNoLTE4/ODc4Ml82NDAuanBn">
-    <div class="card-body">
-      <h4>Epic Apollo</h4>
-      <p class="price">$30</p>
-      <button onclick="add('Epic Apollo',30)">Add</button>
-    </div>
-  </div> <div class="card">
-    <div class="badge">🔥 Hot</div>
-    <img src="https://imgs.search.brave.com/3uZNuLl4TyCFsO7-S_9axg9GYlnImD8OnWIkRMPylAc/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTM5/Mzg1NDcxOC9waG90/by90b3AtZG93bi1p/bWFnZS1vZi1jbGFz/c2ljLXZpbnRhZ2Ut/bWVuLWFjY2Vzc29y/aWVzLXdpdGgtYm93/LXRpZS1uZWF0bHkt/YXJyYW5nZWQuanBn/P3M9NjEyeDYxMiZ3/PTAmaz0yMCZjPXBX/bFFGZ2pOQ3VOQkcw/UUNRYzVQYjdaS2Qx/LXYxN0YxcmNvc3Bk/eTl4SDA9">
-    <div class="card-body">
-      <h4>Epic Apollo</h4>
-      <p class="price">$30</p>
-      <button onclick="add('Epic Apollo',30)">Add</button>
-    </div>
-  </div> <div class="card">
-    <div class="badge">🔥 Hot</div>
-    <img src="https://imgs.search.brave.com/qpxiOQU8lXN3l4e6-_FPERKMzoQiojyEmmvBqwCRuyc/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly90aHVt/YnMuZHJlYW1zdGlt/ZS5jb20vYi9sdXh1/cnktd2F0Y2hlcy0x/NzU1ODc1My5qcGc">
-    <div class="card-body">
-      <h4>Epic Apollo</h4>
-      <p class="price">$30</p>
-      <button onclick="add('Epic Apollo',30)">Add</button>
-    </div>
-  </div> <div class="card">
-    <div class="badge">🔥 Hot</div>
-    <img src="https://imgs.search.brave.com/qr8qKQ-0JRfUNCHG8FcYEYtsxZJyxdqxOIfnoLdDF9g/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAyMi8w/OS8yMS8wNi8zNS93/YXRjaC03NDY5NjAx/XzY0MC5qcGc">
-    <div class="card-body">
-      <h4>Epic Apollo</h4>
-      <p class="price">$30</p>
-      <button onclick="add('Epic Apollo',30)">Add</button>
-    </div>
-  </div> <div class="card">
-    <div class="badge">🔥 Hot</div>
-    <img src="https://imgs.search.brave.com/213ZXqD8ndh6MgQn4sEhb_cBQ1w6aUnjRWLulsfpINI/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMudW5zcGxhc2gu/Y29tL3Bob3RvLTE1/MTEzNzAyMzUzOTkt/MTgwMmNhZTFkMzJm/P2ZtPWpwZyZxPTYw/Jnc9MzAwMCZhdXRv/PWZvcm1hdCZmaXQ9/Y3JvcCZpeGxpYj1y/Yi00LjEuMCZpeGlk/PU0zd3hNakEzZkRC/OE1IeHpaV0Z5WTJo/OE1UaDhmSGRoZEdO/b2ZHVnVmREI4ZkRC/OGZId3c">
-    <div class="card-body">
-      <h4>Epic Apollo</h4>
-      <p class="price">$30</p>
-      <button onclick="add('Epic Apollo',30)">Add</button>
-    </div>
-  </div> <div class="card">
-    <div class="badge">🔥 Hot</div>
-    <img src="https://imgs.search.brave.com/o3s8sb1eBh0FSDyXzhf44md1j6xpuDMOY740pIe99ms/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMucGV4ZWxzLmNv/bS9waG90b3MvMzgy/OTQ0MS9wZXhlbHMt/cGhvdG8tMzgyOTQ0/MS5qcGVnP2F1dG89/Y29tcHJlc3MmY3M9/dGlueXNyZ2ImZHBy/PTEmdz0yNTImZml0/PWNyb3AmaD00MDg">
-    <div class="card-body">
-      <h4>Epic Apollo</h4>
-      <p class="price">$30</p>
-      <button onclick="add('Epic Apollo',30)">Add</button>
-    </div>
-  </div> <div class="card">
-    <div class="badge">🔥 Hot</div>
-    <img src="https://imgs.search.brave.com/LtbAvSJzAOo2nd63mxOXMp7itd70qzrOm9yyKa8DEvI/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAyMy8w/NS8zMS8xOC80OC93/YXRjaC04MDMyMDU0/XzY0MC5qcGc">
-    <div class="card-body">
-      <h4>Epic Apollo</h4>
-      <p class="price">$30</p>
-      <button onclick="add('Epic Apollo',30)">Add</button>
-    </div>
-  </div>
-   <div class="card">
-    <div class="badge">🔥 Hot</div>
-    <img src="https://imgs.search.brave.com/E2T5iI9ncHxBAVKj5ueSHu7vKUzHkj0LtUiJ4q6MdCs/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTcy/MzgwMTQ2L3Bob3Rv/L2dvbGQtd2F0Y2gu/anBnP3M9NjEyeDYx/MiZ3PTAmaz0yMCZj/PS1kN2xENzNqcnhD/MV9BWWhSbnk4SGZ4/R0podjdpRmZlbzZN/ZXZWdFY0d0k9">
-    <div class="card-body">
-      <h4>Epic Apollo</h4>
-      <p class="price">$30</p>
-      <button onclick="add('Epic Apollo',30)">Add</button>
-    </div>
-  </div>
-
-   <div class="card">
-    <div class="badge">🔥 Hot</div>
-    <img src="https://imgs.search.brave.com/MUwHtaBIlCqS7KgUsrNlvcBHH3YbJEyacymmfNIR5QU/rs:fit:0:180:1:0/g:ce/aHR0cHM6Ly9ybHYu/emNhY2hlLmNvbS8t/cmVlNGM0OWYzYWQ2/NjQ3ZDA5ZWUzMjA4/OGI5MTI5MTdhX3pk/OWZjXzEzMC5qcGc_/cmx2bmV0PTE">
-    <div class="card-body">
-      <h4>Epic Apollo</h4>
-      <p class="price">$30</p>
-      <button onclick="add('Epic Apollo',30)">Add</button>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="badge">Sale</div>
-    <img src="https://proskatersplace.com/wp-content/uploads/2023/10/EPIC-Low-Raven-Grind-Shoes-4.jpg">
-    <div class="card-body">
-      <h4>Storm Grind</h4>
-      <p class="price">$50</p>
-      <button onclick="add('Storm Grind',50)">Add</button>
-    </div>
-  </div>
-
- 
-  <div class="card">
-    <img src="https://imgs.search.brave.com/0Gu51-WRJdaFxttCZABX6GwouGbIWAujDgkqV4eTqgA/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAyMi8w/OS8wNS8xOC80OC93/YXRjaC03NDM0OTQ2/XzY0MC5qcGc">
-    <div class="card-body">
-      <h4>Red Lava</h4>
-      <p class="price">$15</p>
-      <button onclick="add('Red Lava',15)">Add</button>
-    </div>
-  </div><div class="card">
-    <img src="https://imgs.search.brave.com/jzDRtmyrPhSneHTIoQevrNMVD-0pL6Fqi1SxvnbSUNw/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMucGV4ZWxzLmNv/bS9waG90b3MvMzY4/MTI0MTUvcGV4ZWxz/LXBob3RvLTM2ODEy/NDE1L2ZyZWUtcGhv/dG8tb2YtZWxlZ2Fu/dC1zaWx2ZXItd3Jp/c3Qtd2F0Y2gtb24t/ZGlzcGxheS1zdGFu/ZC5qcGVnP2F1dG89/Y29tcHJlc3MmY3M9/dGlueXNyZ2ImZHBy/PTEmdz01MDA">
-    <div class="card-body">
-      <h4>Red Lava</h4>
-      <p class="price">$15</p>
-      <button onclick="add('Red Lava',15)">Add</button>
-    </div>
-  </div><div class="card">
-    <img src="https://imgs.search.brave.com/pJXL7uEL54F2UVxuBZ2Vic16Prjl5n15Q4u-njw20eQ/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMucGV4ZWxzLmNv/bS9waG90b3MvMTMw/MTMwNDEvcGV4ZWxz/LXBob3RvLTEzMDEz/MDQxLmpwZWc_YXV0/bz1jb21wcmVzcyZj/cz10aW55c3JnYiZk/cHI9MSZ3PTUwMA">
-    <div class="card-body">
-      <h4>Red Lava</h4>
-      <p class="price">$15</p>
-      <button onclick="add('Red Lava',15)">Add</button>
-    </div>
-  </div><div class="card">
-    <img src="https://imgs.search.brave.com/TIzPBZNxUiqQ-v2HRDFBOwQYQQ8wk-yrwkZ4oQDs_8U/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NzFXaWFTTURpR0wu/anBn">
-    <div class="card-body">
-      <h4>Red Lava</h4>
-      <p class="price">$15</p>
-      <button onclick="add('Red Lava',15)">Add</button>
-    </div>
-  </div><div class="card">
-    <img src="https://imgs.search.brave.com/LkWM8aKRJ_rGiEmyNoo-Eft44rL5qc8-_P8IjTGb4Mw/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvNDgz/NTI3MTgzL3Bob3Rv/L3dyaXN0LXdhdGNo/LW9uLWEtcm9jay5q/cGc_cz02MTJ4NjEy/Jnc9MCZrPTIwJmM9/cS1kcHJIdEQzZmVq/RXJGeHVHSndSZGlu/MkY0dS0zdmtFQXlk/Ui03dFkzUT0">
-    <div class="card-body">
-      <h4>Red Lava</h4>
-      <p class="price">$15</p>
-      <button onclick="add('Red Lava',15)">Add</button>
-    </div>
-  </div>
-<div class="card">
-    <img src="https://imgs.search.brave.com/EOnxe-Jbqy0R6pGwIQRFAH8V70MXuH60Kcswf3lCuPo/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTgw/ODQ0MjUzL3Bob3Rv/L3dyaXN0LXdhdGNo/LmpwZz9zPTYxMng2/MTImdz0wJms9MjAm/Yz02OTFQWU1QclMt/MElPRWxvcmtGOGtR/Nlo3YnYtSjUtMjdY/Y1V4a0hwY0cwPQ">
-    <div class="card-body">
-      <h4>Red Lava</h4>
-      <p class="price">$15</p>
-      <button onclick="add('Red Lava',15)">Add</button>
-    </div>
-  </div>
-
-  <div class="card">
-    <img src="https://imgs.search.brave.com/RZf9wVssMeIanFb6hmth-5Owldtcp64SrYhi09hH6yk/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMucGV4ZWxzLmNv/bS9waG90b3MvMzM2/OTA1MDcvcGV4ZWxz/LXBob3RvLTMzNjkw/NTA3L2ZyZWUtcGhv/dG8tb2YtbHV4dXJ5/LXZlcnNhY2UtY2hy/b25vZ3JhcGgtd2F0/Y2gtY2xvc2UtdXAu/anBlZz9hdXRvPWNv/bXByZXNzJmNzPXRp/bnlzcmdiJmRwcj0x/Jnc9NTAw">
-    <div class="card-body">
-      <h4>Red Lava</h4>
-      <p class="price">$15</p>
-      <button onclick="add('Red Lava',15)">Add</button>
-    </div>
-  </div>
-  <div class="card">
-    <img src="https://imgs.search.brave.com/EvUB1VXcvMaFldxaRJnhR3pPUJhiRU_hXc0KZ9V0Btk/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMucGV4ZWxzLmNv/bS9waG90b3MvMzA1/MDgxODgvcGV4ZWxz/LXBob3RvLTMwNTA4/MTg4L2ZyZWUtcGhv/dG8tb2YtZWxlZ2Fu/dC1zdGFpbmxlc3Mt/c3RlZWwtd3Jpc3R3/YXRjaC1vbi1oYW5k/LW91dGRvb3JzLmpw/ZWc_YXV0bz1jb21w/cmVzcyZjcz10aW55/c3JnYiZkcHI9MSZ3/PTUwMA">
-    <div class="card-body">
-      <h4>Red Lava</h4>
-      <p class="price">$15</p>
-      <button onclick="add('Red Lava',15)">Add</button>
-    </div>
-  </div>
-</div>
- 
-<script>
- if (localStorage.getItem("login") !== "true") {
-  window.location.href = "login.html";
-}
-
-function logout() {
-  localStorage.clear();
-  window.location.href = "login.html";
-}
-
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-function add(name, price) {
-  cart.push({name, price});
-  localStorage.setItem("cart", JSON.stringify(cart));
-  show();
-}
-
-function show() {
-  let list = document.getElementById("list");
-  list.innerHTML = "";
-  let total = 0;
-
-  cart.forEach(item => {
-    let li = document.createElement("li");
-    li.innerText = item.name + " - $" + item.price;
-    list.appendChild(li);
-    total += item.price;
-  });
-
-  document.getElementById("total").innerText = "Total: $" + total;
-}
-
-function clearCart() {
-  cart = [];
-  localStorage.removeItem("cart");
-  show();
-}
-
-function checkout() {
-  let name = document.getElementById("name").value;
-  let address = document.getElementById("address").value;
-
-  if(cart.length === 0){
-    alert("Cart empty ❌");
-    return;
-  }
-
-  if(name === "" || address === ""){
-    alert("Fill info ❗");
-    return;
-  }
-
-  document.getElementById("qrBox").style.display = "block";
-}
-
-function confirmPayment() {
-  alert("Payment Success 🎉");
-
-  cart = [];
-  localStorage.removeItem("cart");
-  show();
-
-  document.getElementById("qrBox").style.display = "none";
-}
-
-show(); 
-
-
-
-</script>
-
-</body>
-</html>
-</body>
-</html> 
-<header>
-  <h2>🛒 </h2>
-
-</header>
-   <a href="cart.html" class="next-btn">Next </a>                         
-<a href="shop.html" class="back-btn"> Back</a>   
+<a href="shop.html" class="back-btn"> Back</a> 
