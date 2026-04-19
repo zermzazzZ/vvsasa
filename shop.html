@@ -390,7 +390,7 @@ box-shadow:0 8px 25px rgba(0,0,0,.2);
 }
 
 .float a:last-child{
-background:#229ED9;
+background:#ffffff;
 }
 
 /* FOOTER */
@@ -475,10 +475,10 @@ right:-100%;
 </div>
 </div>
 
-<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=1600')">
+<div class="slide" style="background-image:url('https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-llm05p5nkerg1c.webp')">
 <div class="overlay"></div>
 <div class="content">
-<h1>GAMING POWER</h1>
+<h1>iPhone 15 128GB</h1>
 <p>Best laptop performance for gamers.</p>
 <a href="#products">Shop Now</a>
 </div>
@@ -710,12 +710,19 @@ font-size:13px;
 <div class="toast" id="toast">Added To Cart</div>
 
 <div class="float">
-<a href="#">💬</a>
+<a href="#"></a><a href="payment.html" class="checkout">💬</a>
 <a href="#">✈️</a>
 </div>
 
 <footer>
-© 2026 SASA Shop WORLD CLASS VERSION
+Address: Floors 4–5–6, Capital Place Building, No. 29 Bong Krok 1 Street, Tuol Kork, Phnom Penh, Cambodia
+
+Customer Service:
+ Call the SASA Shop hotline (free of charge) ​​​​   
+ or chat with SASA Shop directly via the Help Center
+
+Person in charge of information management: Reaksa
+© 2026 – All rights reserved by SASA Shop Company Limited
 </footer>
 
 <script>
@@ -723,23 +730,54 @@ setTimeout(()=>{
 document.getElementById("loader").style.display="none";
 },1500);
 
-/* PRODUCTS */
+ 
+
+
+
+
+/* PRODUCTS */ 
 const items=[
-{name:"Smart Watch",price:199,rate:"⭐4.8",img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600"},  
-{name:"Smart Watch",price:199,rate:"⭐4.8",img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600"},  
-{name:"Smart Watch",price:199,rate:"⭐4.8",img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600"},  
+{name:"Large duffel bags",price:75,rate:"⭐4.8",img:"https://m.media-amazon.com/images/I/81d55wIku8L._AC_UL480_FMwebp_QL65_.jpg"},
+{name:"Eclipse Time",price:75,rate:"⭐4.8",img:"https://imgs.search.brave.com/213ZXqD8ndh6MgQn4sEhb_cBQ1w6aUnjRWLulsfpINI/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMudW5zcGxhc2gu/Y29tL3Bob3RvLTE1/MTEzNzAyMzUzOTkt/MTgwMmNhZTFkMzJm/P2ZtPWpwZyZxPTYw/Jnc9MzAwMCZhdXRv/PWZvcm1hdCZmaXQ9/Y3JvcCZpeGxpYj1y/Yi00LjEuMCZpeGlk/PU0zd3hNakEzZkRC/OE1IeHpaV0Z5WTJo/OE1UaDhmSGRoZEdO/b2ZHVnVmREI4ZkRC/OGZId3c"},      
+{name:"Bag Travel",price:99,rate:"⭐4.8",img:"https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lmgnmss3qlen55.webp"},
+{name:"Thon khi",price:12,rate:"⭐4.8",img:"https://down-vn.img.susercontent.com/file/f4b556a84545036d6fcdb66231c7e9f3.webp"},  
+{name:"COMBO DIY",price:12,rate:"⭐4.8",img:"https://down-vn.img.susercontent.com/file/sg-11134201-7ra1y-mbify31174z907.webp"},  
+{name:"Horizon Watch",price:205,rate:"⭐4.8",img:"https://imgs.search.brave.com/o3s8sb1eBh0FSDyXzhf44md1j6xpuDMOY740pIe99ms/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMucGV4ZWxzLmNv/bS9waG90b3MvMzgy/OTQ0MS9wZXhlbHMt/cGhvdG8tMzgyOTQ0/MS5qcGVnP2F1dG89/Y29tcHJlc3MmY3M9/dGlueXNyZ2ImZHBy/PTEmdz0yNTImZml0/PWNyb3AmaD00MDg"},    
+{name:"BAGSMART",price:19,rate:"⭐4.8",img:"https://down-vn.img.susercontent.com/file/sg-11134201-7rbky-m5gw1n2zpcy210.webp"},
+{name:"3 mini ",price:10,rate:"⭐4.8",img:"https://down-vn.img.susercontent.com/file/530d2700ad154219882410ad555f7505.webp"}, 
+{name:" hand made",price:6,rate:"⭐4.8",img:"https://down-vn.img.susercontent.com/file/1cf0941d670f44ec7090d9206a1df007.webp"}, 
+{name:"Apex Chrono",price:175,rate:"⭐4.8",img:"https://imgs.search.brave.com/LtbAvSJzAOo2nd63mxOXMp7itd70qzrOm9yyKa8DEvI/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAyMy8w/NS8zMS8xOC80OC93/YXRjaC04MDMyMDU0/XzY0MC5qcGc"},    
+{name:"LOVEVOOK ",price:29,rate:"⭐4.8",img:"https://down-vn.img.susercontent.com/file/vn-11134207-7ras8-m4l89htminw0ea.webp"},
+{name:"Epic Apollo",price:95,rate:"⭐4.8",img:"https://imgs.search.brave.com/MPsgxI5GoiV05HQgHDLURri5lnOa2tisYNEg1M753yk/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAxNi8w/My8wNS8wOS8wNS93/cmlzdC13YXRjaC0x/MjM3NDE4XzY0MC5q/cGc"}, 
+{name:" Oxford 2",price:80,rate:"⭐4.9",img:"https://down-vn.img.susercontent.com/file/vn-11134207-820l4-mepjdpzormro97.webp"}, 
+{name:"NovaTime",price:159,rate:"⭐4.8",img:"https://imgs.search.brave.com/yiqT8JC1FzTy-5teH9R4sRy8rep8zGeqSxIVlY80aiA/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMucGV4ZWxzLmNv/bS9waG90b3MvNTQy/MTI3MS9wZXhlbHMt/cGhvdG8tNTQyMTI3/MS5qcGVnP2F1dG89/Y29tcHJlc3MmY3M9/dGlueXNyZ2ImZHBy/PTEmdz01MDA"},  
 {name:"Smart Watch",price:199,rate:"⭐4.8",img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600"},
-{name:"Smart Watch",price:199,rate:"⭐4.8",img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600"},  
-{name:"Smart Watch",price:199,rate:"⭐4.8",img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600"},  
-{name:"Smart Watch",price:199,rate:"⭐4.8",img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600"},
-{name:"Smart Watch",price:199,rate:"⭐4.8",img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600"},
-{name:"Smart Watch",price:199,rate:"⭐4.8",img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600"},  
-{name:"Smart Watch",price:199,rate:"⭐4.8",img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600"},  
-{name:"Smart Watch",price:199,rate:"⭐4.8",img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600"},
-{name:"Smart Watch",price:199,rate:"⭐4.8",img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600"},
+{name:"oec 1",price:12,rate:"⭐4.8",img:"https://down-vn.img.susercontent.com/file/b8ae2c1ecb000ca1d8b9a32c16085d64.webp"},  
+{name:"3 mini toys",price:10,rate:"⭐4.8",img:"https://down-vn.img.susercontent.com/file/sg-11134201-7reoy-m91uajjsg7px94.webp"},
+{name:"TLS414GD  ",price:60,rate:"⭐4.8",img:"https://down-vn.img.susercontent.com/file/vn-11134207-820l4-mh28b521gxsd0a.webp"},   
+{name:"ASUS ROG Strix G16",price:975,rate:"⭐4.8",img:"https://m.media-amazon.com/images/I/81n1T4CYfmL._AC_UL480_FMwebp_QL65_.jpg"},   
+{name:"Smart Watch",price:199,rate:"⭐4.8",img:"https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-llm05p5nkerg1c.webp"},
+{name:" TLS801",price:8,rate:"⭐4.9",img:"https://down-vn.img.susercontent.com/file/vn-11134201-820l4-mgd14vlc9x5a10.webp"},   
+{name:"ASUS ROG Swift 32",price:1199,rate:"⭐4.8",img:"https://m.media-amazon.com/images/I/8127skgs+ML._AC_UL480_FMwebp_QL65_.jpg"},
+{name:"ASUS TUF Gaming F16 ",price:1689,rate:"⭐4.8",img:"https://m.media-amazon.com/images/I/71ZEi4fMrzL._AC_UL480_FMwebp_QL65_.jpg"},   
+{name:"camera Ezviz",price:75,rate:"⭐4.8",img:"https://down-vn.img.susercontent.com/file/sg-11134201-22110-d732dwy60ujvdc.webp"},  
+{name:"camera pro",price:99,rate:"⭐4.8",img:"https://down-vn.img.susercontent.com/file/vn-11134207-7ra0g-m6t989a0l454a0.webp"},
+{name:" hottrend",price:44,rate:"⭐4.8",img:"https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-ls9wq3xt44gpf3.webp"}, 
+{name:"msi Katana 15 HX 15.6”  ",price:1500,rate:"⭐4.8",img:"https://m.media-amazon.com/images/I/71TvKdAmIjL._AC_UL480_FMwebp_QL65_.jpg"}, 
+{name:"DV HD 1080P 270",price:19,rate:"⭐4.8",img:"https://down-vn.img.susercontent.com/file/0279f8e31a3a92becd6f9b776e2f581a.webp"}, 
+{name:"KTC 24.5 Inch 240Hz",price:800,rate:"⭐4.9",img:"https://m.media-amazon.com/images/I/71sSK3ouRML._AC_UL480_FMwebp_QL65_.jpg"},
+{name:"Cosplay",price:8,rate:"⭐4.9",img:"https://down-vn.img.susercontent.com/file/cn-11134207-7ras8-mbb6mhq2hlghd4.webp"},   
+{name:"DV HD 1080P 270",price:29,rate:"⭐4.8",img:"https://down-vn.img.susercontent.com/file/vn-11134103-7ras8-m4096p6yoxb4b5.webp"},
+{name:"Apple iPhone Air 256GB",price:1200,rate:"⭐4.8",img:"https://down-vn.img.susercontent.com/file/vn-11134207-820l4-mei6b56syfpd9a@resize_w900_nl.webp"}, 
+{name:"Camera IMOU 2",price:80,rate:"⭐4.9",img:"https://down-vn.img.susercontent.com/file/vn-11134207-7ra0g-m72a8d37tb2w7c.webp"}, 
 {name:"iPhone 16 Pro Max",price:1299,rate:"⭐4.9",img:"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600"},
+{name:"iPhone 15 128GB",price:770,rate:"⭐4.8",img:"https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-llm05p5nkerg1c@resize_w900_nl.webp"},  
 {name:"Gaming Laptop RTX",price:1599,rate:"⭐5.0",img:"https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600"},
+{name:"iPad A16 11 inch ",price:600,rate:"⭐4.8",img:"https://down-vn.img.susercontent.com/file/sg-11134301-7renh-m8e9wy9li62ecb@resize_w900_nl.webp"}, 
 {name:"Smart Watch",price:199,rate:"⭐4.8",img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600"},
+{name:"AirPods Pro 3”  ",price:69,rate:"⭐4.8",img:"https://down-vn.img.susercontent.com/file/vn-11134207-820l4-mejzo1i16pkx20.webp"},
+{name:"loopy”  ",price:6,rate:"⭐4.8",img:"https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lu8wuavdw36954.webp"},
+{name:"iPad Air M4",price:800,rate:"⭐4.9",img:"https://down-vn.img.susercontent.com/file/vn-11134207-81ztc-mmnxjmluj30m47@resize_w900_nl.webp"}, 
 {name:"Camera Pro",price:699,rate:"⭐4.7",img:"https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=600"}
 ];
 
